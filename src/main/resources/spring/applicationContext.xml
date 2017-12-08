@@ -87,13 +87,13 @@
     </bean>
 
 
-    <!-- 拦截器 -->
+ <!--   &lt;!&ndash; 拦截器 &ndash;&gt;
     <mvc:interceptors>
-        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
+        &lt;!&ndash; 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 &ndash;&gt;
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
     </mvc:interceptors>
-    <!-- 定义无Controller的path<->view直接映射 -->
-    <mvc:view-controller path="/" view-name="redirect:/" />
+    &lt;!&ndash; 定义无Controller的path<->view直接映射 &ndash;&gt;
+    <mvc:view-controller path="/" view-name="redirect:/" />-->
 
 
 
@@ -102,7 +102,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
+        <property name="mapperLocations" value="classpath*:sqlmap/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.springmvc.entity" />
 
     </bean>
