@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.CostinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Costinfo" >
+    <id column="costinfoid" property="costinfoid" jdbcType="INTEGER" />
+    <result column="billid" property="billid" jdbcType="INTEGER" />
+    <result column="costiteam" property="costiteam" jdbcType="INTEGER" />
+    <result column="costplandesc" property="costplandesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    costinfoid, billid, costiteam, costplandesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from costinfo
+    where costinfoid = #{costinfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from costinfo
+    where costinfoid = #{costinfoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Costinfo" >
+    insert into costinfo (costinfoid, billid, costiteam, 
+      costplandesc)
+    values (#{costinfoid,jdbcType=INTEGER}, #{billid,jdbcType=INTEGER}, #{costiteam,jdbcType=INTEGER}, 
+      #{costplandesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Costinfo" >
+    insert into costinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="costinfoid != null" >
+        costinfoid,
+      </if>
+      <if test="billid != null" >
+        billid,
+      </if>
+      <if test="costiteam != null" >
+        costiteam,
+      </if>
+      <if test="costplandesc != null" >
+        costplandesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="costinfoid != null" >
+        #{costinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="billid != null" >
+        #{billid,jdbcType=INTEGER},
+      </if>
+      <if test="costiteam != null" >
+        #{costiteam,jdbcType=INTEGER},
+      </if>
+      <if test="costplandesc != null" >
+        #{costplandesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Costinfo" >
+    update costinfo
+    <set >
+      <if test="billid != null" >
+        billid = #{billid,jdbcType=INTEGER},
+      </if>
+      <if test="costiteam != null" >
+        costiteam = #{costiteam,jdbcType=INTEGER},
+      </if>
+      <if test="costplandesc != null" >
+        costplandesc = #{costplandesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where costinfoid = #{costinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Costinfo" >
+    update costinfo
+    set billid = #{billid,jdbcType=INTEGER},
+      costiteam = #{costiteam,jdbcType=INTEGER},
+      costplandesc = #{costplandesc,jdbcType=VARCHAR}
+    where costinfoid = #{costinfoid,jdbcType=INTEGER}
+  </update>
+</mapper>

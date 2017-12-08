@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.CourseplanMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Courseplan" >
+    <id column="courseplanid" property="courseplanid" jdbcType="INTEGER" />
+    <result column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="coursetime" property="coursetime" jdbcType="DOUBLE" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
+    <result column="coursetype" property="coursetype" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="courseplandesc" property="courseplandesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    courseplanid, courseid, coursetime, starttime, coursetype, createtime, courseplandesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from courseplan
+    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from courseplan
+    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Courseplan" >
+    insert into courseplan (courseplanid, courseid, coursetime, 
+      starttime, coursetype, createtime, 
+      courseplandesc)
+    values (#{courseplanid,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, #{coursetime,jdbcType=DOUBLE}, 
+      #{starttime,jdbcType=DATE}, #{coursetype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{courseplandesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Courseplan" >
+    insert into courseplan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseplanid != null" >
+        courseplanid,
+      </if>
+      <if test="courseid != null" >
+        courseid,
+      </if>
+      <if test="coursetime != null" >
+        coursetime,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="coursetype != null" >
+        coursetype,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="courseplandesc != null" >
+        courseplandesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseplanid != null" >
+        #{courseplanid,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursetime != null" >
+        #{coursetime,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=DATE},
+      </if>
+      <if test="coursetype != null" >
+        #{coursetype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseplandesc != null" >
+        #{courseplandesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Courseplan" >
+    update courseplan
+    <set >
+      <if test="courseid != null" >
+        courseid = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursetime != null" >
+        coursetime = #{coursetime,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=DATE},
+      </if>
+      <if test="coursetype != null" >
+        coursetype = #{coursetype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseplandesc != null" >
+        courseplandesc = #{courseplandesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Courseplan" >
+    update courseplan
+    set courseid = #{courseid,jdbcType=INTEGER},
+      coursetime = #{coursetime,jdbcType=DOUBLE},
+      starttime = #{starttime,jdbcType=DATE},
+      coursetype = #{coursetype,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      courseplandesc = #{courseplandesc,jdbcType=VARCHAR}
+    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+  </update>
+</mapper>

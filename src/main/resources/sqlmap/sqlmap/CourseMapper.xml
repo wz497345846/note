@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.CourseMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Course" >
+    <id column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="coursename" property="coursename" jdbcType="VARCHAR" />
+    <result column="coursefee" property="coursefee" jdbcType="DOUBLE" />
+    <result column="isappoint" property="isappoint" jdbcType="BIT" />
+    <result column="coursecount" property="coursecount" jdbcType="INTEGER" />
+    <result column="coursedesc" property="coursedesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    courseid, coursename, coursefee, isappoint, coursecount, coursedesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Course" >
+    insert into course (courseid, coursename, coursefee, 
+      isappoint, coursecount, coursedesc
+      )
+    values (#{courseid,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{coursefee,jdbcType=DOUBLE}, 
+      #{isappoint,jdbcType=BIT}, #{coursecount,jdbcType=INTEGER}, #{coursedesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Course" >
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseid != null" >
+        courseid,
+      </if>
+      <if test="coursename != null" >
+        coursename,
+      </if>
+      <if test="coursefee != null" >
+        coursefee,
+      </if>
+      <if test="isappoint != null" >
+        isappoint,
+      </if>
+      <if test="coursecount != null" >
+        coursecount,
+      </if>
+      <if test="coursedesc != null" >
+        coursedesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursename != null" >
+        #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="coursefee != null" >
+        #{coursefee,jdbcType=DOUBLE},
+      </if>
+      <if test="isappoint != null" >
+        #{isappoint,jdbcType=BIT},
+      </if>
+      <if test="coursecount != null" >
+        #{coursecount,jdbcType=INTEGER},
+      </if>
+      <if test="coursedesc != null" >
+        #{coursedesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Course" >
+    update course
+    <set >
+      <if test="coursename != null" >
+        coursename = #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="coursefee != null" >
+        coursefee = #{coursefee,jdbcType=DOUBLE},
+      </if>
+      <if test="isappoint != null" >
+        isappoint = #{isappoint,jdbcType=BIT},
+      </if>
+      <if test="coursecount != null" >
+        coursecount = #{coursecount,jdbcType=INTEGER},
+      </if>
+      <if test="coursedesc != null" >
+        coursedesc = #{coursedesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Course" >
+    update course
+    set coursename = #{coursename,jdbcType=VARCHAR},
+      coursefee = #{coursefee,jdbcType=DOUBLE},
+      isappoint = #{isappoint,jdbcType=BIT},
+      coursecount = #{coursecount,jdbcType=INTEGER},
+      coursedesc = #{coursedesc,jdbcType=VARCHAR}
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </update>
+</mapper>

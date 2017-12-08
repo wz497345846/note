@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.MembermanageMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage" >
+    <id column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="membername" property="membername" jdbcType="VARCHAR" />
+    <result column="memberpwd" property="memberpwd" jdbcType="VARCHAR" />
+    <result column="memberphone" property="memberphone" jdbcType="VARCHAR" />
+    <result column="membersex" property="membersex" jdbcType="CHAR" />
+    <result column="memberavatar" property="memberavatar" jdbcType="VARCHAR" />
+    <result column="memberbirth" property="memberbirth" jdbcType="DATE" />
+    <result column="referee" property="referee" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="INTEGER" />
+    <result column="memberremark" property="memberremark" jdbcType="CHAR" />
+    <result column="memberdesc" property="memberdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    memberid, membername, memberpwd, memberphone, membersex, memberavatar, memberbirth, 
+    referee, empid, memberremark, memberdesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from MemberManage
+    where memberid = #{memberid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from MemberManage
+    where memberid = #{memberid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Membermanage" >
+    insert into MemberManage (memberid, membername, memberpwd, 
+      memberphone, membersex, memberavatar, 
+      memberbirth, referee, empid, 
+      memberremark, memberdesc)
+    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{memberpwd,jdbcType=VARCHAR}, 
+      #{memberphone,jdbcType=VARCHAR}, #{membersex,jdbcType=CHAR}, #{memberavatar,jdbcType=VARCHAR}, 
+      #{memberbirth,jdbcType=DATE}, #{referee,jdbcType=VARCHAR}, #{empid,jdbcType=INTEGER}, 
+      #{memberremark,jdbcType=CHAR}, #{memberdesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Membermanage" >
+    insert into MemberManage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="membername != null" >
+        membername,
+      </if>
+      <if test="memberpwd != null" >
+        memberpwd,
+      </if>
+      <if test="memberphone != null" >
+        memberphone,
+      </if>
+      <if test="membersex != null" >
+        membersex,
+      </if>
+      <if test="memberavatar != null" >
+        memberavatar,
+      </if>
+      <if test="memberbirth != null" >
+        memberbirth,
+      </if>
+      <if test="referee != null" >
+        referee,
+      </if>
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="memberremark != null" >
+        memberremark,
+      </if>
+      <if test="memberdesc != null" >
+        memberdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="membername != null" >
+        #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberpwd != null" >
+        #{memberpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="memberphone != null" >
+        #{memberphone,jdbcType=VARCHAR},
+      </if>
+      <if test="membersex != null" >
+        #{membersex,jdbcType=CHAR},
+      </if>
+      <if test="memberavatar != null" >
+        #{memberavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="memberbirth != null" >
+        #{memberbirth,jdbcType=DATE},
+      </if>
+      <if test="referee != null" >
+        #{referee,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="memberremark != null" >
+        #{memberremark,jdbcType=CHAR},
+      </if>
+      <if test="memberdesc != null" >
+        #{memberdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Membermanage" >
+    update MemberManage
+    <set >
+      <if test="membername != null" >
+        membername = #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberpwd != null" >
+        memberpwd = #{memberpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="memberphone != null" >
+        memberphone = #{memberphone,jdbcType=VARCHAR},
+      </if>
+      <if test="membersex != null" >
+        membersex = #{membersex,jdbcType=CHAR},
+      </if>
+      <if test="memberavatar != null" >
+        memberavatar = #{memberavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="memberbirth != null" >
+        memberbirth = #{memberbirth,jdbcType=DATE},
+      </if>
+      <if test="referee != null" >
+        referee = #{referee,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        empid = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="memberremark != null" >
+        memberremark = #{memberremark,jdbcType=CHAR},
+      </if>
+      <if test="memberdesc != null" >
+        memberdesc = #{memberdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where memberid = #{memberid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage" >
+    update MemberManage
+    set membername = #{membername,jdbcType=VARCHAR},
+      memberpwd = #{memberpwd,jdbcType=VARCHAR},
+      memberphone = #{memberphone,jdbcType=VARCHAR},
+      membersex = #{membersex,jdbcType=CHAR},
+      memberavatar = #{memberavatar,jdbcType=VARCHAR},
+      memberbirth = #{memberbirth,jdbcType=DATE},
+      referee = #{referee,jdbcType=VARCHAR},
+      empid = #{empid,jdbcType=INTEGER},
+      memberremark = #{memberremark,jdbcType=CHAR},
+      memberdesc = #{memberdesc,jdbcType=VARCHAR}
+    where memberid = #{memberid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Employee" >
+    <id column="empid" property="empid" jdbcType="INTEGER" />
+    <result column="empavatar" property="empavatar" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="emppwd" property="emppwd" jdbcType="VARCHAR" />
+    <result column="empsex" property="empsex" jdbcType="CHAR" />
+    <result column="empphone" property="empphone" jdbcType="VARCHAR" />
+    <result column="empsalary" property="empsalary" jdbcType="DOUBLE" />
+    <result column="roleid" property="roleid" jdbcType="INTEGER" />
+    <result column="empdesc" property="empdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    empid, empavatar, empname, emppwd, empsex, empphone, empsalary, roleid, empdesc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where empid = #{empid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee
+    where empid = #{empid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Employee" >
+    insert into employee (empid, empavatar, empname, 
+      emppwd, empsex, empphone, 
+      empsalary, roleid, empdesc
+      )
+    values (#{empid,jdbcType=INTEGER}, #{empavatar,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
+      #{emppwd,jdbcType=VARCHAR}, #{empsex,jdbcType=CHAR}, #{empphone,jdbcType=VARCHAR}, 
+      #{empsalary,jdbcType=DOUBLE}, #{roleid,jdbcType=INTEGER}, #{empdesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="empavatar != null" >
+        empavatar,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="emppwd != null" >
+        emppwd,
+      </if>
+      <if test="empsex != null" >
+        empsex,
+      </if>
+      <if test="empphone != null" >
+        empphone,
+      </if>
+      <if test="empsalary != null" >
+        empsalary,
+      </if>
+      <if test="roleid != null" >
+        roleid,
+      </if>
+      <if test="empdesc != null" >
+        empdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="empavatar != null" >
+        #{empavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="emppwd != null" >
+        #{emppwd,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        #{empsex,jdbcType=CHAR},
+      </if>
+      <if test="empphone != null" >
+        #{empphone,jdbcType=VARCHAR},
+      </if>
+      <if test="empsalary != null" >
+        #{empsalary,jdbcType=DOUBLE},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="empdesc != null" >
+        #{empdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Employee" >
+    update employee
+    <set >
+      <if test="empavatar != null" >
+        empavatar = #{empavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="emppwd != null" >
+        emppwd = #{emppwd,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        empsex = #{empsex,jdbcType=CHAR},
+      </if>
+      <if test="empphone != null" >
+        empphone = #{empphone,jdbcType=VARCHAR},
+      </if>
+      <if test="empsalary != null" >
+        empsalary = #{empsalary,jdbcType=DOUBLE},
+      </if>
+      <if test="roleid != null" >
+        roleid = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="empdesc != null" >
+        empdesc = #{empdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where empid = #{empid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Employee" >
+    update employee
+    set empavatar = #{empavatar,jdbcType=VARCHAR},
+      empname = #{empname,jdbcType=VARCHAR},
+      emppwd = #{emppwd,jdbcType=VARCHAR},
+      empsex = #{empsex,jdbcType=CHAR},
+      empphone = #{empphone,jdbcType=VARCHAR},
+      empsalary = #{empsalary,jdbcType=DOUBLE},
+      roleid = #{roleid,jdbcType=INTEGER},
+      empdesc = #{empdesc,jdbcType=VARCHAR}
+    where empid = #{empid,jdbcType=INTEGER}
+  </update>
+</mapper>
