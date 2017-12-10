@@ -4,8 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 配置dbcp数据库连接池 -->
 
+    <!-- 配置dbcp数据库连接池 -->
      <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- 数据库连接池 -->
@@ -27,8 +27,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:/sqlmap/*Mapper.xml"/>
-        <property name="typeAliasesPackage" value="com.test.pojo" />
+        <property name="mapperLocations" value="classpath*:sqlmapper/*Mapper.xml"/>
 
     </bean>
 
@@ -36,7 +35,7 @@
     <!-- 在spring容器中配置mapper的扫描器产生的动态代理对象在spring的容器中自动注册，bean的id就是mapper类名（首字母小写）-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 指定扫描包的路径，就是mapper接口的路径，多个包中间以 半角逗号隔开   -->
-        <property name="basePackage" value="com.springmvc.dao"/>
+        <property name="basePackage" value="com.test.dao"/>
         <!-- 配置sqlSessionFactoryBeanName -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
