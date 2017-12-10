@@ -1,6 +1,8 @@
 package com.test.pojo;
 
-public class Roles {
+import java.io.Serializable;
+
+public class Roles implements Serializable{
     private Integer roleid;
 
     private String roletype;
@@ -39,5 +41,15 @@ public class Roles {
 
     public void setRoledesc(String roledesc) {
         this.roledesc = roledesc;
+    }
+
+    @Override
+    public String toString() {
+        return "Roles{" +
+                "roleid=" + roleid +
+                ", roletype='" + roletype + '\'' +
+                ", menuid=" + menuid +
+                ", roledesc='" + roledesc + '\'' +
+                '}';
     }
 }

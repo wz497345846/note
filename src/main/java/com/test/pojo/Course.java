@@ -1,6 +1,8 @@
 package com.test.pojo;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable{
     private Integer courseid;
 
     private String coursename;
@@ -59,5 +61,17 @@ public class Course {
 
     public void setCoursedesc(String coursedesc) {
         this.coursedesc = coursedesc;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseid=" + courseid +
+                ", coursename='" + coursename + '\'' +
+                ", coursefee=" + coursefee +
+                ", isappoint=" + isappoint +
+                ", coursecount=" + coursecount +
+                ", coursedesc='" + coursedesc + '\'' +
+                '}';
     }
 }

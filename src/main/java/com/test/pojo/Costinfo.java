@@ -1,6 +1,8 @@
 package com.test.pojo;
 
-public class Costinfo {
+import java.io.Serializable;
+
+public class Costinfo implements Serializable{
     private Integer costinfoid;
 
     private Integer billid;
@@ -39,5 +41,15 @@ public class Costinfo {
 
     public void setCostplandesc(String costplandesc) {
         this.costplandesc = costplandesc;
+    }
+
+    @Override
+    public String toString() {
+        return "Costinfo{" +
+                "costinfoid=" + costinfoid +
+                ", billid=" + billid +
+                ", costiteam=" + costiteam +
+                ", costplandesc='" + costplandesc + '\'' +
+                '}';
     }
 }
