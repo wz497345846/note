@@ -15,12 +15,13 @@ public class RoleController {
     @Autowired
     RolesMapper rolesMapper;
 
-    @RequestMapping("getRoles")
+    @RequestMapping("getAllRoles")
     @ResponseBody
     public List<Roles> getRoles(){
         RolesExample rolesExample=new RolesExample();
         RolesExample.Criteria criteria= rolesExample.createCriteria();
         criteria.getAllCriteria();
+        System.out.println(rolesMapper.selectByExample(rolesExample));
         return rolesMapper.selectByExample(rolesExample);
     }
 }
