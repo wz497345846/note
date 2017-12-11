@@ -1,19 +1,25 @@
 package com.test.pojo;
 
-import java.io.Serializable;
-
-public class Course implements Serializable{
+public class Course {
     private Integer courseid;
+
+    private Integer empid;
+
+    private String coursetype;
 
     private String coursename;
 
     private Double coursefee;
 
-    private Boolean isappoint;
+    private Integer currentnum;
 
     private Integer coursecount;
 
     private String coursedesc;
+
+    private String curriculumstart;
+
+    private String curriculumend;
 
     public Integer getCourseid() {
         return courseid;
@@ -21,6 +27,22 @@ public class Course implements Serializable{
 
     public void setCourseid(Integer courseid) {
         this.courseid = courseid;
+    }
+
+    public Integer getEmpid() {
+        return empid;
+    }
+
+    public void setEmpid(Integer empid) {
+        this.empid = empid;
+    }
+
+    public String getCoursetype() {
+        return coursetype;
+    }
+
+    public void setCoursetype(String coursetype) {
+        this.coursetype = coursetype;
     }
 
     public String getCoursename() {
@@ -39,12 +61,12 @@ public class Course implements Serializable{
         this.coursefee = coursefee;
     }
 
-    public Boolean getIsappoint() {
-        return isappoint;
+    public Integer getCurrentnum() {
+        return currentnum;
     }
 
-    public void setIsappoint(Boolean isappoint) {
-        this.isappoint = isappoint;
+    public void setCurrentnum(Integer currentnum) {
+        this.currentnum = currentnum;
     }
 
     public Integer getCoursecount() {
@@ -63,15 +85,19 @@ public class Course implements Serializable{
         this.coursedesc = coursedesc;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseid=" + courseid +
-                ", coursename='" + coursename + '\'' +
-                ", coursefee=" + coursefee +
-                ", isappoint=" + isappoint +
-                ", coursecount=" + coursecount +
-                ", coursedesc='" + coursedesc + '\'' +
-                '}';
+    public String getCurriculumstart() {
+        return curriculumstart;
+    }
+
+    public void setCurriculumstart(String curriculumstart) {
+        this.curriculumstart = curriculumstart;
+    }
+
+    public String getCurriculumend() {
+        return curriculumend;
+    }
+
+    public void setCurriculumend(String curriculumend) {
+        this.curriculumend = curriculumend;
     }
 }

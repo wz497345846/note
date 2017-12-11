@@ -52,8 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      *  查询员工信息
      */
     public List<Employee> selectEmployee(Employee employee) {
-        List<Employee> list=employeeMapper.selectEmployees(employee);
-        return list;
+        return null;
     }
 
 }

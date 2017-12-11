@@ -3,6 +3,8 @@
 */
 package com.test.service;
 
+import com.test.pojo.Bill;
+
 import java.util.List;
 
 /**

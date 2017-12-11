@@ -2,13 +2,10 @@ package com.test.dao;
 
 import com.test.pojo.Bill;
 import com.test.pojo.BillExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 public interface BillMapper {
-    int countByExample(BillExample example);
-
     int deleteByExample(BillExample example);
 
     int deleteByPrimaryKey(Integer billid);

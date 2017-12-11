@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.test.dao.BillMapper" >
-  <resultMap id="BaseResultMap" type="com.test.pojo.Bill" >
-    <id column="billid" property="billid" jdbcType="INTEGER" />
-    <result column="empid" property="empid" jdbcType="INTEGER" />
-    <result column="cost" property="cost" jdbcType="DOUBLE" />
-    <result column="paytype" property="paytype" jdbcType="VARCHAR" />
-    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="billdesc" property="billdesc" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.BillMapper">
+  <resultMap id="BaseResultMap" type="com.test.pojo.Bill">
+    <id column="billid" jdbcType="INTEGER" property="billid" />
+    <result column="empid" jdbcType="INTEGER" property="empid" />
+    <result column="cost" jdbcType="DOUBLE" property="cost" />
+    <result column="paytype" jdbcType="VARCHAR" property="paytype" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="billdesc" jdbcType="VARCHAR" property="billdesc" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -38,25 +38,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -67,40 +67,41 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     billid, empid, cost, paytype, createtime, billdesc
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.BillExample" >
+  <select id="selectByExample" parameterType="com.test.pojo.BillExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
+    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from bill
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from bill
     where billid = #{billid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bill
     where billid = #{billid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.test.pojo.BillExample" >
+  <delete id="deleteByExample" parameterType="com.test.pojo.BillExample">
     delete from bill
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.test.pojo.Bill" >
+  <insert id="insert" parameterType="com.test.pojo.Bill">
     insert into bill (billid, empid, cost, 
       paytype, createtime, billdesc
       )
@@ -108,82 +109,76 @@
       #{paytype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{billdesc,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Bill" >
+  <insert id="insertSelective" parameterType="com.test.pojo.Bill">
     insert into bill
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="billid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
         billid,
       </if>
-      <if test="empid != null" >
+      <if test="empid != null">
         empid,
       </if>
-      <if test="cost != null" >
+      <if test="cost != null">
         cost,
       </if>
-      <if test="paytype != null" >
+      <if test="paytype != null">
         paytype,
       </if>
-      <if test="createtime != null" >
+      <if test="createtime != null">
         createtime,
       </if>
-      <if test="billdesc != null" >
+      <if test="billdesc != null">
         billdesc,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="billid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
         #{billid,jdbcType=INTEGER},
       </if>
-      <if test="empid != null" >
+      <if test="empid != null">
         #{empid,jdbcType=INTEGER},
       </if>
-      <if test="cost != null" >
+      <if test="cost != null">
         #{cost,jdbcType=DOUBLE},
       </if>
-      <if test="paytype != null" >
+      <if test="paytype != null">
         #{paytype,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
+      <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="billdesc != null" >
+      <if test="billdesc != null">
         #{billdesc,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.test.pojo.BillExample" resultType="java.lang.Integer" >
-    select count(*) from bill
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update bill
-    <set >
-      <if test="record.billid != null" >
+    <set>
+      <if test="record.billid != null">
         billid = #{record.billid,jdbcType=INTEGER},
       </if>
-      <if test="record.empid != null" >
+      <if test="record.empid != null">
         empid = #{record.empid,jdbcType=INTEGER},
       </if>
-      <if test="record.cost != null" >
+      <if test="record.cost != null">
         cost = #{record.cost,jdbcType=DOUBLE},
       </if>
-      <if test="record.paytype != null" >
+      <if test="record.paytype != null">
         paytype = #{record.paytype,jdbcType=VARCHAR},
       </if>
-      <if test="record.createtime != null" >
+      <if test="record.createtime != null">
         createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.billdesc != null" >
+      <if test="record.billdesc != null">
         billdesc = #{record.billdesc,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update bill
     set billid = #{record.billid,jdbcType=INTEGER},
       empid = #{record.empid,jdbcType=INTEGER},
@@ -191,32 +186,460 @@
       paytype = #{record.paytype,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
       billdesc = #{record.billdesc,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill">
     update bill
-    <set >
-      <if test="empid != null" >
+    <set>
+      <if test="empid != null">
         empid = #{empid,jdbcType=INTEGER},
       </if>
-      <if test="cost != null" >
+      <if test="cost != null">
         cost = #{cost,jdbcType=DOUBLE},
       </if>
-      <if test="paytype != null" >
+      <if test="paytype != null">
         paytype = #{paytype,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
+      <if test="createtime != null">
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="billdesc != null" >
+      <if test="billdesc != null">
         billdesc = #{billdesc,jdbcType=VARCHAR},
       </if>
     </set>
     where billid = #{billid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill" >
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill">
+    update bill
+    set empid = #{empid,jdbcType=INTEGER},
+      cost = #{cost,jdbcType=DOUBLE},
+      paytype = #{paytype,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      billdesc = #{billdesc,jdbcType=VARCHAR}
+    where billid = #{billid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.test.pojo.Bill">
+    <id column="billid" jdbcType="INTEGER" property="billid" />
+    <result column="empid" jdbcType="INTEGER" property="empid" />
+    <result column="cost" jdbcType="DOUBLE" property="cost" />
+    <result column="paytype" jdbcType="VARCHAR" property="paytype" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="billdesc" jdbcType="VARCHAR" property="billdesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    billid, empid, cost, paytype, createtime, billdesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bill
+    where billid = #{billid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bill
+    where billid = #{billid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Bill">
+    insert into bill (billid, empid, cost, 
+      paytype, createtime, billdesc
+      )
+    values (#{billid,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, #{cost,jdbcType=DOUBLE}, 
+      #{paytype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{billdesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Bill">
+    insert into bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
+        billid,
+      </if>
+      <if test="empid != null">
+        empid,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="billdesc != null">
+        billdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
+        #{billid,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billdesc != null">
+        #{billdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill">
+    update bill
+    <set>
+      <if test="empid != null">
+        empid = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="paytype != null">
+        paytype = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billdesc != null">
+        billdesc = #{billdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where billid = #{billid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill">
+    update bill
+    set empid = #{empid,jdbcType=INTEGER},
+      cost = #{cost,jdbcType=DOUBLE},
+      paytype = #{paytype,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      billdesc = #{billdesc,jdbcType=VARCHAR}
+    where billid = #{billid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.test.pojo.Bill">
+    <id column="billid" jdbcType="INTEGER" property="billid" />
+    <result column="empid" jdbcType="INTEGER" property="empid" />
+    <result column="cost" jdbcType="DOUBLE" property="cost" />
+    <result column="paytype" jdbcType="VARCHAR" property="paytype" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="billdesc" jdbcType="VARCHAR" property="billdesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    billid, empid, cost, paytype, createtime, billdesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bill
+    where billid = #{billid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bill
+    where billid = #{billid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Bill">
+    insert into bill (billid, empid, cost, 
+      paytype, createtime, billdesc
+      )
+    values (#{billid,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, #{cost,jdbcType=DOUBLE}, 
+      #{paytype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{billdesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Bill">
+    insert into bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
+        billid,
+      </if>
+      <if test="empid != null">
+        empid,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="billdesc != null">
+        billdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
+        #{billid,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billdesc != null">
+        #{billdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill">
+    update bill
+    <set>
+      <if test="empid != null">
+        empid = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="paytype != null">
+        paytype = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billdesc != null">
+        billdesc = #{billdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where billid = #{billid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill">
+    update bill
+    set empid = #{empid,jdbcType=INTEGER},
+      cost = #{cost,jdbcType=DOUBLE},
+      paytype = #{paytype,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      billdesc = #{billdesc,jdbcType=VARCHAR}
+    where billid = #{billid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.test.pojo.Bill">
+    <id column="billid" jdbcType="INTEGER" property="billid" />
+    <result column="empid" jdbcType="INTEGER" property="empid" />
+    <result column="cost" jdbcType="DOUBLE" property="cost" />
+    <result column="paytype" jdbcType="VARCHAR" property="paytype" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="billdesc" jdbcType="VARCHAR" property="billdesc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    billid, empid, cost, paytype, createtime, billdesc
+  </sql>
+  <select id="selectByExample" parameterType="com.test.pojo.BillExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bill
+    where billid = #{billid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bill
+    where billid = #{billid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.test.pojo.BillExample">
+    delete from bill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.test.pojo.Bill">
+    insert into bill (billid, empid, cost, 
+      paytype, createtime, billdesc
+      )
+    values (#{billid,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, #{cost,jdbcType=DOUBLE}, 
+      #{paytype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{billdesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.pojo.Bill">
+    insert into bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
+        billid,
+      </if>
+      <if test="empid != null">
+        empid,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="billdesc != null">
+        billdesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="billid != null">
+        #{billid,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billdesc != null">
+        #{billdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.test.pojo.BillExample" resultType="java.lang.Integer">
+    select count(*) from bill
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update bill
+    <set>
+      <if test="record.billid != null">
+        billid = #{record.billid,jdbcType=INTEGER},
+      </if>
+      <if test="record.empid != null">
+        empid = #{record.empid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cost != null">
+        cost = #{record.cost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.paytype != null">
+        paytype = #{record.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.billdesc != null">
+        billdesc = #{record.billdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update bill
+    set billid = #{record.billid,jdbcType=INTEGER},
+      empid = #{record.empid,jdbcType=INTEGER},
+      cost = #{record.cost,jdbcType=DOUBLE},
+      paytype = #{record.paytype,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      billdesc = #{record.billdesc,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill">
+    update bill
+    <set>
+      <if test="empid != null">
+        empid = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="paytype != null">
+        paytype = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billdesc != null">
+        billdesc = #{billdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where billid = #{billid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill">
     update bill
     set empid = #{empid,jdbcType=INTEGER},
       cost = #{cost,jdbcType=DOUBLE},
