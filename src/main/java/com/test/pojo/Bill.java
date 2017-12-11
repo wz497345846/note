@@ -2,20 +2,19 @@ package com.test.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
-public class Bill implements Serializable{
-    private Integer billid;
+public class Bill  implements Serializable{
+	 private Integer billid; //账单编号
 
-    private Integer empid;
+	    private Integer empid;//记账人编号
 
-    private Double cost;
+	    private Double cost;//消费总额
 
-    private String paytype;
+	    private String paytype;//支付类型
 
-    private Date createtime;
+	    private Date createtime;//记账日期
 
-    private String billdesc;
+	    private String billdesc;//账单备注
 
     public Integer getBillid() {
         return billid;
@@ -46,7 +45,7 @@ public class Bill implements Serializable{
     }
 
     public void setPaytype(String paytype) {
-        this.paytype = paytype;
+        this.paytype = paytype == null ? null : paytype.trim();
     }
 
     public Date getCreatetime() {
@@ -62,18 +61,6 @@ public class Bill implements Serializable{
     }
 
     public void setBilldesc(String billdesc) {
-        this.billdesc = billdesc;
-    }
-
-    @Override
-    public String toString() {
-        return "Bill{" +
-                "billid=" + billid +
-                ", empid=" + empid +
-                ", cost=" + cost +
-                ", paytype='" + paytype + '\'' +
-                ", createtime=" + createtime +
-                ", billdesc='" + billdesc + '\'' +
-                '}';
+        this.billdesc = billdesc == null ? null : billdesc.trim();
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.test.dao.BillMapper" >
-  <resultMap id="BaseResultMap" type="com.test.pojo.Bill" >
+<mapper namespace="com.chenk.mapper.BillMapper" >
+  <resultMap id="BaseResultMap" type="com.chenk.entity.Bill" >
     <id column="billid" property="billid" jdbcType="INTEGER" />
     <result column="empid" property="empid" jdbcType="INTEGER" />
     <result column="cost" property="cost" jdbcType="DOUBLE" />
@@ -9,9 +9,81 @@
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="billdesc" property="billdesc" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     billid, empid, cost, paytype, createtime, billdesc
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chenk.entity.BillExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -22,7 +94,13 @@
     delete from bill
     where billid = #{billid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.test.pojo.Bill" >
+  <delete id="deleteByExample" parameterType="com.chenk.entity.BillExample" >
+    delete from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chenk.entity.Bill" >
     insert into bill (billid, empid, cost, 
       paytype, createtime, billdesc
       )
@@ -30,7 +108,7 @@
       #{paytype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{billdesc,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Bill" >
+  <insert id="insertSelective" parameterType="com.chenk.entity.Bill" >
     insert into bill
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="billid != null" >
@@ -73,7 +151,51 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill" >
+  <select id="countByExample" parameterType="com.chenk.entity.BillExample" resultType="java.lang.Integer" >
+    select count(*) from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bill
+    <set >
+      <if test="record.billid != null" >
+        billid = #{record.billid,jdbcType=INTEGER},
+      </if>
+      <if test="record.empid != null" >
+        empid = #{record.empid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cost != null" >
+        cost = #{record.cost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.paytype != null" >
+        paytype = #{record.paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.billdesc != null" >
+        billdesc = #{record.billdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bill
+    set billid = #{record.billid,jdbcType=INTEGER},
+      empid = #{record.empid,jdbcType=INTEGER},
+      cost = #{record.cost,jdbcType=DOUBLE},
+      paytype = #{record.paytype,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      billdesc = #{record.billdesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chenk.entity.Bill" >
     update bill
     <set >
       <if test="empid != null" >
@@ -94,7 +216,7 @@
     </set>
     where billid = #{billid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill" >
+  <update id="updateByPrimaryKey" parameterType="com.chenk.entity.Bill" >
     update bill
     set empid = #{empid,jdbcType=INTEGER},
       cost = #{cost,jdbcType=DOUBLE},
