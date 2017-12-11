@@ -2,7 +2,7 @@ package com.test.pojo;
 
 import java.io.Serializable;
 
-public class Costinfo implements Serializable{
+public class Costinfo implements Serializable {
     private Integer costinfoid;
 
     private Integer billid;
@@ -40,16 +40,6 @@ public class Costinfo implements Serializable{
     }
 
     public void setCostplandesc(String costplandesc) {
-        this.costplandesc = costplandesc;
-    }
-
-    @Override
-    public String toString() {
-        return "Costinfo{" +
-                "costinfoid=" + costinfoid +
-                ", billid=" + billid +
-                ", costiteam=" + costiteam +
-                ", costplandesc='" + costplandesc + '\'' +
-                '}';
+        this.costplandesc = costplandesc == null ? null : costplandesc.trim();
     }
 }

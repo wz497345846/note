@@ -7,9 +7,81 @@
     <result column="costiteam" property="costiteam" jdbcType="INTEGER" />
     <result column="costplandesc" property="costplandesc" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     costinfoid, billid, costiteam, costplandesc
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.CostinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from costinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -19,6 +91,12 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from costinfo
     where costinfoid = #{costinfoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.test.pojo.CostinfoExample" >
+    delete from costinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.test.pojo.Costinfo" >
     insert into costinfo (costinfoid, billid, costiteam, 
@@ -57,6 +135,42 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.test.pojo.CostinfoExample" resultType="java.lang.Integer" >
+    select count(*) from costinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update costinfo
+    <set >
+      <if test="record.costinfoid != null" >
+        costinfoid = #{record.costinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.billid != null" >
+        billid = #{record.billid,jdbcType=INTEGER},
+      </if>
+      <if test="record.costiteam != null" >
+        costiteam = #{record.costiteam,jdbcType=INTEGER},
+      </if>
+      <if test="record.costplandesc != null" >
+        costplandesc = #{record.costplandesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update costinfo
+    set costinfoid = #{record.costinfoid,jdbcType=INTEGER},
+      billid = #{record.billid,jdbcType=INTEGER},
+      costiteam = #{record.costiteam,jdbcType=INTEGER},
+      costplandesc = #{record.costplandesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Costinfo" >
     update costinfo
     <set >
