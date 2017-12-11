@@ -19,6 +19,6 @@ public class CourseController {
     public String addCourse(){
         System.out.println("addCourse");
         System.out.println(cs);
-        return "";
+        return "123";
     }
 }
