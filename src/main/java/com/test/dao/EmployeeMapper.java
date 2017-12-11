@@ -2,6 +2,8 @@ package com.test.dao;
 
 import com.test.pojo.Employee;
 
+import java.util.List;
+
 public interface EmployeeMapper {
     int deleteByPrimaryKey(Integer empid);
 
@@ -14,4 +16,6 @@ public interface EmployeeMapper {
     int updateByPrimaryKeySelective(Employee record);
 
     int updateByPrimaryKey(Employee record);
+
+    List<Employee> selectEmployees(Employee employee);
 }
