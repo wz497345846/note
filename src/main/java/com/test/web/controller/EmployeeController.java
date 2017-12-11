@@ -49,7 +49,7 @@ public class EmployeeController {
      * 修改员工信息
      */
     @RequestMapping("changeEmployee")
-    public String changeEmployee(Employee employee){
+    public String changeEmployeebp(Employee employee){
         boolean flag=employeeServiceImpl.updateEmployee(employee);
         return null;
     }
