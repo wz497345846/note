@@ -1,38 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.test.dao.MembermanageMapper">
-  <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage">
-    <id column="memberid" jdbcType="INTEGER" property="memberid" />
-    <result column="membername" jdbcType="VARCHAR" property="membername" />
-    <result column="memberpwd" jdbcType="VARCHAR" property="memberpwd" />
-    <result column="memberphone" jdbcType="VARCHAR" property="memberphone" />
-    <result column="membersex" jdbcType="CHAR" property="membersex" />
-    <result column="memberavatar" jdbcType="VARCHAR" property="memberavatar" />
-    <result column="memberbirth" jdbcType="DATE" property="memberbirth" />
-    <result column="referee" jdbcType="VARCHAR" property="referee" />
-    <result column="empid" jdbcType="INTEGER" property="empid" />
-    <result column="memberremark" jdbcType="CHAR" property="memberremark" />
-    <result column="memberdesc" jdbcType="VARCHAR" property="memberdesc" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.MembermanageMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage" >
+    <id column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="membername" property="membername" jdbcType="VARCHAR" />
+    <result column="memberpwd" property="memberpwd" jdbcType="VARCHAR" />
+    <result column="memberphone" property="memberphone" jdbcType="VARCHAR" />
+    <result column="membersex" property="membersex" jdbcType="CHAR" />
+    <result column="memberavatar" property="memberavatar" jdbcType="VARCHAR" />
+    <result column="memberbirth" property="memberbirth" jdbcType="DATE" />
+    <result column="referee" property="referee" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="INTEGER" />
+    <result column="memberremark" property="memberremark" jdbcType="CHAR" />
+    <result column="memberdesc" property="memberdesc" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -43,25 +43,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -72,42 +72,42 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     memberid, membername, memberpwd, memberphone, membersex, memberavatar, memberbirth, 
     referee, empid, memberremark, memberdesc
   </sql>
-  <select id="selectByExample" parameterType="com.test.pojo.MembermanageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.MembermanageExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from MemberManage
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from MemberManage
     where memberid = #{memberid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from MemberManage
     where memberid = #{memberid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.test.pojo.MembermanageExample">
+  <delete id="deleteByExample" parameterType="com.test.pojo.MembermanageExample" >
     delete from MemberManage
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.test.pojo.Membermanage">
+  <insert id="insert" parameterType="com.test.pojo.Membermanage" >
     insert into MemberManage (memberid, membername, memberpwd, 
       memberphone, membersex, memberavatar, 
       memberbirth, referee, empid, 
@@ -117,121 +117,121 @@
       #{memberbirth,jdbcType=DATE}, #{referee,jdbcType=VARCHAR}, #{empid,jdbcType=INTEGER}, 
       #{memberremark,jdbcType=CHAR}, #{memberdesc,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Membermanage">
+  <insert id="insertSelective" parameterType="com.test.pojo.Membermanage" >
     insert into MemberManage
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
         memberid,
       </if>
-      <if test="membername != null">
+      <if test="membername != null" >
         membername,
       </if>
-      <if test="memberpwd != null">
+      <if test="memberpwd != null" >
         memberpwd,
       </if>
-      <if test="memberphone != null">
+      <if test="memberphone != null" >
         memberphone,
       </if>
-      <if test="membersex != null">
+      <if test="membersex != null" >
         membersex,
       </if>
-      <if test="memberavatar != null">
+      <if test="memberavatar != null" >
         memberavatar,
       </if>
-      <if test="memberbirth != null">
+      <if test="memberbirth != null" >
         memberbirth,
       </if>
-      <if test="referee != null">
+      <if test="referee != null" >
         referee,
       </if>
-      <if test="empid != null">
+      <if test="empid != null" >
         empid,
       </if>
-      <if test="memberremark != null">
+      <if test="memberremark != null" >
         memberremark,
       </if>
-      <if test="memberdesc != null">
+      <if test="memberdesc != null" >
         memberdesc,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
         #{memberid,jdbcType=INTEGER},
       </if>
-      <if test="membername != null">
+      <if test="membername != null" >
         #{membername,jdbcType=VARCHAR},
       </if>
-      <if test="memberpwd != null">
+      <if test="memberpwd != null" >
         #{memberpwd,jdbcType=VARCHAR},
       </if>
-      <if test="memberphone != null">
+      <if test="memberphone != null" >
         #{memberphone,jdbcType=VARCHAR},
       </if>
-      <if test="membersex != null">
+      <if test="membersex != null" >
         #{membersex,jdbcType=CHAR},
       </if>
-      <if test="memberavatar != null">
+      <if test="memberavatar != null" >
         #{memberavatar,jdbcType=VARCHAR},
       </if>
-      <if test="memberbirth != null">
+      <if test="memberbirth != null" >
         #{memberbirth,jdbcType=DATE},
       </if>
-      <if test="referee != null">
+      <if test="referee != null" >
         #{referee,jdbcType=VARCHAR},
       </if>
-      <if test="empid != null">
+      <if test="empid != null" >
         #{empid,jdbcType=INTEGER},
       </if>
-      <if test="memberremark != null">
+      <if test="memberremark != null" >
         #{memberremark,jdbcType=CHAR},
       </if>
-      <if test="memberdesc != null">
+      <if test="memberdesc != null" >
         #{memberdesc,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update MemberManage
-    <set>
-      <if test="record.memberid != null">
+    <set >
+      <if test="record.memberid != null" >
         memberid = #{record.memberid,jdbcType=INTEGER},
       </if>
-      <if test="record.membername != null">
+      <if test="record.membername != null" >
         membername = #{record.membername,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberpwd != null">
+      <if test="record.memberpwd != null" >
         memberpwd = #{record.memberpwd,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberphone != null">
+      <if test="record.memberphone != null" >
         memberphone = #{record.memberphone,jdbcType=VARCHAR},
       </if>
-      <if test="record.membersex != null">
+      <if test="record.membersex != null" >
         membersex = #{record.membersex,jdbcType=CHAR},
       </if>
-      <if test="record.memberavatar != null">
+      <if test="record.memberavatar != null" >
         memberavatar = #{record.memberavatar,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberbirth != null">
+      <if test="record.memberbirth != null" >
         memberbirth = #{record.memberbirth,jdbcType=DATE},
       </if>
-      <if test="record.referee != null">
+      <if test="record.referee != null" >
         referee = #{record.referee,jdbcType=VARCHAR},
       </if>
-      <if test="record.empid != null">
+      <if test="record.empid != null" >
         empid = #{record.empid,jdbcType=INTEGER},
       </if>
-      <if test="record.memberremark != null">
+      <if test="record.memberremark != null" >
         memberremark = #{record.memberremark,jdbcType=CHAR},
       </if>
-      <if test="record.memberdesc != null">
+      <if test="record.memberdesc != null" >
         memberdesc = #{record.memberdesc,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update MemberManage
     set memberid = #{record.memberid,jdbcType=INTEGER},
       membername = #{record.membername,jdbcType=VARCHAR},
@@ -244,527 +244,47 @@
       empid = #{record.empid,jdbcType=INTEGER},
       memberremark = #{record.memberremark,jdbcType=CHAR},
       memberdesc = #{record.memberdesc,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Membermanage">
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Membermanage" >
     update MemberManage
-    <set>
-      <if test="membername != null">
+    <set >
+      <if test="membername != null" >
         membername = #{membername,jdbcType=VARCHAR},
       </if>
-      <if test="memberpwd != null">
+      <if test="memberpwd != null" >
         memberpwd = #{memberpwd,jdbcType=VARCHAR},
       </if>
-      <if test="memberphone != null">
+      <if test="memberphone != null" >
         memberphone = #{memberphone,jdbcType=VARCHAR},
       </if>
-      <if test="membersex != null">
+      <if test="membersex != null" >
         membersex = #{membersex,jdbcType=CHAR},
       </if>
-      <if test="memberavatar != null">
+      <if test="memberavatar != null" >
         memberavatar = #{memberavatar,jdbcType=VARCHAR},
       </if>
-      <if test="memberbirth != null">
+      <if test="memberbirth != null" >
         memberbirth = #{memberbirth,jdbcType=DATE},
       </if>
-      <if test="referee != null">
+      <if test="referee != null" >
         referee = #{referee,jdbcType=VARCHAR},
       </if>
-      <if test="empid != null">
+      <if test="empid != null" >
         empid = #{empid,jdbcType=INTEGER},
       </if>
-      <if test="memberremark != null">
+      <if test="memberremark != null" >
         memberremark = #{memberremark,jdbcType=CHAR},
       </if>
-      <if test="memberdesc != null">
+      <if test="memberdesc != null" >
         memberdesc = #{memberdesc,jdbcType=VARCHAR},
       </if>
     </set>
     where memberid = #{memberid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage">
-    update MemberManage
-    set membername = #{membername,jdbcType=VARCHAR},
-      memberpwd = #{memberpwd,jdbcType=VARCHAR},
-      memberphone = #{memberphone,jdbcType=VARCHAR},
-      membersex = #{membersex,jdbcType=CHAR},
-      memberavatar = #{memberavatar,jdbcType=VARCHAR},
-      memberbirth = #{memberbirth,jdbcType=DATE},
-      referee = #{referee,jdbcType=VARCHAR},
-      empid = #{empid,jdbcType=INTEGER},
-      memberremark = #{memberremark,jdbcType=CHAR},
-      memberdesc = #{memberdesc,jdbcType=VARCHAR}
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage">
-    <id column="memberid" jdbcType="INTEGER" property="memberid" />
-    <result column="membername" jdbcType="VARCHAR" property="membername" />
-    <result column="memberpwd" jdbcType="VARCHAR" property="memberpwd" />
-    <result column="memberphone" jdbcType="VARCHAR" property="memberphone" />
-    <result column="membersex" jdbcType="CHAR" property="membersex" />
-    <result column="memberavatar" jdbcType="VARCHAR" property="memberavatar" />
-    <result column="memberbirth" jdbcType="DATE" property="memberbirth" />
-    <result column="referee" jdbcType="VARCHAR" property="referee" />
-    <result column="empid" jdbcType="INTEGER" property="empid" />
-    <result column="memberremark" jdbcType="CHAR" property="memberremark" />
-    <result column="memberdesc" jdbcType="VARCHAR" property="memberdesc" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    memberid, membername, memberpwd, memberphone, membersex, memberavatar, memberbirth, 
-    referee, empid, memberremark, memberdesc
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from MemberManage
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from MemberManage
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.test.pojo.Membermanage">
-    insert into MemberManage (memberid, membername, memberpwd, 
-      memberphone, membersex, memberavatar, 
-      memberbirth, referee, empid, 
-      memberremark, memberdesc)
-    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{memberpwd,jdbcType=VARCHAR}, 
-      #{memberphone,jdbcType=VARCHAR}, #{membersex,jdbcType=CHAR}, #{memberavatar,jdbcType=VARCHAR}, 
-      #{memberbirth,jdbcType=DATE}, #{referee,jdbcType=VARCHAR}, #{empid,jdbcType=INTEGER}, 
-      #{memberremark,jdbcType=CHAR}, #{memberdesc,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Membermanage">
-    insert into MemberManage
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
-        memberid,
-      </if>
-      <if test="membername != null">
-        membername,
-      </if>
-      <if test="memberpwd != null">
-        memberpwd,
-      </if>
-      <if test="memberphone != null">
-        memberphone,
-      </if>
-      <if test="membersex != null">
-        membersex,
-      </if>
-      <if test="memberavatar != null">
-        memberavatar,
-      </if>
-      <if test="memberbirth != null">
-        memberbirth,
-      </if>
-      <if test="referee != null">
-        referee,
-      </if>
-      <if test="empid != null">
-        empid,
-      </if>
-      <if test="memberremark != null">
-        memberremark,
-      </if>
-      <if test="memberdesc != null">
-        memberdesc,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
-      </if>
-      <if test="membername != null">
-        #{membername,jdbcType=VARCHAR},
-      </if>
-      <if test="memberpwd != null">
-        #{memberpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="memberphone != null">
-        #{memberphone,jdbcType=VARCHAR},
-      </if>
-      <if test="membersex != null">
-        #{membersex,jdbcType=CHAR},
-      </if>
-      <if test="memberavatar != null">
-        #{memberavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="memberbirth != null">
-        #{memberbirth,jdbcType=DATE},
-      </if>
-      <if test="referee != null">
-        #{referee,jdbcType=VARCHAR},
-      </if>
-      <if test="empid != null">
-        #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="memberremark != null">
-        #{memberremark,jdbcType=CHAR},
-      </if>
-      <if test="memberdesc != null">
-        #{memberdesc,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Membermanage">
-    update MemberManage
-    <set>
-      <if test="membername != null">
-        membername = #{membername,jdbcType=VARCHAR},
-      </if>
-      <if test="memberpwd != null">
-        memberpwd = #{memberpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="memberphone != null">
-        memberphone = #{memberphone,jdbcType=VARCHAR},
-      </if>
-      <if test="membersex != null">
-        membersex = #{membersex,jdbcType=CHAR},
-      </if>
-      <if test="memberavatar != null">
-        memberavatar = #{memberavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="memberbirth != null">
-        memberbirth = #{memberbirth,jdbcType=DATE},
-      </if>
-      <if test="referee != null">
-        referee = #{referee,jdbcType=VARCHAR},
-      </if>
-      <if test="empid != null">
-        empid = #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="memberremark != null">
-        memberremark = #{memberremark,jdbcType=CHAR},
-      </if>
-      <if test="memberdesc != null">
-        memberdesc = #{memberdesc,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage">
-    update MemberManage
-    set membername = #{membername,jdbcType=VARCHAR},
-      memberpwd = #{memberpwd,jdbcType=VARCHAR},
-      memberphone = #{memberphone,jdbcType=VARCHAR},
-      membersex = #{membersex,jdbcType=CHAR},
-      memberavatar = #{memberavatar,jdbcType=VARCHAR},
-      memberbirth = #{memberbirth,jdbcType=DATE},
-      referee = #{referee,jdbcType=VARCHAR},
-      empid = #{empid,jdbcType=INTEGER},
-      memberremark = #{memberremark,jdbcType=CHAR},
-      memberdesc = #{memberdesc,jdbcType=VARCHAR}
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage">
-    <id column="memberid" jdbcType="INTEGER" property="memberid" />
-    <result column="membername" jdbcType="VARCHAR" property="membername" />
-    <result column="memberpwd" jdbcType="VARCHAR" property="memberpwd" />
-    <result column="memberphone" jdbcType="VARCHAR" property="memberphone" />
-    <result column="membersex" jdbcType="CHAR" property="membersex" />
-    <result column="memberavatar" jdbcType="VARCHAR" property="memberavatar" />
-    <result column="memberbirth" jdbcType="DATE" property="memberbirth" />
-    <result column="referee" jdbcType="VARCHAR" property="referee" />
-    <result column="empid" jdbcType="INTEGER" property="empid" />
-    <result column="memberremark" jdbcType="CHAR" property="memberremark" />
-    <result column="memberdesc" jdbcType="VARCHAR" property="memberdesc" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    memberid, membername, memberpwd, memberphone, membersex, memberavatar, memberbirth, 
-    referee, empid, memberremark, memberdesc
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from MemberManage
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from MemberManage
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.test.pojo.Membermanage">
-    insert into MemberManage (memberid, membername, memberpwd, 
-      memberphone, membersex, memberavatar, 
-      memberbirth, referee, empid, 
-      memberremark, memberdesc)
-    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{memberpwd,jdbcType=VARCHAR}, 
-      #{memberphone,jdbcType=VARCHAR}, #{membersex,jdbcType=CHAR}, #{memberavatar,jdbcType=VARCHAR}, 
-      #{memberbirth,jdbcType=DATE}, #{referee,jdbcType=VARCHAR}, #{empid,jdbcType=INTEGER}, 
-      #{memberremark,jdbcType=CHAR}, #{memberdesc,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Membermanage">
-    insert into MemberManage
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
-        memberid,
-      </if>
-      <if test="membername != null">
-        membername,
-      </if>
-      <if test="memberpwd != null">
-        memberpwd,
-      </if>
-      <if test="memberphone != null">
-        memberphone,
-      </if>
-      <if test="membersex != null">
-        membersex,
-      </if>
-      <if test="memberavatar != null">
-        memberavatar,
-      </if>
-      <if test="memberbirth != null">
-        memberbirth,
-      </if>
-      <if test="referee != null">
-        referee,
-      </if>
-      <if test="empid != null">
-        empid,
-      </if>
-      <if test="memberremark != null">
-        memberremark,
-      </if>
-      <if test="memberdesc != null">
-        memberdesc,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
-      </if>
-      <if test="membername != null">
-        #{membername,jdbcType=VARCHAR},
-      </if>
-      <if test="memberpwd != null">
-        #{memberpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="memberphone != null">
-        #{memberphone,jdbcType=VARCHAR},
-      </if>
-      <if test="membersex != null">
-        #{membersex,jdbcType=CHAR},
-      </if>
-      <if test="memberavatar != null">
-        #{memberavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="memberbirth != null">
-        #{memberbirth,jdbcType=DATE},
-      </if>
-      <if test="referee != null">
-        #{referee,jdbcType=VARCHAR},
-      </if>
-      <if test="empid != null">
-        #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="memberremark != null">
-        #{memberremark,jdbcType=CHAR},
-      </if>
-      <if test="memberdesc != null">
-        #{memberdesc,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Membermanage">
-    update MemberManage
-    <set>
-      <if test="membername != null">
-        membername = #{membername,jdbcType=VARCHAR},
-      </if>
-      <if test="memberpwd != null">
-        memberpwd = #{memberpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="memberphone != null">
-        memberphone = #{memberphone,jdbcType=VARCHAR},
-      </if>
-      <if test="membersex != null">
-        membersex = #{membersex,jdbcType=CHAR},
-      </if>
-      <if test="memberavatar != null">
-        memberavatar = #{memberavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="memberbirth != null">
-        memberbirth = #{memberbirth,jdbcType=DATE},
-      </if>
-      <if test="referee != null">
-        referee = #{referee,jdbcType=VARCHAR},
-      </if>
-      <if test="empid != null">
-        empid = #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="memberremark != null">
-        memberremark = #{memberremark,jdbcType=CHAR},
-      </if>
-      <if test="memberdesc != null">
-        memberdesc = #{memberdesc,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage">
-    update MemberManage
-    set membername = #{membername,jdbcType=VARCHAR},
-      memberpwd = #{memberpwd,jdbcType=VARCHAR},
-      memberphone = #{memberphone,jdbcType=VARCHAR},
-      membersex = #{membersex,jdbcType=CHAR},
-      memberavatar = #{memberavatar,jdbcType=VARCHAR},
-      memberbirth = #{memberbirth,jdbcType=DATE},
-      referee = #{referee,jdbcType=VARCHAR},
-      empid = #{empid,jdbcType=INTEGER},
-      memberremark = #{memberremark,jdbcType=CHAR},
-      memberdesc = #{memberdesc,jdbcType=VARCHAR}
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage">
-    <id column="memberid" jdbcType="INTEGER" property="memberid" />
-    <result column="membername" jdbcType="VARCHAR" property="membername" />
-    <result column="memberpwd" jdbcType="VARCHAR" property="memberpwd" />
-    <result column="memberphone" jdbcType="VARCHAR" property="memberphone" />
-    <result column="membersex" jdbcType="CHAR" property="membersex" />
-    <result column="memberavatar" jdbcType="VARCHAR" property="memberavatar" />
-    <result column="memberbirth" jdbcType="DATE" property="memberbirth" />
-    <result column="referee" jdbcType="VARCHAR" property="referee" />
-    <result column="empid" jdbcType="INTEGER" property="empid" />
-    <result column="memberremark" jdbcType="CHAR" property="memberremark" />
-    <result column="memberdesc" jdbcType="VARCHAR" property="memberdesc" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    memberid, membername, memberpwd, memberphone, membersex, memberavatar, memberbirth, 
-    referee, empid, memberremark, memberdesc
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from MemberManage
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from MemberManage
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.test.pojo.Membermanage">
-    insert into MemberManage (memberid, membername, memberpwd, 
-      memberphone, membersex, memberavatar, 
-      memberbirth, referee, empid, 
-      memberremark, memberdesc)
-    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{memberpwd,jdbcType=VARCHAR}, 
-      #{memberphone,jdbcType=VARCHAR}, #{membersex,jdbcType=CHAR}, #{memberavatar,jdbcType=VARCHAR}, 
-      #{memberbirth,jdbcType=DATE}, #{referee,jdbcType=VARCHAR}, #{empid,jdbcType=INTEGER}, 
-      #{memberremark,jdbcType=CHAR}, #{memberdesc,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Membermanage">
-    insert into MemberManage
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
-        memberid,
-      </if>
-      <if test="membername != null">
-        membername,
-      </if>
-      <if test="memberpwd != null">
-        memberpwd,
-      </if>
-      <if test="memberphone != null">
-        memberphone,
-      </if>
-      <if test="membersex != null">
-        membersex,
-      </if>
-      <if test="memberavatar != null">
-        memberavatar,
-      </if>
-      <if test="memberbirth != null">
-        memberbirth,
-      </if>
-      <if test="referee != null">
-        referee,
-      </if>
-      <if test="empid != null">
-        empid,
-      </if>
-      <if test="memberremark != null">
-        memberremark,
-      </if>
-      <if test="memberdesc != null">
-        memberdesc,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
-      </if>
-      <if test="membername != null">
-        #{membername,jdbcType=VARCHAR},
-      </if>
-      <if test="memberpwd != null">
-        #{memberpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="memberphone != null">
-        #{memberphone,jdbcType=VARCHAR},
-      </if>
-      <if test="membersex != null">
-        #{membersex,jdbcType=CHAR},
-      </if>
-      <if test="memberavatar != null">
-        #{memberavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="memberbirth != null">
-        #{memberbirth,jdbcType=DATE},
-      </if>
-      <if test="referee != null">
-        #{referee,jdbcType=VARCHAR},
-      </if>
-      <if test="empid != null">
-        #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="memberremark != null">
-        #{memberremark,jdbcType=CHAR},
-      </if>
-      <if test="memberdesc != null">
-        #{memberdesc,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Membermanage">
-    update MemberManage
-    <set>
-      <if test="membername != null">
-        membername = #{membername,jdbcType=VARCHAR},
-      </if>
-      <if test="memberpwd != null">
-        memberpwd = #{memberpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="memberphone != null">
-        memberphone = #{memberphone,jdbcType=VARCHAR},
-      </if>
-      <if test="membersex != null">
-        membersex = #{membersex,jdbcType=CHAR},
-      </if>
-      <if test="memberavatar != null">
-        memberavatar = #{memberavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="memberbirth != null">
-        memberbirth = #{memberbirth,jdbcType=DATE},
-      </if>
-      <if test="referee != null">
-        referee = #{referee,jdbcType=VARCHAR},
-      </if>
-      <if test="empid != null">
-        empid = #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="memberremark != null">
-        memberremark = #{memberremark,jdbcType=CHAR},
-      </if>
-      <if test="memberdesc != null">
-        memberdesc = #{memberdesc,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where memberid = #{memberid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage">
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage" >
     update MemberManage
     set membername = #{membername,jdbcType=VARCHAR},
       memberpwd = #{memberpwd,jdbcType=VARCHAR},
