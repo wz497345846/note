@@ -1,9 +1,8 @@
 package com.test.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Membermanage implements Serializable{
+public class Membermanage {
     private Integer memberid;
 
     private String membername;
@@ -112,22 +111,5 @@ public class Membermanage implements Serializable{
 
     public void setMemberdesc(String memberdesc) {
         this.memberdesc = memberdesc;
-    }
-
-    @Override
-    public String toString() {
-        return "Membermanage{" +
-                "memberid=" + memberid +
-                ", membername='" + membername + '\'' +
-                ", memberpwd='" + memberpwd + '\'' +
-                ", memberphone='" + memberphone + '\'' +
-                ", membersex='" + membersex + '\'' +
-                ", memberavatar='" + memberavatar + '\'' +
-                ", memberbirth=" + memberbirth +
-                ", referee='" + referee + '\'' +
-                ", empid=" + empid +
-                ", memberremark='" + memberremark + '\'' +
-                ", memberdesc='" + memberdesc + '\'' +
-                '}';
     }
 }

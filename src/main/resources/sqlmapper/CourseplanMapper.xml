@@ -2,116 +2,364 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.test.dao.CourseplanMapper" >
   <resultMap id="BaseResultMap" type="com.test.pojo.Courseplan" >
-    <id column="courseplanid" property="courseplanid" jdbcType="INTEGER" />
-    <result column="courseid" property="courseid" jdbcType="INTEGER" />
-    <result column="coursetime" property="coursetime" jdbcType="DOUBLE" />
-    <result column="starttime" property="starttime" jdbcType="DATE" />
-    <result column="coursetype" property="coursetype" jdbcType="VARCHAR" />
-    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="courseplandesc" property="courseplandesc" jdbcType="VARCHAR" />
+    <id column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="mons" property="mons" jdbcType="TIMESTAMP" />
+    <result column="mone" property="mone" jdbcType="TIMESTAMP" />
+    <result column="tues" property="tues" jdbcType="TIMESTAMP" />
+    <result column="tued" property="tued" jdbcType="TIMESTAMP" />
+    <result column="weds" property="weds" jdbcType="TIMESTAMP" />
+    <result column="wede" property="wede" jdbcType="TIMESTAMP" />
+    <result column="thurs" property="thurs" jdbcType="TIMESTAMP" />
+    <result column="thure" property="thure" jdbcType="TIMESTAMP" />
+    <result column="fris" property="fris" jdbcType="TIMESTAMP" />
+    <result column="frie" property="frie" jdbcType="TIMESTAMP" />
+    <result column="sats" property="sats" jdbcType="TIMESTAMP" />
+    <result column="sate" property="sate" jdbcType="TIMESTAMP" />
+    <result column="suns" property="suns" jdbcType="TIMESTAMP" />
+    <result column="sune" property="sune" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    courseplanid, courseid, coursetime, starttime, coursetype, createtime, courseplandesc
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
   </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    courseid, mons, mone, tues, tued, weds, wede, thurs, thure, fris, frie, sats, sate, 
+    suns, sune
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.CourseplanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from courseplan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from courseplan
-    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+    where courseid = #{courseid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from courseplan
-    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.test.pojo.CourseplanExample" >
+    delete from courseplan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
   </delete>
   <insert id="insert" parameterType="com.test.pojo.Courseplan" >
-    insert into courseplan (courseplanid, courseid, coursetime, 
-      starttime, coursetype, createtime, 
-      courseplandesc)
-    values (#{courseplanid,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, #{coursetime,jdbcType=DOUBLE}, 
-      #{starttime,jdbcType=DATE}, #{coursetype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{courseplandesc,jdbcType=VARCHAR})
+    insert into courseplan (courseid, mons, mone, 
+      tues, tued, weds, 
+      wede, thurs, thure, 
+      fris, frie, sats, 
+      sate, suns, sune
+      )
+    values (#{courseid,jdbcType=INTEGER}, #{mons,jdbcType=TIMESTAMP}, #{mone,jdbcType=TIMESTAMP}, 
+      #{tues,jdbcType=TIMESTAMP}, #{tued,jdbcType=TIMESTAMP}, #{weds,jdbcType=TIMESTAMP}, 
+      #{wede,jdbcType=TIMESTAMP}, #{thurs,jdbcType=TIMESTAMP}, #{thure,jdbcType=TIMESTAMP}, 
+      #{fris,jdbcType=TIMESTAMP}, #{frie,jdbcType=TIMESTAMP}, #{sats,jdbcType=TIMESTAMP}, 
+      #{sate,jdbcType=TIMESTAMP}, #{suns,jdbcType=TIMESTAMP}, #{sune,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.test.pojo.Courseplan" >
     insert into courseplan
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="courseplanid != null" >
-        courseplanid,
-      </if>
       <if test="courseid != null" >
         courseid,
       </if>
-      <if test="coursetime != null" >
-        coursetime,
+      <if test="mons != null" >
+        mons,
       </if>
-      <if test="starttime != null" >
-        starttime,
+      <if test="mone != null" >
+        mone,
       </if>
-      <if test="coursetype != null" >
-        coursetype,
+      <if test="tues != null" >
+        tues,
       </if>
-      <if test="createtime != null" >
-        createtime,
+      <if test="tued != null" >
+        tued,
       </if>
-      <if test="courseplandesc != null" >
-        courseplandesc,
+      <if test="weds != null" >
+        weds,
+      </if>
+      <if test="wede != null" >
+        wede,
+      </if>
+      <if test="thurs != null" >
+        thurs,
+      </if>
+      <if test="thure != null" >
+        thure,
+      </if>
+      <if test="fris != null" >
+        fris,
+      </if>
+      <if test="frie != null" >
+        frie,
+      </if>
+      <if test="sats != null" >
+        sats,
+      </if>
+      <if test="sate != null" >
+        sate,
+      </if>
+      <if test="suns != null" >
+        suns,
+      </if>
+      <if test="sune != null" >
+        sune,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="courseplanid != null" >
-        #{courseplanid,jdbcType=INTEGER},
-      </if>
       <if test="courseid != null" >
         #{courseid,jdbcType=INTEGER},
       </if>
-      <if test="coursetime != null" >
-        #{coursetime,jdbcType=DOUBLE},
+      <if test="mons != null" >
+        #{mons,jdbcType=TIMESTAMP},
       </if>
-      <if test="starttime != null" >
-        #{starttime,jdbcType=DATE},
+      <if test="mone != null" >
+        #{mone,jdbcType=TIMESTAMP},
       </if>
-      <if test="coursetype != null" >
-        #{coursetype,jdbcType=VARCHAR},
+      <if test="tues != null" >
+        #{tues,jdbcType=TIMESTAMP},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="tued != null" >
+        #{tued,jdbcType=TIMESTAMP},
       </if>
-      <if test="courseplandesc != null" >
-        #{courseplandesc,jdbcType=VARCHAR},
+      <if test="weds != null" >
+        #{weds,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wede != null" >
+        #{wede,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thurs != null" >
+        #{thurs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thure != null" >
+        #{thure,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fris != null" >
+        #{fris,jdbcType=TIMESTAMP},
+      </if>
+      <if test="frie != null" >
+        #{frie,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sats != null" >
+        #{sats,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sate != null" >
+        #{sate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suns != null" >
+        #{suns,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sune != null" >
+        #{sune,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update courseplan
+    <set >
+      <if test="record.courseid != null" >
+        courseid = #{record.courseid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mons != null" >
+        mons = #{record.mons,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mone != null" >
+        mone = #{record.mone,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tues != null" >
+        tues = #{record.tues,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tued != null" >
+        tued = #{record.tued,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.weds != null" >
+        weds = #{record.weds,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.wede != null" >
+        wede = #{record.wede,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.thurs != null" >
+        thurs = #{record.thurs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.thure != null" >
+        thure = #{record.thure,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fris != null" >
+        fris = #{record.fris,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.frie != null" >
+        frie = #{record.frie,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sats != null" >
+        sats = #{record.sats,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sate != null" >
+        sate = #{record.sate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.suns != null" >
+        suns = #{record.suns,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sune != null" >
+        sune = #{record.sune,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update courseplan
+    set courseid = #{record.courseid,jdbcType=INTEGER},
+      mons = #{record.mons,jdbcType=TIMESTAMP},
+      mone = #{record.mone,jdbcType=TIMESTAMP},
+      tues = #{record.tues,jdbcType=TIMESTAMP},
+      tued = #{record.tued,jdbcType=TIMESTAMP},
+      weds = #{record.weds,jdbcType=TIMESTAMP},
+      wede = #{record.wede,jdbcType=TIMESTAMP},
+      thurs = #{record.thurs,jdbcType=TIMESTAMP},
+      thure = #{record.thure,jdbcType=TIMESTAMP},
+      fris = #{record.fris,jdbcType=TIMESTAMP},
+      frie = #{record.frie,jdbcType=TIMESTAMP},
+      sats = #{record.sats,jdbcType=TIMESTAMP},
+      sate = #{record.sate,jdbcType=TIMESTAMP},
+      suns = #{record.suns,jdbcType=TIMESTAMP},
+      sune = #{record.sune,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Courseplan" >
     update courseplan
     <set >
-      <if test="courseid != null" >
-        courseid = #{courseid,jdbcType=INTEGER},
+      <if test="mons != null" >
+        mons = #{mons,jdbcType=TIMESTAMP},
       </if>
-      <if test="coursetime != null" >
-        coursetime = #{coursetime,jdbcType=DOUBLE},
+      <if test="mone != null" >
+        mone = #{mone,jdbcType=TIMESTAMP},
       </if>
-      <if test="starttime != null" >
-        starttime = #{starttime,jdbcType=DATE},
+      <if test="tues != null" >
+        tues = #{tues,jdbcType=TIMESTAMP},
       </if>
-      <if test="coursetype != null" >
-        coursetype = #{coursetype,jdbcType=VARCHAR},
+      <if test="tued != null" >
+        tued = #{tued,jdbcType=TIMESTAMP},
       </if>
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="weds != null" >
+        weds = #{weds,jdbcType=TIMESTAMP},
       </if>
-      <if test="courseplandesc != null" >
-        courseplandesc = #{courseplandesc,jdbcType=VARCHAR},
+      <if test="wede != null" >
+        wede = #{wede,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thurs != null" >
+        thurs = #{thurs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thure != null" >
+        thure = #{thure,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fris != null" >
+        fris = #{fris,jdbcType=TIMESTAMP},
+      </if>
+      <if test="frie != null" >
+        frie = #{frie,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sats != null" >
+        sats = #{sats,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sate != null" >
+        sate = #{sate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suns != null" >
+        suns = #{suns,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sune != null" >
+        sune = #{sune,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+    where courseid = #{courseid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.test.pojo.Courseplan" >
     update courseplan
-    set courseid = #{courseid,jdbcType=INTEGER},
-      coursetime = #{coursetime,jdbcType=DOUBLE},
-      starttime = #{starttime,jdbcType=DATE},
-      coursetype = #{coursetype,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      courseplandesc = #{courseplandesc,jdbcType=VARCHAR}
-    where courseplanid = #{courseplanid,jdbcType=INTEGER}
+    set mons = #{mons,jdbcType=TIMESTAMP},
+      mone = #{mone,jdbcType=TIMESTAMP},
+      tues = #{tues,jdbcType=TIMESTAMP},
+      tued = #{tued,jdbcType=TIMESTAMP},
+      weds = #{weds,jdbcType=TIMESTAMP},
+      wede = #{wede,jdbcType=TIMESTAMP},
+      thurs = #{thurs,jdbcType=TIMESTAMP},
+      thure = #{thure,jdbcType=TIMESTAMP},
+      fris = #{fris,jdbcType=TIMESTAMP},
+      frie = #{frie,jdbcType=TIMESTAMP},
+      sats = #{sats,jdbcType=TIMESTAMP},
+      sate = #{sate,jdbcType=TIMESTAMP},
+      suns = #{suns,jdbcType=TIMESTAMP},
+      sune = #{sune,jdbcType=TIMESTAMP}
+    where courseid = #{courseid,jdbcType=INTEGER}
   </update>
 </mapper>

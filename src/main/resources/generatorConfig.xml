@@ -33,8 +33,8 @@
 
         <!-- 如果需要通配所有表 直接用sql的通配符    %即可 -->
         <table schema="" tableName="${table}" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"/>
+               enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true"/>
 
     </context>
 </generatorConfiguration>

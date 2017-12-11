@@ -4,12 +4,85 @@
   <resultMap id="BaseResultMap" type="com.test.pojo.Roles" >
     <id column="roleid" property="roleid" jdbcType="INTEGER" />
     <result column="roletype" property="roletype" jdbcType="VARCHAR" />
-    <result column="menuid" property="menuid" jdbcType="INTEGER" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
     <result column="roledesc" property="roledesc" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    roleid, roletype, menuid, roledesc
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
   </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    roleid, roletype, rolename, roledesc
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.RolesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from roles
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -20,10 +93,16 @@
     delete from roles
     where roleid = #{roleid,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByExample" parameterType="com.test.pojo.RolesExample" >
+    delete from roles
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
   <insert id="insert" parameterType="com.test.pojo.Roles" >
-    insert into roles (roleid, roletype, menuid, 
+    insert into roles (roleid, roletype, rolename, 
       roledesc)
-    values (#{roleid,jdbcType=INTEGER}, #{roletype,jdbcType=VARCHAR}, #{menuid,jdbcType=INTEGER}, 
+    values (#{roleid,jdbcType=INTEGER}, #{roletype,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
       #{roledesc,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.test.pojo.Roles" >
@@ -35,8 +114,8 @@
       <if test="roletype != null" >
         roletype,
       </if>
-      <if test="menuid != null" >
-        menuid,
+      <if test="rolename != null" >
+        rolename,
       </if>
       <if test="roledesc != null" >
         roledesc,
@@ -49,22 +128,52 @@
       <if test="roletype != null" >
         #{roletype,jdbcType=VARCHAR},
       </if>
-      <if test="menuid != null" >
-        #{menuid,jdbcType=INTEGER},
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
       </if>
       <if test="roledesc != null" >
         #{roledesc,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update roles
+    <set >
+      <if test="record.roleid != null" >
+        roleid = #{record.roleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.roletype != null" >
+        roletype = #{record.roletype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rolename != null" >
+        rolename = #{record.rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roledesc != null" >
+        roledesc = #{record.roledesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update roles
+    set roleid = #{record.roleid,jdbcType=INTEGER},
+      roletype = #{record.roletype,jdbcType=VARCHAR},
+      rolename = #{record.rolename,jdbcType=VARCHAR},
+      roledesc = #{record.roledesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Roles" >
     update roles
     <set >
       <if test="roletype != null" >
         roletype = #{roletype,jdbcType=VARCHAR},
       </if>
-      <if test="menuid != null" >
-        menuid = #{menuid,jdbcType=INTEGER},
+      <if test="rolename != null" >
+        rolename = #{rolename,jdbcType=VARCHAR},
       </if>
       <if test="roledesc != null" >
         roledesc = #{roledesc,jdbcType=VARCHAR},
@@ -75,7 +184,7 @@
   <update id="updateByPrimaryKey" parameterType="com.test.pojo.Roles" >
     update roles
     set roletype = #{roletype,jdbcType=VARCHAR},
-      menuid = #{menuid,jdbcType=INTEGER},
+      rolename = #{rolename,jdbcType=VARCHAR},
       roledesc = #{roledesc,jdbcType=VARCHAR}
     where roleid = #{roleid,jdbcType=INTEGER}
   </update>

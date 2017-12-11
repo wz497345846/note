@@ -2,13 +2,10 @@ package com.test.dao;
 
 import com.test.pojo.Costinfo;
 import com.test.pojo.CostinfoExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 public interface CostinfoMapper {
-    int countByExample(CostinfoExample example);
-
     int deleteByExample(CostinfoExample example);
 
     int deleteByPrimaryKey(Integer costinfoid);

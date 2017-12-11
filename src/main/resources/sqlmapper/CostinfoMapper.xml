@@ -73,6 +73,7 @@
     <if test="distinct" >
       distinct
     </if>
+    'true' as QUERYID,
     <include refid="Base_Column_List" />
     from costinfo
     <if test="_parameter != null" >
@@ -135,12 +136,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.test.pojo.CostinfoExample" resultType="java.lang.Integer" >
-    select count(*) from costinfo
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update costinfo
     <set >

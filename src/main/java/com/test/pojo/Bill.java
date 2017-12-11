@@ -1,9 +1,8 @@
 package com.test.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Bill implements Serializable {
+public class Bill {
     private Integer billid;
 
     private Integer empid;
@@ -45,7 +44,7 @@ public class Bill implements Serializable {
     }
 
     public void setPaytype(String paytype) {
-        this.paytype = paytype == null ? null : paytype.trim();
+        this.paytype = paytype;
     }
 
     public Date getCreatetime() {
@@ -61,7 +60,7 @@ public class Bill implements Serializable {
     }
 
     public void setBilldesc(String billdesc) {
-        this.billdesc = billdesc == null ? null : billdesc.trim();
+        this.billdesc = billdesc;
     }
 
     @Override

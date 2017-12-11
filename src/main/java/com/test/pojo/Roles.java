@@ -1,13 +1,11 @@
 package com.test.pojo;
 
-import java.io.Serializable;
-
-public class Roles implements Serializable{
+public class Roles {
     private Integer roleid;
 
     private String roletype;
 
-    private Integer menuid;
+    private String rolename;
 
     private String roledesc;
 
@@ -27,12 +25,12 @@ public class Roles implements Serializable{
         this.roletype = roletype;
     }
 
-    public Integer getMenuid() {
-        return menuid;
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setMenuid(Integer menuid) {
-        this.menuid = menuid;
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
     }
 
     public String getRoledesc() {
@@ -41,15 +39,5 @@ public class Roles implements Serializable{
 
     public void setRoledesc(String roledesc) {
         this.roledesc = roledesc;
-    }
-
-    @Override
-    public String toString() {
-        return "Roles{" +
-                "roleid=" + roleid +
-                ", roletype='" + roletype + '\'' +
-                ", menuid=" + menuid +
-                ", roledesc='" + roledesc + '\'' +
-                '}';
     }
 }
