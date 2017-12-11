@@ -1,6 +1,8 @@
 package com.test.pojo;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable{
     private Integer empid;
 
     private String empavatar;
@@ -99,5 +101,21 @@ public class Employee {
 
     public void setEmpstate(Integer empstate) {
         this.empstate = empstate;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empid=" + empid +
+                ", empavatar='" + empavatar + '\'' +
+                ", empname='" + empname + '\'' +
+                ", emppwd='" + emppwd + '\'' +
+                ", empsex='" + empsex + '\'' +
+                ", empphone='" + empphone + '\'' +
+                ", empsalary=" + empsalary +
+                ", roleid=" + roleid +
+                ", empdesc='" + empdesc + '\'' +
+                ", empstate=" + empstate +
+                '}';
     }
 }

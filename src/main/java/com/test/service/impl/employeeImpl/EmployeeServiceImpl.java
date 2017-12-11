@@ -2,6 +2,7 @@ package com.test.service.impl.employeeImpl;
 
 import com.test.dao.EmployeeMapper;
 import com.test.pojo.Employee;
+import com.test.pojo.EmployeeExample;
 import com.test.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +53,20 @@ public class EmployeeServiceImpl implements EmployeeService {
      *  查询员工信息
      */
     public List<Employee> selectEmployee(Employee employee) {
-        return null;
+        EmployeeExample employeeExample=new EmployeeExample();
+        EmployeeExample.Criteria criteria=employeeExample.createCriteria();
+        if (employee.getEmpname()!=null){
+            criteria.andEmpnameEqualTo(employee.getEmpname());
+        }
+        if (employee.getEmpstate()!=null){
+            criteria.andEmpstateEqualTo(employee.getEmpstate());
+        }
+        if (employee.getRoleid()!=null){
+            criteria.andRoleidEqualTo(employee.getRoleid());
+        }
+        List<Employee> list=employeeMapper.selectByExample(employeeExample);
+        System.out.println(list);
+        return list;
     }
 
 }
