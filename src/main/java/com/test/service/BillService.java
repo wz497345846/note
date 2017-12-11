@@ -3,6 +3,8 @@
 */
 package com.test.service;
 
+import com.test.pojo.Bill;
+
 import java.util.List;
 
 /**
@@ -21,6 +23,26 @@ public interface BillService {
      * @return 一个账单集合
      */
     List<Bill> findAllBill();
+
+    /**
+     * 通过账单编号删除
+     * @param billid
+     */
+    public void dropBillById(Integer billid);
+
+    /**
+     * 增加账单信息
+     * @param bill
+     * @return
+     */
+    public void addBillInfo(Bill bill);
+
+    /**
+     * 修改账单信息
+     * @param bill
+     */
+    public void modifyBillInfo(Bill bill);
+
 
 
 

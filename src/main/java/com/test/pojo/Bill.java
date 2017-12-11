@@ -63,4 +63,16 @@ public class Bill implements Serializable {
     public void setBilldesc(String billdesc) {
         this.billdesc = billdesc == null ? null : billdesc.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "billid=" + billid +
+                ", empid=" + empid +
+                ", cost=" + cost +
+                ", paytype='" + paytype + '\'' +
+                ", createtime=" + createtime +
+                ", billdesc='" + billdesc + '\'' +
+                '}';
+    }
 }
