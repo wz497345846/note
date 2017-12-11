@@ -1,5 +1,6 @@
 package com.test.web.controller;
 
+import com.test.pojo.Course;
 import com.test.service.impl.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,9 @@ public class CourseController {
     }
     @RequestMapping("/addc")
     @ResponseBody
-    public String addCourse(){
+    public String addCourse(Course course){
         System.out.println("addCourse");
-        System.out.println(cs);
+        System.out.println(course);
         return "123";
     }
 }

@@ -43,7 +43,7 @@
       </tr>
       <tr>
           <td><span class="reds">*</span>课程费用:</td>
-          <td><input class="easyui-textbox" data-options="min:0,max:9999,required:true"></td>
+          <td><input name="coursefee" class="easyui-textbox" data-options="min:0,max:9999,required:true"></td>
       </tr>
       <tr>
           <td><span class="reds">*</span>课程最大人数：</td>
@@ -132,13 +132,13 @@
 </body>
 <script>
     function add() {
-        var course=$("course").serialize();
+        var course=$("#course").serialize();
         alert(course);
 
         $.ajax({
             type:"post",
             url:"/addc",
-            data:$("course").serialize(),
+            data:$("#course").serialize(),
             dataType:"text",
             success:function (data) {
                 alert(data);
