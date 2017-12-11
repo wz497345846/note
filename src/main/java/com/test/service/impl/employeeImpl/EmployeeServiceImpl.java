@@ -6,6 +6,8 @@ import com.test.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
@@ -17,10 +19,41 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return
      */
     public boolean addEmployee(Employee employee) {
-        boolean flag=true;
-        System.out.println(employeeMapper);
-        Employee x=employeeMapper.selectByPrimaryKey(8888);
-        System.out.println(x);
+        boolean flag=false;
+        int x=employeeMapper.insertSelective(employee);
+        if (x>0){
+            flag=true;
+        }
         return flag;
     }
+
+    /**
+     * 删除员工操作
+     */
+    public boolean dropEmployee(Employee employee) {
+        boolean flag=false;
+        int x=employeeMapper.deleteByPrimaryKey(employee.getEmpid());
+        if (x>0){
+            flag=true;
+        }
+        return flag;
+    }
+
+    /**
+     *  修改员工信息
+     */
+    public boolean updateEmployee(Employee employee) {
+        boolean flag=false;
+        int x=employeeMapper.updateByPrimaryKeySelective(employee);
+        return false;
+    }
+
+    /**
+     *  查询员工信息
+     */
+    public List<Employee> selectEmployee(Employee employee) {
+        List<Employee> list=employeeMapper.selectEmployees(employee);
+        return list;
+    }
+
 }

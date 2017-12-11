@@ -1,8 +1,6 @@
 package com.test.pojo;
 
-import java.io.Serializable;
-
-public class Employee implements Serializable{
+public class Employee {
     private Integer empid;
 
     private String empavatar;
@@ -20,6 +18,8 @@ public class Employee implements Serializable{
     private Integer roleid;
 
     private String empdesc;
+
+    private Integer empstate;
 
     public Integer getEmpid() {
         return empid;
@@ -93,18 +93,11 @@ public class Employee implements Serializable{
         this.empdesc = empdesc;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "empid=" + empid +
-                ", empavatar='" + empavatar + '\'' +
-                ", empname='" + empname + '\'' +
-                ", emppwd='" + emppwd + '\'' +
-                ", empsex='" + empsex + '\'' +
-                ", empphone='" + empphone + '\'' +
-                ", empsalary=" + empsalary +
-                ", roleid=" + roleid +
-                ", empdesc='" + empdesc + '\'' +
-                '}';
+    public Integer getEmpstate() {
+        return empstate;
+    }
+
+    public void setEmpstate(Integer empstate) {
+        this.empstate = empstate;
     }
 }
