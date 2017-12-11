@@ -1,17 +1,15 @@
 package com.test.pojo;
 
 import java.io.Serializable;
-/**
- * 消费明细实体类
- */
-public class Costinfo  implements Serializable {
-	 private Integer costinfoid;//消费明细编号
 
-	    private Integer billid;//账单编号
+public class Costinfo implements Serializable {
+    private Integer costinfoid;
 
-	    private Integer costiteam;//消费项
+    private Integer billid;
 
-	    private String costplandesc;//消费明细备注
+    private Integer costiteam;
+
+    private String costplandesc;
 
     public Integer getCostinfoid() {
         return costinfoid;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.chenk.mapper.BillMapper" >
-  <resultMap id="BaseResultMap" type="com.chenk.entity.Bill" >
+<mapper namespace="com.test.dao.BillMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Bill" >
     <id column="billid" property="billid" jdbcType="INTEGER" />
     <result column="empid" property="empid" jdbcType="INTEGER" />
     <result column="cost" property="cost" jdbcType="DOUBLE" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     billid, empid, cost, paytype, createtime, billdesc
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chenk.entity.BillExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.BillExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,13 +94,13 @@
     delete from bill
     where billid = #{billid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chenk.entity.BillExample" >
+  <delete id="deleteByExample" parameterType="com.test.pojo.BillExample" >
     delete from bill
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chenk.entity.Bill" >
+  <insert id="insert" parameterType="com.test.pojo.Bill" >
     insert into bill (billid, empid, cost, 
       paytype, createtime, billdesc
       )
@@ -108,7 +108,7 @@
       #{paytype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{billdesc,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chenk.entity.Bill" >
+  <insert id="insertSelective" parameterType="com.test.pojo.Bill" >
     insert into bill
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="billid != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chenk.entity.BillExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.test.pojo.BillExample" resultType="java.lang.Integer" >
     select count(*) from bill
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chenk.entity.Bill" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Bill" >
     update bill
     <set >
       <if test="empid != null" >
@@ -216,7 +216,7 @@
     </set>
     where billid = #{billid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chenk.entity.Bill" >
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Bill" >
     update bill
     set empid = #{empid,jdbcType=INTEGER},
       cost = #{cost,jdbcType=DOUBLE},

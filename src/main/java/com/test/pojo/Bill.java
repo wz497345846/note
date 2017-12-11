@@ -3,18 +3,18 @@ package com.test.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Bill  implements Serializable{
-	 private Integer billid; //账单编号
+public class Bill implements Serializable {
+    private Integer billid;
 
-	    private Integer empid;//记账人编号
+    private Integer empid;
 
-	    private Double cost;//消费总额
+    private Double cost;
 
-	    private String paytype;//支付类型
+    private String paytype;
 
-	    private Date createtime;//记账日期
+    private Date createtime;
 
-	    private String billdesc;//账单备注
+    private String billdesc;
 
     public Integer getBillid() {
         return billid;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.chenk.mapper.CostinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.chenk.entity.Costinfo" >
+<mapper namespace="com.test.dao.CostinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Costinfo" >
     <id column="costinfoid" property="costinfoid" jdbcType="INTEGER" />
     <result column="billid" property="billid" jdbcType="INTEGER" />
     <result column="costiteam" property="costiteam" jdbcType="INTEGER" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     costinfoid, billid, costiteam, costplandesc
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chenk.entity.CostinfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.CostinfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,19 +92,19 @@
     delete from costinfo
     where costinfoid = #{costinfoid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chenk.entity.CostinfoExample" >
+  <delete id="deleteByExample" parameterType="com.test.pojo.CostinfoExample" >
     delete from costinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chenk.entity.Costinfo" >
+  <insert id="insert" parameterType="com.test.pojo.Costinfo" >
     insert into costinfo (costinfoid, billid, costiteam, 
       costplandesc)
     values (#{costinfoid,jdbcType=INTEGER}, #{billid,jdbcType=INTEGER}, #{costiteam,jdbcType=INTEGER}, 
       #{costplandesc,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.chenk.entity.Costinfo" >
+  <insert id="insertSelective" parameterType="com.test.pojo.Costinfo" >
     insert into costinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="costinfoid != null" >
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chenk.entity.CostinfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.test.pojo.CostinfoExample" resultType="java.lang.Integer" >
     select count(*) from costinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chenk.entity.Costinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Costinfo" >
     update costinfo
     <set >
       <if test="billid != null" >
@@ -186,7 +186,7 @@
     </set>
     where costinfoid = #{costinfoid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chenk.entity.Costinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Costinfo" >
     update costinfo
     set billid = #{billid,jdbcType=INTEGER},
       costiteam = #{costiteam,jdbcType=INTEGER},

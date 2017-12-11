@@ -1,9 +1,10 @@
 package com.test.dao;
 
-import com.chenk.entity.Bill;
-import com.chenk.entity.BillExample;
-import java.util.List;
+import com.test.pojo.Bill;
+import com.test.pojo.BillExample;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BillMapper {
     int countByExample(BillExample example);
