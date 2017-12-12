@@ -100,20 +100,4 @@ public class Course {
     public void setCurriculumend(String curriculumend) {
         this.curriculumend = curriculumend;
     }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseid=" + courseid +
-                ", empid=" + empid +
-                ", coursetype='" + coursetype + '\'' +
-                ", coursename='" + coursename + '\'' +
-                ", coursefee=" + coursefee +
-                ", currentnum=" + currentnum +
-                ", coursecount=" + coursecount +
-                ", coursedesc='" + coursedesc + '\'' +
-                ", curriculumstart='" + curriculumstart + '\'' +
-                ", curriculumend='" + curriculumend + '\'' +
-                '}';
-    }
 }

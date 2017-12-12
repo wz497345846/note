@@ -3,20 +3,20 @@
 <mapper namespace="com.test.dao.CourseplanMapper" >
   <resultMap id="BaseResultMap" type="com.test.pojo.Courseplan" >
     <id column="courseid" property="courseid" jdbcType="INTEGER" />
-    <result column="mons" property="mons" jdbcType="TIMESTAMP" />
-    <result column="mone" property="mone" jdbcType="TIMESTAMP" />
-    <result column="tues" property="tues" jdbcType="TIMESTAMP" />
-    <result column="tued" property="tued" jdbcType="TIMESTAMP" />
-    <result column="weds" property="weds" jdbcType="TIMESTAMP" />
-    <result column="wede" property="wede" jdbcType="TIMESTAMP" />
-    <result column="thurs" property="thurs" jdbcType="TIMESTAMP" />
-    <result column="thure" property="thure" jdbcType="TIMESTAMP" />
-    <result column="fris" property="fris" jdbcType="TIMESTAMP" />
-    <result column="frie" property="frie" jdbcType="TIMESTAMP" />
-    <result column="sats" property="sats" jdbcType="TIMESTAMP" />
-    <result column="sate" property="sate" jdbcType="TIMESTAMP" />
-    <result column="suns" property="suns" jdbcType="TIMESTAMP" />
-    <result column="sune" property="sune" jdbcType="TIMESTAMP" />
+    <result column="mons" property="mons" jdbcType="CHAR" />
+    <result column="mone" property="mone" jdbcType="CHAR" />
+    <result column="tues" property="tues" jdbcType="CHAR" />
+    <result column="tued" property="tued" jdbcType="CHAR" />
+    <result column="weds" property="weds" jdbcType="CHAR" />
+    <result column="wede" property="wede" jdbcType="CHAR" />
+    <result column="thurs" property="thurs" jdbcType="CHAR" />
+    <result column="thure" property="thure" jdbcType="CHAR" />
+    <result column="fris" property="fris" jdbcType="CHAR" />
+    <result column="frie" property="frie" jdbcType="CHAR" />
+    <result column="sats" property="sats" jdbcType="CHAR" />
+    <result column="sate" property="sate" jdbcType="CHAR" />
+    <result column="suns" property="suns" jdbcType="CHAR" />
+    <result column="sune" property="sune" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -113,16 +113,14 @@
   </delete>
   <insert id="insert" parameterType="com.test.pojo.Courseplan" >
     insert into courseplan (courseid, mons, mone, 
-      tues, tued, weds, 
-      wede, thurs, thure, 
-      fris, frie, sats, 
-      sate, suns, sune
+      tues, tued, weds, wede, 
+      thurs, thure, fris, frie, 
+      sats, sate, suns, sune
       )
-    values (#{courseid,jdbcType=INTEGER}, #{mons,jdbcType=TIMESTAMP}, #{mone,jdbcType=TIMESTAMP}, 
-      #{tues,jdbcType=TIMESTAMP}, #{tued,jdbcType=TIMESTAMP}, #{weds,jdbcType=TIMESTAMP}, 
-      #{wede,jdbcType=TIMESTAMP}, #{thurs,jdbcType=TIMESTAMP}, #{thure,jdbcType=TIMESTAMP}, 
-      #{fris,jdbcType=TIMESTAMP}, #{frie,jdbcType=TIMESTAMP}, #{sats,jdbcType=TIMESTAMP}, 
-      #{sate,jdbcType=TIMESTAMP}, #{suns,jdbcType=TIMESTAMP}, #{sune,jdbcType=TIMESTAMP}
+    values (#{courseid,jdbcType=INTEGER}, #{mons,jdbcType=CHAR}, #{mone,jdbcType=CHAR}, 
+      #{tues,jdbcType=CHAR}, #{tued,jdbcType=CHAR}, #{weds,jdbcType=CHAR}, #{wede,jdbcType=CHAR}, 
+      #{thurs,jdbcType=CHAR}, #{thure,jdbcType=CHAR}, #{fris,jdbcType=CHAR}, #{frie,jdbcType=CHAR}, 
+      #{sats,jdbcType=CHAR}, #{sate,jdbcType=CHAR}, #{suns,jdbcType=CHAR}, #{sune,jdbcType=CHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.test.pojo.Courseplan" >
@@ -179,46 +177,46 @@
         #{courseid,jdbcType=INTEGER},
       </if>
       <if test="mons != null" >
-        #{mons,jdbcType=TIMESTAMP},
+        #{mons,jdbcType=CHAR},
       </if>
       <if test="mone != null" >
-        #{mone,jdbcType=TIMESTAMP},
+        #{mone,jdbcType=CHAR},
       </if>
       <if test="tues != null" >
-        #{tues,jdbcType=TIMESTAMP},
+        #{tues,jdbcType=CHAR},
       </if>
       <if test="tued != null" >
-        #{tued,jdbcType=TIMESTAMP},
+        #{tued,jdbcType=CHAR},
       </if>
       <if test="weds != null" >
-        #{weds,jdbcType=TIMESTAMP},
+        #{weds,jdbcType=CHAR},
       </if>
       <if test="wede != null" >
-        #{wede,jdbcType=TIMESTAMP},
+        #{wede,jdbcType=CHAR},
       </if>
       <if test="thurs != null" >
-        #{thurs,jdbcType=TIMESTAMP},
+        #{thurs,jdbcType=CHAR},
       </if>
       <if test="thure != null" >
-        #{thure,jdbcType=TIMESTAMP},
+        #{thure,jdbcType=CHAR},
       </if>
       <if test="fris != null" >
-        #{fris,jdbcType=TIMESTAMP},
+        #{fris,jdbcType=CHAR},
       </if>
       <if test="frie != null" >
-        #{frie,jdbcType=TIMESTAMP},
+        #{frie,jdbcType=CHAR},
       </if>
       <if test="sats != null" >
-        #{sats,jdbcType=TIMESTAMP},
+        #{sats,jdbcType=CHAR},
       </if>
       <if test="sate != null" >
-        #{sate,jdbcType=TIMESTAMP},
+        #{sate,jdbcType=CHAR},
       </if>
       <if test="suns != null" >
-        #{suns,jdbcType=TIMESTAMP},
+        #{suns,jdbcType=CHAR},
       </if>
       <if test="sune != null" >
-        #{sune,jdbcType=TIMESTAMP},
+        #{sune,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -229,46 +227,46 @@
         courseid = #{record.courseid,jdbcType=INTEGER},
       </if>
       <if test="record.mons != null" >
-        mons = #{record.mons,jdbcType=TIMESTAMP},
+        mons = #{record.mons,jdbcType=CHAR},
       </if>
       <if test="record.mone != null" >
-        mone = #{record.mone,jdbcType=TIMESTAMP},
+        mone = #{record.mone,jdbcType=CHAR},
       </if>
       <if test="record.tues != null" >
-        tues = #{record.tues,jdbcType=TIMESTAMP},
+        tues = #{record.tues,jdbcType=CHAR},
       </if>
       <if test="record.tued != null" >
-        tued = #{record.tued,jdbcType=TIMESTAMP},
+        tued = #{record.tued,jdbcType=CHAR},
       </if>
       <if test="record.weds != null" >
-        weds = #{record.weds,jdbcType=TIMESTAMP},
+        weds = #{record.weds,jdbcType=CHAR},
       </if>
       <if test="record.wede != null" >
-        wede = #{record.wede,jdbcType=TIMESTAMP},
+        wede = #{record.wede,jdbcType=CHAR},
       </if>
       <if test="record.thurs != null" >
-        thurs = #{record.thurs,jdbcType=TIMESTAMP},
+        thurs = #{record.thurs,jdbcType=CHAR},
       </if>
       <if test="record.thure != null" >
-        thure = #{record.thure,jdbcType=TIMESTAMP},
+        thure = #{record.thure,jdbcType=CHAR},
       </if>
       <if test="record.fris != null" >
-        fris = #{record.fris,jdbcType=TIMESTAMP},
+        fris = #{record.fris,jdbcType=CHAR},
       </if>
       <if test="record.frie != null" >
-        frie = #{record.frie,jdbcType=TIMESTAMP},
+        frie = #{record.frie,jdbcType=CHAR},
       </if>
       <if test="record.sats != null" >
-        sats = #{record.sats,jdbcType=TIMESTAMP},
+        sats = #{record.sats,jdbcType=CHAR},
       </if>
       <if test="record.sate != null" >
-        sate = #{record.sate,jdbcType=TIMESTAMP},
+        sate = #{record.sate,jdbcType=CHAR},
       </if>
       <if test="record.suns != null" >
-        suns = #{record.suns,jdbcType=TIMESTAMP},
+        suns = #{record.suns,jdbcType=CHAR},
       </if>
       <if test="record.sune != null" >
-        sune = #{record.sune,jdbcType=TIMESTAMP},
+        sune = #{record.sune,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -278,20 +276,20 @@
   <update id="updateByExample" parameterType="map" >
     update courseplan
     set courseid = #{record.courseid,jdbcType=INTEGER},
-      mons = #{record.mons,jdbcType=TIMESTAMP},
-      mone = #{record.mone,jdbcType=TIMESTAMP},
-      tues = #{record.tues,jdbcType=TIMESTAMP},
-      tued = #{record.tued,jdbcType=TIMESTAMP},
-      weds = #{record.weds,jdbcType=TIMESTAMP},
-      wede = #{record.wede,jdbcType=TIMESTAMP},
-      thurs = #{record.thurs,jdbcType=TIMESTAMP},
-      thure = #{record.thure,jdbcType=TIMESTAMP},
-      fris = #{record.fris,jdbcType=TIMESTAMP},
-      frie = #{record.frie,jdbcType=TIMESTAMP},
-      sats = #{record.sats,jdbcType=TIMESTAMP},
-      sate = #{record.sate,jdbcType=TIMESTAMP},
-      suns = #{record.suns,jdbcType=TIMESTAMP},
-      sune = #{record.sune,jdbcType=TIMESTAMP}
+      mons = #{record.mons,jdbcType=CHAR},
+      mone = #{record.mone,jdbcType=CHAR},
+      tues = #{record.tues,jdbcType=CHAR},
+      tued = #{record.tued,jdbcType=CHAR},
+      weds = #{record.weds,jdbcType=CHAR},
+      wede = #{record.wede,jdbcType=CHAR},
+      thurs = #{record.thurs,jdbcType=CHAR},
+      thure = #{record.thure,jdbcType=CHAR},
+      fris = #{record.fris,jdbcType=CHAR},
+      frie = #{record.frie,jdbcType=CHAR},
+      sats = #{record.sats,jdbcType=CHAR},
+      sate = #{record.sate,jdbcType=CHAR},
+      suns = #{record.suns,jdbcType=CHAR},
+      sune = #{record.sune,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -300,66 +298,81 @@
     update courseplan
     <set >
       <if test="mons != null" >
-        mons = #{mons,jdbcType=TIMESTAMP},
+        mons = #{mons,jdbcType=CHAR},
       </if>
       <if test="mone != null" >
-        mone = #{mone,jdbcType=TIMESTAMP},
+        mone = #{mone,jdbcType=CHAR},
       </if>
       <if test="tues != null" >
-        tues = #{tues,jdbcType=TIMESTAMP},
+        tues = #{tues,jdbcType=CHAR},
       </if>
       <if test="tued != null" >
-        tued = #{tued,jdbcType=TIMESTAMP},
+        tued = #{tued,jdbcType=CHAR},
       </if>
       <if test="weds != null" >
-        weds = #{weds,jdbcType=TIMESTAMP},
+        weds = #{weds,jdbcType=CHAR},
       </if>
       <if test="wede != null" >
-        wede = #{wede,jdbcType=TIMESTAMP},
+        wede = #{wede,jdbcType=CHAR},
       </if>
       <if test="thurs != null" >
-        thurs = #{thurs,jdbcType=TIMESTAMP},
+        thurs = #{thurs,jdbcType=CHAR},
       </if>
       <if test="thure != null" >
-        thure = #{thure,jdbcType=TIMESTAMP},
+        thure = #{thure,jdbcType=CHAR},
       </if>
       <if test="fris != null" >
-        fris = #{fris,jdbcType=TIMESTAMP},
+        fris = #{fris,jdbcType=CHAR},
       </if>
       <if test="frie != null" >
-        frie = #{frie,jdbcType=TIMESTAMP},
+        frie = #{frie,jdbcType=CHAR},
       </if>
       <if test="sats != null" >
-        sats = #{sats,jdbcType=TIMESTAMP},
+        sats = #{sats,jdbcType=CHAR},
       </if>
       <if test="sate != null" >
-        sate = #{sate,jdbcType=TIMESTAMP},
+        sate = #{sate,jdbcType=CHAR},
       </if>
       <if test="suns != null" >
-        suns = #{suns,jdbcType=TIMESTAMP},
+        suns = #{suns,jdbcType=CHAR},
       </if>
       <if test="sune != null" >
-        sune = #{sune,jdbcType=TIMESTAMP},
+        sune = #{sune,jdbcType=CHAR},
       </if>
     </set>
     where courseid = #{courseid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.test.pojo.Courseplan" >
     update courseplan
-    set mons = #{mons,jdbcType=TIMESTAMP},
-      mone = #{mone,jdbcType=TIMESTAMP},
-      tues = #{tues,jdbcType=TIMESTAMP},
-      tued = #{tued,jdbcType=TIMESTAMP},
-      weds = #{weds,jdbcType=TIMESTAMP},
-      wede = #{wede,jdbcType=TIMESTAMP},
-      thurs = #{thurs,jdbcType=TIMESTAMP},
-      thure = #{thure,jdbcType=TIMESTAMP},
-      fris = #{fris,jdbcType=TIMESTAMP},
-      frie = #{frie,jdbcType=TIMESTAMP},
-      sats = #{sats,jdbcType=TIMESTAMP},
-      sate = #{sate,jdbcType=TIMESTAMP},
-      suns = #{suns,jdbcType=TIMESTAMP},
-      sune = #{sune,jdbcType=TIMESTAMP}
+    set mons = #{mons,jdbcType=CHAR},
+      mone = #{mone,jdbcType=CHAR},
+      tues = #{tues,jdbcType=CHAR},
+      tued = #{tued,jdbcType=CHAR},
+      weds = #{weds,jdbcType=CHAR},
+      wede = #{wede,jdbcType=CHAR},
+      thurs = #{thurs,jdbcType=CHAR},
+      thure = #{thure,jdbcType=CHAR},
+      fris = #{fris,jdbcType=CHAR},
+      frie = #{frie,jdbcType=CHAR},
+      sats = #{sats,jdbcType=CHAR},
+      sate = #{sate,jdbcType=CHAR},
+      suns = #{suns,jdbcType=CHAR},
+      sune = #{sune,jdbcType=CHAR}
     where courseid = #{courseid,jdbcType=INTEGER}
   </update>
+  <select resultMap="BaseResultMap" parameterType="com.test.pojo.CourseplanExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from courseplan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

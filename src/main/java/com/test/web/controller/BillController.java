@@ -6,9 +6,9 @@ package com.test.web.controller;
 /**
  * @author: JonyChen  Date: 2017/12/11
  */
+import com.test.pojo.Bill;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.test.pojo.Bill;
 import com.test.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

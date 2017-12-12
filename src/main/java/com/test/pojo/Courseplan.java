@@ -1,37 +1,35 @@
 package com.test.pojo;
 
-import java.util.Date;
-
 public class Courseplan {
     private Integer courseid;
 
-    private Date mons;
+    private String mons;
 
-    private Date mone;
+    private String mone;
 
-    private Date tues;
+    private String tues;
 
-    private Date tued;
+    private String tued;
 
-    private Date weds;
+    private String weds;
 
-    private Date wede;
+    private String wede;
 
-    private Date thurs;
+    private String thurs;
 
-    private Date thure;
+    private String thure;
 
-    private Date fris;
+    private String fris;
 
-    private Date frie;
+    private String frie;
 
-    private Date sats;
+    private String sats;
 
-    private Date sate;
+    private String sate;
 
-    private Date suns;
+    private String suns;
 
-    private Date sune;
+    private String sune;
 
     public Integer getCourseid() {
         return courseid;
@@ -41,136 +39,115 @@ public class Courseplan {
         this.courseid = courseid;
     }
 
-    public Date getMons() {
+    public String getMons() {
         return mons;
     }
 
-    public void setMons(Date mons) {
+    public void setMons(String mons) {
         this.mons = mons;
     }
 
-    public Date getMone() {
+    public String getMone() {
         return mone;
     }
 
-    public void setMone(Date mone) {
+    public void setMone(String mone) {
         this.mone = mone;
     }
 
-    public Date getTues() {
+    public String getTues() {
         return tues;
     }
 
-    public void setTues(Date tues) {
+    public void setTues(String tues) {
         this.tues = tues;
     }
 
-    public Date getTued() {
+    public String getTued() {
         return tued;
     }
 
-    public void setTued(Date tued) {
+    public void setTued(String tued) {
         this.tued = tued;
     }
 
-    public Date getWeds() {
+    public String getWeds() {
         return weds;
     }
 
-    public void setWeds(Date weds) {
+    public void setWeds(String weds) {
         this.weds = weds;
     }
 
-    public Date getWede() {
+    public String getWede() {
         return wede;
     }
 
-    public void setWede(Date wede) {
+    public void setWede(String wede) {
         this.wede = wede;
     }
 
-    public Date getThurs() {
+    public String getThurs() {
         return thurs;
     }
 
-    public void setThurs(Date thurs) {
+    public void setThurs(String thurs) {
         this.thurs = thurs;
     }
 
-    public Date getThure() {
+    public String getThure() {
         return thure;
     }
 
-    public void setThure(Date thure) {
+    public void setThure(String thure) {
         this.thure = thure;
     }
 
-    public Date getFris() {
+    public String getFris() {
         return fris;
     }
 
-    public void setFris(Date fris) {
+    public void setFris(String fris) {
         this.fris = fris;
     }
 
-    public Date getFrie() {
+    public String getFrie() {
         return frie;
     }
 
-    public void setFrie(Date frie) {
+    public void setFrie(String frie) {
         this.frie = frie;
     }
 
-    public Date getSats() {
+    public String getSats() {
         return sats;
     }
 
-    public void setSats(Date sats) {
+    public void setSats(String sats) {
         this.sats = sats;
     }
 
-    public Date getSate() {
+    public String getSate() {
         return sate;
     }
 
-    public void setSate(Date sate) {
+    public void setSate(String sate) {
         this.sate = sate;
     }
 
-    public Date getSuns() {
+    public String getSuns() {
         return suns;
     }
 
-    public void setSuns(Date suns) {
+    public void setSuns(String suns) {
         this.suns = suns;
     }
 
-    public Date getSune() {
+    public String getSune() {
         return sune;
     }
 
-    public void setSune(Date sune) {
+    public void setSune(String sune) {
         this.sune = sune;
-    }
-
-    @Override
-    public String toString() {
-        return "Courseplan{" +
-                "courseid=" + courseid +
-                ", mons=" + mons +
-                ", mone=" + mone +
-                ", tues=" + tues +
-                ", tued=" + tued +
-                ", weds=" + weds +
-                ", wede=" + wede +
-                ", thurs=" + thurs +
-                ", thure=" + thure +
-                ", fris=" + fris +
-                ", frie=" + frie +
-                ", sats=" + sats +
-                ", sate=" + sate +
-                ", suns=" + suns +
-                ", sune=" + sune +
-                '}';
     }
 }

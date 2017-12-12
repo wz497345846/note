@@ -50,9 +50,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     /**
+     * 返回所有教练
+     */
+    public List<Employee> selectAllCoach() {
+        EmployeeExample employeeExample=new EmployeeExample();
+        EmployeeExample.Criteria criteria=employeeExample.createCriteria();
+        criteria.getAllCriteria();
+        return employeeMapper.selectByExample(employeeExample);
+    }
+
+    /**
      *  查询员工信息
      */
-    public List<Employee> selectEmployee(Employee employee) {
+    public List<Employee> selectEmployee(Employee employee, String pageNumber, String pageSize) {
         EmployeeExample employeeExample=new EmployeeExample();
         EmployeeExample.Criteria criteria=employeeExample.createCriteria();
         if (employee.getEmpname()!=null){
@@ -65,7 +75,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             criteria.andRoleidEqualTo(employee.getRoleid());
         }
         List<Employee> list=employeeMapper.selectByExample(employeeExample);
-        System.out.println(list);
         return list;
     }
 

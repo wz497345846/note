@@ -220,4 +220,19 @@
       billdesc = #{billdesc,jdbcType=VARCHAR}
     where billid = #{billid,jdbcType=INTEGER}
   </update>
+  <select resultMap="BaseResultMap" parameterType="com.test.pojo.BillExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

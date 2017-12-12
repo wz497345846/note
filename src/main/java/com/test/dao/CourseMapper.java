@@ -4,6 +4,7 @@ import com.test.pojo.Course;
 import com.test.pojo.CourseExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface CourseMapper {
     int deleteByExample(CourseExample example);
@@ -13,6 +14,8 @@ public interface CourseMapper {
     int insert(Course record);
 
     int insertSelective(Course record);
+
+    List<Course> selectByExampleWithRowbounds(CourseExample example, RowBounds rowBounds);
 
     List<Course> selectByExample(CourseExample example);
 

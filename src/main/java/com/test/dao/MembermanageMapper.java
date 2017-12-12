@@ -4,6 +4,7 @@ import com.test.pojo.Membermanage;
 import com.test.pojo.MembermanageExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface MembermanageMapper {
     int deleteByExample(MembermanageExample example);
@@ -13,6 +14,8 @@ public interface MembermanageMapper {
     int insert(Membermanage record);
 
     int insertSelective(Membermanage record);
+
+    List<Membermanage> selectByExampleWithRowbounds(MembermanageExample example, RowBounds rowBounds);
 
     List<Membermanage> selectByExample(MembermanageExample example);
 
