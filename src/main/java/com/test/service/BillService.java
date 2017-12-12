@@ -3,9 +3,8 @@
 */
 package com.test.service;
 
+import com.com.test.commons.DataGridModel;
 import com.test.pojo.Bill;
-
-import java.util.List;
 
 /**
  * @author: JonyChen  Date: 2017/12/11
@@ -16,13 +15,14 @@ public interface BillService {
      * @param  billid
      * @return
      */
+
     Bill findBillById(Integer billid);
 
     /**
      * 查看所有账单
      * @return 一个账单集合
      */
-    List<Bill> findAllBill();
+    public DataGridModel findBillAll(Integer page, Integer rows);
 
     /**
      * 通过账单编号删除

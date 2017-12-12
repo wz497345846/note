@@ -2,6 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+
     <!--导入属性配置 -->
     <properties resource="generator.properties"/>
 
@@ -9,7 +10,10 @@
             location="/home/peng/.m2/repository/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar" />
     <context id="context1">
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
-
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+            <property name="dialect" value="mysql"/>
+        </plugin>
         <!-- 注释 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
