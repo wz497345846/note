@@ -7,7 +7,11 @@ package com.test.service.impl;
  * @author: JonyChen  Date: 2017/12/11
  */
 
+import com.com.test.commons.DataGridModel;
+import com.test.service.BillService;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,14 +23,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration({ "classpath:spring/application-dao.xml", "classpath:spring/application-service.xml" })
 public class testBillServiceImpl {
 
- /*   @Autowired
-    private BillMapper billMapper;
+    @Autowired
+    private BillService billService;
 
     @Test
     public void testQueryById() throws Exception {
-        Integer billid = 2017002;
-        Bill bill = billMapper.selectByPrimaryKey(billid);
-        System.out.println(bill);
-    }*/
+        DataGridModel gridModel=billService.findBillAll(1,4);
+        System.out.println(gridModel);
+    }
 
 }

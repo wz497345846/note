@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<table id="ta" class="easyui-datagrid" data-options="pageSize:30,toolbar:tool,pagination:true,url:'bill/findAllBill'>
+<table id="ta" class="easyui-datagrid" data-options="pageSize:30,pagination:true,url:'bill/findAllBill'">
     <thead>
     <tr>
-       <th data-options="field:'billid',width:60">账单ID</th>
+        <th data-options="field:'billid',width:60">账单ID</th>
         <th data-options="field:'empid',width:60">记账人</th>
         <th data-options="field:'cost'">消费总额</th>
         <th data-options="field:'paytype'">支付类型</th>

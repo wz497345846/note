@@ -3,6 +3,9 @@
 */
 package com.test.service.impl;
 
+import com.com.test.commons.DataGridModel;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.test.dao.BillMapper;
 import com.test.pojo.Bill;
 import com.test.pojo.BillExample;
@@ -35,9 +38,23 @@ public class BillServiceImpl implements BillService {
     /**
      * 查询所有账单
      */
-    public List<Bill> findAllBill() {
-        BillExample example = new BillExample();
-        return this.billMapper.selectByExample(example);
+    public DataGridModel findBillAll(Integer page, Integer rows) {
+        //调用分页插件的api 给定参数
+        PageHelper.startPage(page, rows);
+        BillExample example=new BillExample();
+        List<Bill> list = this.billMapper.selectByExample(example);
+        for (Bill bill: list
+             ) {
+            System.out.println(bill);
+        }
+        //总条数的获取
+        PageInfo<Bill> p = new PageInfo<Bill>(list);
+        long total = p.getTotal();
+
+        DataGridModel gm = new DataGridModel();
+        gm.setRows(list);
+        gm.setTotal(total);
+        return gm;
     }
 
     /**
