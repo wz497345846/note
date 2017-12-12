@@ -67,19 +67,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> selectEmployee(Employee employee, String pageNumber, String pageSize) {
         EmployeeExample employeeExample=new EmployeeExample();
         EmployeeExample.Criteria criteria=employeeExample.createCriteria();
-        if (employee.getEmpname()!=null){
+        if (!(employee.getEmpname()==null||employee.getEmpname().equals(""))){
             criteria.andEmpnameEqualTo(employee.getEmpname());
         }
-        if (employee.getEmpstate()!=null){
-            criteria.andEmpstateEqualTo(employee.getEmpstate());
+        if (employee.getEmpstate()!=null&&employee.getEmpstate()!=0){
+            criteria.andEmpstateEqualTo(new Integer(employee.getEmpstate()));
         }
-        if (employee.getRoleid()!=null){
-            criteria.andRoleidEqualTo(employee.getRoleid());
+        if (employee.getRoleid()!=null&&employee.getRoleid()!=0){
+            criteria.andRoleidEqualTo(new Integer(employee.getRoleid()));
         }
         int offset=Integer.parseInt(pageNumber)*Integer.parseInt(pageSize);
         RowBounds rowBounds=new RowBounds(offset,Integer.parseInt(pageSize));
         List<Employee> list=employeeMapper.selectByExampleWithRowbounds(employeeExample,rowBounds);
-        System.out.println(list);
         return list;
     }
 

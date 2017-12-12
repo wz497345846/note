@@ -9,10 +9,11 @@
 <html>
 <head>
     <title>新建员工</title>
-    <link rel="stylesheet" type="text/css" href="/css/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="/css/themes/icon.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 </head>
 <body>
 <form id="createEmployee" method="post" action="/createE" enctype="multipart/form-data">
