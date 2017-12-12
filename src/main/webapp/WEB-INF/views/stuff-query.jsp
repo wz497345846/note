@@ -14,64 +14,7 @@
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-    <script>
-        function pagerFilter(data){
-            if (typeof data.length == 'number' && typeof data.splice == 'function'){    // is array
-                data = {
-                    total: data.length,
-                    rows: data
-                }
-            }
-            var dg = $(this);
-            var opts = dg.datagrid('options');
-            var pager = dg.datagrid('getPager');
-            pager.pagination({
-                onSelectPage:function(pageNum, pageSize){
-                    opts.pageNumber = pageNum;
-                    opts.pageSize = pageSize;
-                    pager.pagination('refresh',{
-                        pageNumber:pageNum,
-                        pageSize:pageSize
-                    });
-                    dg.datagrid('loadData',data);
-                }
-            });
-            if (!data.originalRows){
-                data.originalRows = (data.rows);
-            }
-            var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
-            var end = start + parseInt(opts.pageSize);
-            data.rows = (data.originalRows.slice(start, end));
-            return data;
-        }
 
-        function Search() {
-            //pageNumber为datagrid的当前页码
-            var page_Number = $('#dataGrid').datagrid('options').pageNumber;
-            //pageSize为datagrid的每页记录条数
-            var page_Size = $('#dataGrid').datagrid('options').pageSize;
-            var path = $("#query-employee").attr("action");
-            $.ajax({
-                url : path,
-                type : "post",
-                data : {
-                    empname:$("#empname").val(),
-                    empstate:$("#empstate").combobox('getValue'),
-                    roleid:$("#roleid").combobox('getValue'),
-                    pageNumber : page_Number,
-                    pageSize : page_Size
-                },
-                dataType : "json",
-                success : function(datas) {
-                    $('#dataGrid').datagrid({loadFilter:pagerFilter}).datagrid('loadData',datas);
-                }
-            });
-            return false;
-        }
-
-
-
-    </script>
 </head>
 <body>
 
@@ -120,6 +63,63 @@
 
     </thead>
 </table>
+<script>
+    function pagerFilter(data){
+        if (typeof data.length == 'number' && typeof data.splice == 'function'){    // is array
+            data = {
+                total: data.length,
+                rows: data
+            }
+        }
+        var dg = $(this);
+        var opts = dg.datagrid('options');
+        var pager = dg.datagrid('getPager');
+        pager.pagination({
+            onSelectPage:function(pageNum, pageSize){
+                opts.pageNumber = pageNum;
+                opts.pageSize = pageSize;
+                pager.pagination('refresh',{
+                    pageNumber:pageNum,
+                    pageSize:pageSize
+                });
+                dg.datagrid('loadData',data);
+            }
+        });
+        if (!data.originalRows){
+            data.originalRows = (data.rows);
+        }
+        var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
+        var end = start + parseInt(opts.pageSize);
+        data.rows = (data.originalRows.slice(start, end));
+        return data;
+    }
 
+    function Search() {
+        //pageNumber为datagrid的当前页码
+        var page_Number = $('#dataGrid').datagrid('options').pageNumber;
+        //pageSize为datagrid的每页记录条数
+        var page_Size = $('#dataGrid').datagrid('options').pageSize;
+        var path = $("#query-employee").attr("action");
+        $.ajax({
+            url : path,
+            type : "post",
+            data : {
+                empname:$("#empname").val(),
+                empstate:$("#empstate").combobox('getValue'),
+                roleid:$("#roleid").combobox('getValue'),
+                pageNumber : page_Number,
+                pageSize : page_Size
+            },
+            dataType : "json",
+            success : function(datas) {
+                $('#dataGrid').datagrid({loadFilter:pagerFilter}).datagrid('loadData',datas);
+            }
+        });
+        return false;
+    }
+
+
+
+</script>
 </body>
 </html>
