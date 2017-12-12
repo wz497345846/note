@@ -9,24 +9,23 @@
 <html>
 <head>
     <title>员工查询</title>
-    <link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="css/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
     <script>
-
         function pagerFilter(data){
-            debugger;
-            if (typeof data.pageListdata.length == 'number' && typeof data.pageListdata.splice == 'function'){// is array
+            if (typeof data.length == 'number' && typeof data.splice == 'function'){    // is array
                 data = {
-                    total: data.pageListdata.length,
-                    rows: data.pageListdata
+                    total: data.length,
+                    rows: data
                 }
             }
-            var dg = $('#dataGrid');
+            var dg = $(this);
             var opts = dg.datagrid('options');
-            var pager = $('#dataGrid').datagrid('getPager');
-            $(pager).pagination({
+            var pager = dg.datagrid('getPager');
+            pager.pagination({
                 onSelectPage:function(pageNum, pageSize){
                     opts.pageNumber = pageNum;
                     opts.pageSize = pageSize;
@@ -34,21 +33,17 @@
                         pageNumber:pageNum,
                         pageSize:pageSize
                     });
-                    $('#dataGrid').datagrid('loadData',data);
-                },
-                beforePageText : '第', //页数文本框前显示的汉字
-                afterPageText : '页    共 {pages} 页',
-                displayMsg : '当前显示 {from} - {to} 条记录   共 {total} 条记录'
+                    dg.datagrid('loadData',data);
+                }
             });
-            if (!data.pageListdata){
-                data.pageListdata = (data.rows);
+            if (!data.originalRows){
+                data.originalRows = (data.rows);
             }
             var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
             var end = start + parseInt(opts.pageSize);
-            data.rows = (data.pageListdata.slice(start, end));
+            data.rows = (data.originalRows.slice(start, end));
             return data;
         }
-
 
         function Search() {
             //pageNumber为datagrid的当前页码
@@ -73,6 +68,9 @@
             });
             return false;
         }
+
+
+
     </script>
 </head>
 <body>
@@ -100,7 +98,7 @@
     </div>
 </form>
 
-<div style="clear: both"></div>
+<div style="clear: both;margin: 20px;height: 20px;"></div>
 
 <table id="dataGrid" class="easyui-datagrid" title="员工基本信息"  data-options="rownumbers:true,
     singleSelect:true,
@@ -108,17 +106,18 @@
     pagination:true,
     pageSize:10,fit:false"
     >
-    <thead>
+    <thead >
     <tr>
-        <th field="empid" width="200" align="center">#</th>
+        <th field="empid" width="200" align="center" >#</th>
         <th field="empname" width="200" align="center">姓名</th>
         <th field="empphone" width="200" align="center">手机号</th>
         <th field="empsex" width="200" align="center">性别</th>
-        <th field="empstate" width="200" align="center">状态</th>
+        <th field="empstate" width="200" align="center" >状态</th>
         <th field="roleid" width="200" align="center">角色</th>
         <th field="empdesc" width="200" align="center">备注</th>
-        <th field="oper" width="200" align="center">操作</th>
+        <th field="oper" width="200" align="center" >操作</th>
     </tr>
+
     </thead>
 </table>
 

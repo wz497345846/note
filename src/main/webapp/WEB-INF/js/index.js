@@ -79,7 +79,26 @@ $(document).ready(function () {
         $("#seven").css("display","none");
         $("#eight").css("display","none");
     });*/
-})/*.ready(function () {
+}).ready(function () {
+    $(".child_menu").find("li").first().children("a").click(function () {
+
+        $("#tabs").tabs('add',{
+            title:'New Tab',
+            closeable:true,
+            href:'stuff-query'
+        });
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
+        
+    
+});/*.ready(function () {
     $(".allMenus").find("a").click(function () {
         $(this).parent("li").addClass("clk");
         $(this).parent("li").siblings().removeClass("clk");

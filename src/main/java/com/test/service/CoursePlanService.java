@@ -1,6 +1,5 @@
 package com.test.service;
 
-import com.test.dao.CourseplanMapper;
 import com.test.pojo.Courseplan;
 
 public interface CoursePlanService {

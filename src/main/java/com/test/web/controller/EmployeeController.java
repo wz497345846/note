@@ -5,6 +5,7 @@ import com.test.service.impl.employeeImpl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -73,9 +74,9 @@ public class EmployeeController {
      * 查询指定员工信息
      */
     @RequestMapping("/selectEmployee")
+    @ResponseBody
     public List<Employee> selectEmployee(Employee employee,String pageNumber,String pageSize){
         List<Employee> list=employeeServiceImpl.selectEmployee(employee,pageNumber,pageSize);
-        System.out.println(list);
         return list;
     }
 }

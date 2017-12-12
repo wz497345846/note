@@ -15,12 +15,27 @@ public class RoleController {
     @Autowired
     RolesMapper rolesMapper;
 
-    @RequestMapping("getAllRoles")
+    @RequestMapping("/getAllRoles")
     @ResponseBody
     public List<Roles> getRoles(){
         RolesExample rolesExample=new RolesExample();
         RolesExample.Criteria criteria= rolesExample.createCriteria();
         criteria.getAllCriteria();
         return rolesMapper.selectByExample(rolesExample);
+    }
+
+    @RequestMapping("/saveRole")
+    public String saveRole(){
+        return "index";
+    }
+
+    @RequestMapping("/delRole")
+    public String delRole(){
+        return "index";
+    }
+
+    @RequestMapping("/updateRole")
+    public String updateRole(){
+        return "index";
     }
 }
