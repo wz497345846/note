@@ -1,6 +1,22 @@
 package com.test.pojo;
 
 public class Course {
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseid=" + courseid +
+                ", empid=" + empid +
+                ", coursetype='" + coursetype + '\'' +
+                ", coursename='" + coursename + '\'' +
+                ", coursefee=" + coursefee +
+                ", currentnum=" + currentnum +
+                ", coursecount=" + coursecount +
+                ", coursedesc='" + coursedesc + '\'' +
+                ", curriculumstart='" + curriculumstart + '\'' +
+                ", curriculumend='" + curriculumend + '\'' +
+                '}';
+    }
+
     private Integer courseid;
 
     private Integer empid;
