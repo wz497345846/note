@@ -33,7 +33,7 @@ public class BillController {
         for (Bill bill:list) {
             System.out.println(bill);
         }
-        return "bill_index";
+        return "findBill";
     }
 
     @RequestMapping("/dropUser")

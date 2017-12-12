@@ -2,22 +2,23 @@
     margin: 0;
     padding: 0;
     font-family: Microsoft Yahei,Arial;
+    background-color: rgb(246,246,246);
 }
 .body{
     color: #444;
-}
-#logo > a{
-    text-decoration: none;
 
 }
+
 #logo{
     height: 130px;
     line-height: 130px;
     text-align: center;
     font-size: 45px;
-    background-color: lightblue;
 }
-
-#logo > i{
+#logo i{
     font-size: 45px;
+}
+#logo > a{
+    text-decoration: none;
+    color: #444;
 }
