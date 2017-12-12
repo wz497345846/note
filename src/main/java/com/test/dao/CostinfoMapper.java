@@ -4,6 +4,7 @@ import com.test.pojo.Costinfo;
 import com.test.pojo.CostinfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface CostinfoMapper {
     int deleteByExample(CostinfoExample example);
@@ -13,6 +14,8 @@ public interface CostinfoMapper {
     int insert(Costinfo record);
 
     int insertSelective(Costinfo record);
+
+    List<Costinfo> selectByExampleWithRowbounds(CostinfoExample example, RowBounds rowBounds);
 
     List<Costinfo> selectByExample(CostinfoExample example);
 

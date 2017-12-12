@@ -10,11 +10,4 @@ public class Coursetype {
     public void setType(String type) {
         this.type = type;
     }
-
-    @Override
-    public String toString() {
-        return "Coursetype{" +
-                "type='" + type + '\'' +
-                '}';
-    }
 }

@@ -11,6 +11,7 @@ public interface EmployeeService {
 
     boolean updateEmployee(Employee employee);
 
+    List<Employee> selectAllCoach();
 
-    List<Employee> selectEmployee(Employee employee);
+    List<Employee> selectEmployee(Employee employee, String pageNumber, String pageSize);
 }

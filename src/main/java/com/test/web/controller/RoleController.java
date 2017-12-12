@@ -21,7 +21,6 @@ public class RoleController {
         RolesExample rolesExample=new RolesExample();
         RolesExample.Criteria criteria= rolesExample.createCriteria();
         criteria.getAllCriteria();
-        System.out.println(rolesMapper.selectByExample(rolesExample));
         return rolesMapper.selectByExample(rolesExample);
     }
 }

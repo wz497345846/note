@@ -4,6 +4,7 @@ import com.test.pojo.Bill;
 import com.test.pojo.BillExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface BillMapper {
     int deleteByExample(BillExample example);
@@ -13,6 +14,8 @@ public interface BillMapper {
     int insert(Bill record);
 
     int insertSelective(Bill record);
+
+    List<Bill> selectByExampleWithRowbounds(BillExample example, RowBounds rowBounds);
 
     List<Bill> selectByExample(BillExample example);
 

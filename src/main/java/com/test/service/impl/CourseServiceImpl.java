@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 public class CourseServiceImpl implements CourseService {
     @Autowired
     CourseMapper cm;
-    public int addCourseService(Course course) {
-        return 0;
+    public int addCourse(Course course) {
+        return cm.insertSelective(course);
     }
 
 }

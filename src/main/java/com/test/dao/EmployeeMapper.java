@@ -4,6 +4,7 @@ import com.test.pojo.Employee;
 import com.test.pojo.EmployeeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface EmployeeMapper {
     int deleteByExample(EmployeeExample example);
@@ -13,6 +14,8 @@ public interface EmployeeMapper {
     int insert(Employee record);
 
     int insertSelective(Employee record);
+
+    List<Employee> selectByExampleWithRowbounds(EmployeeExample example, RowBounds rowBounds);
 
     List<Employee> selectByExample(EmployeeExample example);
 
