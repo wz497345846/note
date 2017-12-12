@@ -58,77 +58,89 @@
     <div data-options="region:'center'<%--,title:'center title'--%>" style="background:#eee;">
         <div id="one">
             <ul class="child_menu">
-                <li><a href="">会员查询</a></li>
-                <li><a href="">新建会员</a></li>
-                <li><a href="">会员卡查询</a></li>
-                <li><a href="">批量操作</a></li>
-                <li><a href="">消息提醒</a></li>
+                <li><a href="#">会员查询</a></li>
+                <li><a href="#">新建会员</a></li>
+                <li><a href="#">会员卡查询</a></li>
+                <li><a href="#">批量操作</a></li>
+                <li><a href="#">消息提醒</a></li>
             </ul>
         </div>
         <div id="two">
             <ul class="child_menu">
-                <li><a href="">客户查询</a></li>
-                <li><a href="">新建客户</a></li>
-                <li><a href="">跟进记录</a></li>
-                <li><a href="">跟进统计</a></li>
-                <li><a href="">批量操作</a></li>
+                <li><a href="#">客户查询</a></li>
+                <li><a href="#">新建客户</a></li>
+                <li><a href="#">跟进记录</a></li>
+                <li><a href="#">跟进统计</a></li>
+                <li><a href="#">批量操作</a></li>
             </ul>
         </div>
         <div id="three">
             <ul class="child_menu">
-                <li><a href="">团课课表</a></li>
-                <li><a href="">团课排课</a></li>
-                <li><a href="">团课课程</a></li>
-                <li><a href="">私教课表</a></li>
-                <li><a href="">私教排课</a></li>
-                <li><a href="">私教课程</a></li>
+                <li><a href="#">团课课表</a></li>
+                <li><a href="#">团课排课</a></li>
+                <li><a href="#">团课课程</a></li>
+                <li><a href="#">私教课表</a></li>
+                <li><a href="#">私教排课</a></li>
+                <li><a href="#">私教课程</a></li>
             </ul>
         </div>
         <div id="four">
             <ul class="child_menu">
-                <li><a href="">员工查询</a></li>
-                <li><a href="">新建员工</a></li>
-                <li><a href="">角色与权限</a></li>
-                <li><a href="">工资设置</a></li>
+                <li><a href="#">员工查询</a></li>
+                <li><a href="#">新建员工</a></li>
+                <li><a href="#">角色与权限</a></li>
+                <li><a href="#">工资设置</a></li>
             </ul>
         </div>
         <div id="five">
             <ul class="child_menu">
-                <li><a href="">商品售卖</a></li>
-                <li><a href="">商品库存</a></li>
-                <li><a href="">账单</a></li>
-                <li><a href="">资费项</a></li>
+                <li><a href="#">商品售卖</a></li>
+                <li><a href="#">商品库存</a></li>
+                <li><a href="#">账单</a></li>
+                <li><a href="#">资费项</a></li>
             </ul>
         </div>
         <div id="six">
             <ul class="child_menu">
-                <li><a href="">微官网</a></li>
-                <li><a href="">营销工具</a></li>
+                <li><a href="#">微官网</a></li>
+                <li><a href="#">营销工具</a></li>
             </ul>
         </div>
         <div id="seven">
             <ul class="child_menu">
-                <li><a href="">会员统计</a></li>
-                <li><a href="">员工统计</a></li>
-                <li><a href="">课程统计</a></li>
-                <li><a href="">会员卡统计</a></li>
-                <li><a href="">收支统计</a></li>
-                <li><a href="">营业报表</a></li>
+                <li><a href="#">会员统计</a></li>
+                <li><a href="#">员工统计</a></li>
+                <li><a href="#">课程统计</a></li>
+                <li><a href="#">会员卡统计</a></li>
+                <li><a href="#">收支统计</a></li>
+                <li><a href="#">营业报表</a></li>
             </ul>
         </div>
         <div id="eight">
             <ul class="child_menu">
-                <li><a href="">门店信息</a></li>
-                <li><a href="">门店场地</a></li>
-                <li><a href="">会员卡设置</a></li>
-                <li><a href="">积分设置</a></li>
-                <li><a href="">客户来源</a></li>
-                <li><a href="">参数设置</a></li>
-                <li><a href="">短信记录</a></li>
-                <li><a href="">手机版</a></li>
-                <li><a href="">收费详细</a></li>
+                <li><a href="#">门店信息</a></li>
+                <li><a href="#">门店场地</a></li>
+                <li><a href="#">会员卡设置</a></li>
+                <li><a href="#">积分设置</a></li>
+                <li><a href="#">客户来源</a></li>
+                <li><a href="#">参数设置</a></li>
+                <li><a href="#">短信记录</a></li>
+                <li><a href="#">手机版</a></li>
+                <li><a href="#">收费详细</a></li>
             </ul>
         </div>
+        <div id="tabs" class="easyui-tabs">
+            <%--<div title="Tab1" style="padding:20px;display:none;">--%>
+                <%--tab1--%>
+            <%--</div>--%>
+            <%--<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">--%>
+                <%--tab2--%>
+            <%--</div>--%>
+            <%--<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">--%>
+                <%--tab3--%>
+            <%--</div>--%>
+        </div>
+
     </div>
 </div>
 </body>

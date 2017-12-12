@@ -99,11 +99,14 @@ ul{
 }
 
 #one{
-    margin: 148px 0;
-    padding: 0;
+    /*margin: 148px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 187px;
     display: none;
+    position: fixed;
+    top: 148px;
+    left:186px;
 }
 .child_menu{
     text-align: center;
@@ -129,53 +132,79 @@ ul{
 }
 
 #two{
-    margin: 188px 0;
-    padding: 0;
+    /*margin: 188px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 187px;
     display: none;
+    position: fixed;
+    top: 188px;
+    left: 186px;
 }
 #three{
-    margin: 198px 0;
-    padding: 0;
+    /*margin: 198px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 224px;
     display: none;
+    position: fixed;
+    top: 198px;
+    left:186px;
 }
 #four{
-    margin: 300px 0;
-    padding: 0;
+    /*margin: 300px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 150px;
     display: none;
+    position: fixed;
+    top: 300px;
+    left:186px;
 }
 #five{
-    margin: 340px 0;
-    padding: 0;
+    /*margin: 340px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 150px;
     display: none;
+    position: fixed;
+    top: 340px;
+    left:186px;
 }
 #six{
-    margin: 467px 0;
-    padding: 0;
+    /*margin: 467px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 75px;
     display: none;
+    position: fixed;
+    top: 467px;
+    left:186px;
 }
 #seven{
-    margin: 362px 0;
-    padding: 0;
+    /*margin: 362px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 224px;
     display: none;
+    position: fixed;
+    top: 362px;
+    left:186px;
 }
 #eight{
-    margin: 312px 0;
-    padding: 0;
+    /*margin: 312px 0;*/
+    /*padding: 0;*/
     width: 132px;
     height: 334px;
     display: none;
+    position: fixed;
+    top: 312px;
+    left:186px;
+}
+
+/*选项卡样式*/
+#tabs{
+    height: 100%;
 }
 /*.clk{
     color: rgb(255,65,0);
