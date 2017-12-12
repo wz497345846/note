@@ -3,6 +3,7 @@ package com.test.service;
 import com.test.pojo.Course;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CourseService {
     /**
@@ -11,5 +12,5 @@ public interface CourseService {
      * @return
      */
     int addCourse(Course course);
-    List<Course> findCourse(Course course,int offset,int row);
+    Map<String,Object> findCourse(Course course, int offset, int row);
 }
