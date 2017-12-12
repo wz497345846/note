@@ -8,5 +8,5 @@ public interface CourseService {
      * @param course
      * @return
      */
-    int addCourseService(Course course);
+    int addCourse(Course course);
 }

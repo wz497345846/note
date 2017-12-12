@@ -4,6 +4,7 @@ import com.test.pojo.Roles;
 import com.test.pojo.RolesExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface RolesMapper {
     int deleteByExample(RolesExample example);
@@ -13,6 +14,8 @@ public interface RolesMapper {
     int insert(Roles record);
 
     int insertSelective(Roles record);
+
+    List<Roles> selectByExampleWithRowbounds(RolesExample example, RowBounds rowBounds);
 
     List<Roles> selectByExample(RolesExample example);
 

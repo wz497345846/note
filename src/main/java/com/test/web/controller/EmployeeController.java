@@ -64,7 +64,6 @@ public class EmployeeController {
      */
     @RequestMapping("changeEmployee")
     public String changeEmployeebp(Employee employee){
-        System.out.println(employee);
         boolean flag=employeeServiceImpl.updateEmployee(employee);
         return null;
     }
@@ -74,8 +73,9 @@ public class EmployeeController {
      * 查询指定员工信息
      */
     @RequestMapping("/selectEmployee")
-    public List<Employee> selectEmployee(Employee employee){
-        List<Employee> list=employeeServiceImpl.selectEmployee(employee);
+    public List<Employee> selectEmployee(Employee employee,String pageNumber,String pageSize){
+        List<Employee> list=employeeServiceImpl.selectEmployee(employee,pageNumber,pageSize);
+        System.out.println(list);
         return list;
     }
 }

@@ -11,8 +11,6 @@
     <title>Title</title>
 </head>
 <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
@@ -34,12 +32,12 @@
       </tr>
       <tr>
           <td><span class="reds"></span>课程类型：</td>
-          <td><input class="easyui-combobox" name="coursetype" data-options="valueField:'id',textField:'text',url:'get_data.php',required:true"/></td>
+          <td><input class="easyui-combobox" name="coursetype" data-options="valueField:'id',textField:'text',url:'/ctype',required:true"/></td>
       </tr>
       <tr>
           <td><span class="reds">*</span>教练：</td>
           <td><input  class="easyui-combobox" name="empid"
-                     data-options="valueField:'id',textField:'text',url:'get_data.php',required:true" />   </td>
+                     data-options="valueField:'id',textField:'text',url:'/courseemp',required:true" />   </td>
       </tr>
       <tr>
           <td><span class="reds">*</span>课程费用:</td>
@@ -47,7 +45,9 @@
       </tr>
       <tr>
           <td><span class="reds">*</span>课程最大人数：</td>
-          <td><input class="easyui-textbox" name="coursecount" data-options="min:0,max:200,required:true"/> </td>
+          <td>
+              <input class="easyui-textbox" name="coursecount" data-options="min:0,max:200,required:true"/>
+              <input type="hidden" name="currentnum" value="0" /> </td>
       </tr>
       <tr>
           <td><span class="reds">*</span>课程开始时间：</td>

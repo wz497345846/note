@@ -4,6 +4,7 @@ import com.test.dao.EmployeeMapper;
 import com.test.pojo.Employee;
 import com.test.pojo.EmployeeExample;
 import com.test.service.employee.EmployeeService;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +51,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     /**
+     * 返回所有教练
+     */
+    public List<Employee> selectAllCoach() {
+        EmployeeExample employeeExample=new EmployeeExample();
+        EmployeeExample.Criteria criteria=employeeExample.createCriteria();
+        criteria.getAllCriteria();
+        criteria.andRoleidEqualTo(3);
+        return employeeMapper.selectByExample(employeeExample);
+    }
+
+    /**
      *  查询员工信息
      */
-    public List<Employee> selectEmployee(Employee employee) {
+    public List<Employee> selectEmployee(Employee employee, String pageNumber, String pageSize) {
         EmployeeExample employeeExample=new EmployeeExample();
         EmployeeExample.Criteria criteria=employeeExample.createCriteria();
         if (employee.getEmpname()!=null){
@@ -64,7 +76,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employee.getRoleid()!=null){
             criteria.andRoleidEqualTo(employee.getRoleid());
         }
-        List<Employee> list=employeeMapper.selectByExample(employeeExample);
+        int offset=Integer.parseInt(pageNumber)*Integer.parseInt(pageSize);
+        RowBounds rowBounds=new RowBounds(offset,Integer.parseInt(pageSize));
+        List<Employee> list=employeeMapper.selectByExampleWithRowbounds(employeeExample,rowBounds);
         System.out.println(list);
         return list;
     }
