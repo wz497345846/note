@@ -1,6 +1,27 @@
 package com.test.pojo;
 
 public class Courseplan {
+    @Override
+    public String toString() {
+        return "Courseplan{" +
+                "courseid=" + courseid +
+                ", mons='" + mons + '\'' +
+                ", mone='" + mone + '\'' +
+                ", tues='" + tues + '\'' +
+                ", tued='" + tued + '\'' +
+                ", weds='" + weds + '\'' +
+                ", wede='" + wede + '\'' +
+                ", thurs='" + thurs + '\'' +
+                ", thure='" + thure + '\'' +
+                ", fris='" + fris + '\'' +
+                ", frie='" + frie + '\'' +
+                ", sats='" + sats + '\'' +
+                ", sate='" + sate + '\'' +
+                ", suns='" + suns + '\'' +
+                ", sune='" + sune + '\'' +
+                '}';
+    }
+
     private Integer courseid;
 
     private String mons;

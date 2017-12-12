@@ -26,8 +26,13 @@
 <form id="course" method="post" action="/addc">
   <table>
       <tr>
+          <td><span class="reds">*</span>课程编号：</td>
+          <td><input type="text" name="courseid" data-options="required:true" id="courseid1"/>
+          </td>
+      </tr>
+      <tr>
           <td><span class="reds">*</span>课程名：</td>
-          <td><input type="text" name="coursename" data-options="required:true,validType:'email',required:true" />
+          <td><input type="text" name="coursename" data-options="required:true" />
           </td>
       </tr>
       <tr>
@@ -70,51 +75,53 @@
     <table><form id="courseplan">
         <tr>
             <td> <span class="label label-success">星期一</span>&nbsp;&nbsp;</td>
+
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                <input id="courseid2" type="hidden" name="courseid" />
+                上课：<input id="mon" type=text name="mons"  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input type=text name="mone" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
             <td><span class="label label-success">星期二</span>&nbsp;&nbsp;</td>
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input name="tues"  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="tued" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
             <td><span class="label label-success">星期三</span>&nbsp;&nbsp;</td>
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input name="weds" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="wede" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
             <td><span class="label label-success">星期四</span>&nbsp;&nbsp;</td>
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input name="thurs" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="thure" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
             <td><span class="label label-success">星期五</span>&nbsp;&nbsp;</td>
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input name="fris" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="fried" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
             <td><span class="label label-success">星期六</span>&nbsp;&nbsp;</td>
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input name="sats" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="sate" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
             <td><span class="label label-success">星期日</span>&nbsp;&nbsp;</td>
             <td>
-                上课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input name="suns" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="sune" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
 
@@ -133,7 +140,7 @@
 <script>
     function add() {
         var course=$("#course").serialize();
-        alert(course);
+        alert($("#courseplan").serialize());
 
         $.ajax({
             type:"post",
@@ -141,7 +148,22 @@
             data:$("#course").serialize(),
             dataType:"text",
             success:function (data) {
-                alert(data);
+                if(data=='1'){
+
+                    $('#courseid2').val($('#courseid1').val());
+                    $.ajax({
+                        type:"post",
+                        url:"/addcourseplan",
+                        data:$("#courseplan").serialize(),
+                        dateType:"text",
+                        success:function (data) {
+                            if(data=='1'){
+
+                            }
+
+                        }
+                    })
+                }
             }
             });
 

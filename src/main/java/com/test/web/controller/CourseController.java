@@ -45,7 +45,7 @@ public class CourseController {
     @ResponseBody
     public String addCoursePlan(Courseplan coursePlan){
         try{
-
+            System.out.printf(coursePlan.toString());
             return "1";
         }catch (Exception e){
 
