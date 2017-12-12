@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GymManagerSystem:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SpringMVCTest.war">
+      <element id="artifact" artifact-name="GymManagerSystem:war exploded" />
+    </root>
+  </artifact>
+</component>

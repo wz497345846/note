@@ -1,159 +1,182 @@
-*{
+*,body{
     margin: 0;
     padding: 0;
-    font-family: Microsoft Yahei,Arial;
-}
-
-/*首页总体样式*/
-#total{
-    width: 100%;
-    height: 100%;
-    background: url(../img/index_bj.jpg) center 0 no-repeat scroll transparent;
-    background-color: black;
-    background-size: auto 100%;
-    z-index: -1;
-}
-
-/*头部样式*/
-#head{
-    height: 65px;
-    line-height: 65px;
-    background: rgba(0,0,0,.5);
-}
-
-/*logo样式*/
-#logo{
-    height: 65px;
-    line-height: 65px;
-    margin: 0 20%;
-    cursor: default;
-}
-
-.iconfont{
-
-    font-family: iconfont;
-    font-size: 38px;
-    color: rgb(255,255,255);
-}
-
-#logo > span{
-    color: rgb(255,255,255);
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 28px;
-    vertical-align:  top;
-}
-
-/*body样式*/
-#content{
-    margin-top: 50px;
-    height: 393px;
-}
-#content > div{
-    width: 322px;
-    height: 100%;
-    margin-left: 61%;
-    background: #fff;
-    border: 1px solid #eee;
-    opacity: .8;
-    border-radius: 2px;
-    box-shadow: 5px 5px 3px #333;
-}
-#login{
-    width: 100%;
-    font-family: Microsoft Yahei,Arial;
-    font-size: 20px;
-    text-align: center;
-    font-weight: 400;
-    padding: 50px 0 30px;
-}
-#data{
-    height: 201px;
-    padding: 0 30px;
-    text-align: center;
-    padding: 0 30px;
-}
-#data i{
-    font-size: 20px;
-    color: #bbb;
-    margin-left: 5px;
-    cursor: default;
-}
-#data input{
-    margin-left: 20px;
-    width: 200px;
-    height: 32px;
-    border-radius: 2px;
-    line-height: inherit;
-    border: 0;
-    outline: none;
-    padding: 5px 0;
-}
-.input{
-    height: 36px;
-    border-bottom: 1px solid #999;
-    margin-bottom: 15px;
-    padding-bottom: 3px;
-}
-
-#content button{
-    width: 258px;
-    height: 38px;
-    margin-top: 10px;
-    border-radius: 2px;
-    padding: 0 15px;
-    color: #fff;
-    background-color: #39f;
-    border-color: #39f;
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-#content button:hover{
-    opacity: .8;
-    transition: opacity .2s linear;
-}
-
-#more{
-    height: 19px;
-    margin: 30px 0;
-    text-align: center;
-    font-size: 13px;
-}
-#more a{
-    text-decoration: none;
-    color: #2e90f7;
-}
-#more a:hover{
-    color: rgb(206,55,85);
-    transition: color .2s linear;
-}
-#more span{
-    padding: 0 15px;
-    color: #ccc;
-    cursor: default;
-}
-#info{
-    height: 50px;
-    color: #ff4500;
-    text-align: center;
-    line-height: 50px;
+    font-family: Microsoft Microsoft Yahei, Arial;
     font-size: 12px;
-    font-family: Microsoft Yahei,Arial;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+#store{
+    width: 100%;
+    height: 52px;
+    line-height: 52px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #aaa;
+    background: #444;
+    margin-bottom: 25px;
+    cursor: default;
+}
+
+#menu{
+    width: 100%;
+    height: 384px;
+
+}
+#menu li{
+    width: 185px;
+    height: 41px;
+}
+
+#menu li a{
+    width: 135px;
+    line-height: 41px;
+    font-size: 14px;
+    color: #fafafa;
+    margin-left: 27.5px;
+}
+#menu span{
+    font-size: 15px;
+    margin-left: 24px;
+    margin-right: 39px;
+}
+#menu li:hover{
+    background-color: rgb(68,68,68);
+    transition: background-color .2s ease;
+}
+#menu i{
+    font-size: 18px;
+}
+
+#logo{
+    height: 152px;
+}
+#logo img{
+    width: 130px;
+    height: 130px;
+    display: block;
+    padding: 1px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+}
+
+.about-us{
+    position: fixed;
+    width: 185px;
+    bottom: 0;
+    text-align: center;
+    left: 0;
+    font-size: 12px;
+    color: #aaa;
+    padding: 12px 0;
+    border-top: 1px solid #3b3b3b;
+}
+.about-us a{
+    color: #fafafa;
+}
+
+#win{
+    overflow: hidden;
+}
+#content{
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+#content>p{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+#content ul{
+    list-style: none;
+}
+
+#one{
+    margin: 148px 0;
+    padding: 0;
+    width: 132px;
+    height: 187px;
     display: none;
 }
-#info > i{
-    color: #ff4500;
-    font-size: 17px;
-}
-/*版权声明*/
-#footer{
-    position: fixed;
-    bottom: 0;
-    padding: 10px 0;
-    width: 100%;
+.child_menu{
     text-align: center;
-    background: rgba(0,0,0,.5);
-    font-family: Microsoft Yahei,Arial;
-    font-size: 12px;
-    color: #F5F5F5;
+    font-size: 16px;
+    color: rgb(68,68,68);/*rgb(245,57,88)*/
 }
+.child_menu li{
+    margin: 1px auto;
+    height: 38px;
+    line-height: 38px;
+    background-color: rgb(234,234,234)
+}
+.child_menu li:hover{
+    background-color: rgb(221,221,221);
+    transition: background-color .2s ease;
+}
+.child_menu a{
+    color: black;
+}
+.child_menu a:hover{
+    color: rgb(245,57,88);
+    transition: color .2s ease;
+}
+
+#two{
+    margin: 188px 0;
+    padding: 0;
+    width: 132px;
+    height: 187px;
+    display: none;
+}
+#three{
+    margin: 198px 0;
+    padding: 0;
+    width: 132px;
+    height: 224px;
+    display: none;
+}
+#four{
+    margin: 300px 0;
+    padding: 0;
+    width: 132px;
+    height: 150px;
+    display: none;
+}
+#five{
+    margin: 340px 0;
+    padding: 0;
+    width: 132px;
+    height: 150px;
+    display: none;
+}
+#six{
+    margin: 467px 0;
+    padding: 0;
+    width: 132px;
+    height: 75px;
+    display: none;
+}
+#seven{
+    margin: 362px 0;
+    padding: 0;
+    width: 132px;
+    height: 224px;
+    display: none;
+}
+#eight{
+    margin: 312px 0;
+    padding: 0;
+    width: 132px;
+    height: 334px;
+    display: none;
+}
+/*.clk{
+    color: rgb(255,65,0);
+}*/
