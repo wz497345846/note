@@ -4,32 +4,51 @@ import com.test.pojo.Course;
 import com.test.pojo.Courseplan;
 import com.test.pojo.Coursetype;
 import com.test.pojo.Employee;
+import com.test.service.CoursePlanService;
+import com.test.service.CourseService;
+import com.test.service.CoursetypeService;
 import com.test.service.employee.EmployeeService;
 import com.test.service.impl.CourseServiceImpl;
 import com.test.service.impl.CoursetypeServiceImpl;
 import com.test.service.impl.employeeImpl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 @Controller
 public class CourseController {
     @Autowired
-    CourseServiceImpl courseService;
+    CourseService courseService;
     @Autowired
     EmployeeService employeeService;
     @Autowired
-    CoursetypeServiceImpl coursetypeService;
+    CoursetypeService coursetypeService;
+    @Autowired
+    CoursePlanService coursePlanService;
     @RequestMapping("/{sb}")
     public String sb(String sb){
         return sb;
     }
+
+    @RequestMapping("/allcourse")
+    @ResponseBody
+    public List<Course> allcourse(String page,String rows){
+        System.out.println("page"+page+"rows"+rows);
+      List<Course> list=  courseService.findCourse(null,Integer.parseInt(page),Integer.parseInt(rows));
+        System.out.println(list);
+        return list;
+    }
+
+    /**
+     * 添加课程
+     * @param course
+     * @return
+     */
     @RequestMapping("/addc")
     @ResponseBody
     public String addCourse(Course course){
@@ -41,18 +60,28 @@ public class CourseController {
        }
 
     }
+
+    /**
+     * 添加课程计划
+     * @param coursePlan
+     * @return
+     */
     @RequestMapping("/addcourseplan")
     @ResponseBody
     public String addCoursePlan(Courseplan coursePlan){
+        System.out.printf(coursePlan.toString());
         try{
-            System.out.printf(coursePlan.toString());
+            coursePlanService.addCourseplan(coursePlan);
             return "1";
         }catch (Exception e){
-
             return "0";
         }
     }
 
+    /**
+     * 返回所有课程类型
+     * @return
+     */
     @RequestMapping("/ctype")
     @ResponseBody
     public List<Map<String,String>> allType(){

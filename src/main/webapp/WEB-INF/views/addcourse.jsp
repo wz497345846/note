@@ -23,7 +23,7 @@
 </style>
 <body>
 
-<form id="course" method="post" action="/addc">
+<form id="course" onsubmit="return false;">
   <table>
       <tr>
           <td><span class="reds">*</span>课程编号：</td>
@@ -71,15 +71,15 @@
   </table>
 </form>
 <hr/>
-
-    <table><form id="courseplan">
+<form id="courseplan" onsubmit="return false;">
+    <table>
         <tr>
             <td> <span class="label label-success">星期一</span>&nbsp;&nbsp;</td>
 
             <td>
                 <input id="courseid2" type="hidden" name="courseid" />
-                上课：<input id="mon" type=text name="mons"  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input type=text name="mone" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                上课：<input id="mon" type=text name="mons"  class="easyui-timespinner"  style="width:80px;"  data-options="showSeconds:false" />
+                下课：<input type=text name="mone" class="easyui-timespinner"  style="width:80px;"  data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
@@ -107,7 +107,7 @@
             <td><span class="label label-success">星期五</span>&nbsp;&nbsp;</td>
             <td>
                 上课：<input name="fris" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
-                下课：<input name="fried" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                下课：<input name="frie" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
         <tr>
@@ -124,8 +124,6 @@
                 下课：<input name="sune" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
             </td>
         </tr>
-
-</form>
         <tr>
             <td>&nbsp;</td>
             <td></td>
@@ -136,12 +134,11 @@
     <td><button onclick="add()">添加</button></td>
 </tr>
 </table>
+</form>
 </body>
 <script>
     function add() {
         var course=$("#course").serialize();
-        alert($("#courseplan").serialize());
-
         $.ajax({
             type:"post",
             url:"/addc",
@@ -149,7 +146,6 @@
             dataType:"text",
             success:function (data) {
                 if(data=='1'){
-
                     $('#courseid2').val($('#courseid1').val());
                     $.ajax({
                         type:"post",
@@ -158,11 +154,16 @@
                         dateType:"text",
                         success:function (data) {
                             if(data=='1'){
-
+                                alert("添加成功");
+                                $("#course")[0].reset();
+                                $("#courseplan")[0].reset();
+                            }else{
+                                alert("添加失败")
                             }
-
                         }
                     })
+                }else{
+                    alert("添加失败");
                 }
             }
             });

@@ -4,7 +4,9 @@ import com.test.dao.CourseplanMapper;
 import com.test.pojo.Courseplan;
 import com.test.service.CoursePlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CoursePlanServiceImpl implements CoursePlanService {
     @Autowired
     CourseplanMapper courseplanMapper;

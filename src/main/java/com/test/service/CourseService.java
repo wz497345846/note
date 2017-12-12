@@ -2,6 +2,8 @@ package com.test.service;
 
 import com.test.pojo.Course;
 
+import java.util.List;
+
 public interface CourseService {
     /**
      * 添加健身房课程
@@ -9,4 +11,5 @@ public interface CourseService {
      * @return
      */
     int addCourse(Course course);
+    List<Course> findCourse(Course course,int offset,int row);
 }
