@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>主页</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
     <link rel="stylesheet" href="css/font_icon/iconfont.css">
@@ -76,18 +77,14 @@
         </div>
         <div id="three">
             <ul class="child_menu">
-                <li><a href="#">团课课表</a></li>
-                <li><a href="#">团课排课</a></li>
-                <li><a href="#">团课课程</a></li>
-                <li><a href="#">私教课表</a></li>
-                <li><a href="#">私教排课</a></li>
-                <li><a href="#">私教课程</a></li>
+                <li><a href="#" value="addcourse">添加课程</a></li>
+                <li><a href="#" value="showcourse">查看课程</a></li>
             </ul>
         </div>
         <div id="four">
             <ul class="child_menu">
-                <li><a href="#">员工查询</a></li>
-                <li><a href="#">新建员工</a></li>
+                <li><a href="#" value="stuff-query">员工查询</a></li>
+                <li><a href="#" value="stuff-create">新建员工</a></li>
                 <li><a href="#">角色与权限</a></li>
                 <li><a href="#">工资设置</a></li>
             </ul>
