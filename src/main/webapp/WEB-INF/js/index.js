@@ -80,13 +80,13 @@ $(document).ready(function () {
         $("#eight").css("display","none");
     });*/
 }).ready(function () {
-    $(".child_menu").find("li").first().children("a").click(function () {
-
+    $("#three").find("li:eq(0)").children("a").click(function () {
         $("#tabs").tabs('add',{
-            title:'New Tab',
-            closeable:true,
-            href:'stuff-query'
+            title:$(this).text(),
+            closable:true,
+            href:$(this).attr("value")
         });
+
         $("#one").css("display","none");
         $("#two").css("display","none");
         $("#three").css("display","none");
@@ -96,7 +96,55 @@ $(document).ready(function () {
         $("#seven").css("display","none");
         $("#eight").css("display","none");
     });
-        
+    $("#three").find("li:eq(1)").children("a").click(function () {
+        $("#tabs").tabs('add',{
+            title:$(this).text(),
+            closable:true,
+            href:$(this).attr("value")
+        });
+
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
+
+    $("#four").find("li:eq(0)").children("a").click(function () {
+        $("#tabs").tabs('add',{
+            title:$(this).text(),
+            closable:true,
+            href:$(this).attr("value")
+        });
+
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
+    $("#four").find("li:eq(1)").children("a").click(function () {
+        $("#tabs").tabs('add',{
+            title:$(this).text(),
+            closable:true,
+            href:$(this).attr("value")
+        });
+
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
     
 });/*.ready(function () {
     $(".allMenus").find("a").click(function () {
