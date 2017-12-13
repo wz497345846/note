@@ -30,10 +30,23 @@ public class BillController {
 
     @RequestMapping("/findAllBill")
     @ResponseBody
-    public DataGridModel findBillAll(@RequestParam(defaultValue="1") Integer page, @RequestParam(defaultValue="10") Integer rows)throws Exception{
+    public DataGridModel findBillAll(@RequestParam(defaultValue="1") Integer page, @RequestParam(defaultValue="5") Integer rows)throws Exception{
         return this.billService.findBillAll(page,rows);
     }
-    
+    @RequestMapping("/findById")
+    @ResponseBody
+    public Map<String, Integer> findByIdBill(Integer billid){
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        try{
+            this.billService.findBillById(billid);
+            map.put("state", 200);
+            return map;
+        }catch(Exception e){
+            e.printStackTrace();
+            map.put("state", 500);
+            return map;
+        }
+    }
     /**
      * 添加账单
      */

@@ -80,4 +80,14 @@ public class EmployeeController {
         List<Employee> list=employeeServiceImpl.selectEmployee(employee,pageNumber,pageSize);
         return list;
     }
+
+    /**
+     * 员工登录
+     */
+    @RequestMapping("/employeeLogin")
+    @ResponseBody
+    public List<Employee> employeeLogin(Employee employee){
+        List<Employee> list = employeeServiceImpl.employeeLogin(employee);
+        return list;
+    }
 }

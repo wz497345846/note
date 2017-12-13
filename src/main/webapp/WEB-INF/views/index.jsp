@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/course.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
     <%--<script type="text/javascript" src="js/member-query.js"></script>--%>
 </head>
 <body>
@@ -62,7 +63,7 @@
         <div id="one">
             <ul class="child_menu">
                 <li><a href="#" value="member-query">会员查询</a></li>
-                <li><a href="#">新建会员</a></li>
+                <li><a href="#">会员选课信息</a></li>
                 <li><a href="#">会员卡查询</a></li>
                 <li><a href="#">批量操作</a></li>
                 <li><a href="#">消息提醒</a></li>

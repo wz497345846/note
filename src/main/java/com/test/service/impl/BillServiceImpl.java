@@ -43,17 +43,14 @@ public class BillServiceImpl implements BillService {
         PageHelper.startPage(page, rows);
         BillExample example=new BillExample();
         List<Bill> list = this.billMapper.selectByExample(example);
-        for (Bill bill: list
-             ) {
-            System.out.println(bill);
-        }
         //总条数的获取
         PageInfo<Bill> p = new PageInfo<Bill>(list);
         long total = p.getTotal();
-
+        System.out.println("total:"+total);
         DataGridModel gm = new DataGridModel();
         gm.setRows(list);
         gm.setTotal(total);
+        System.out.println(gm.getRows()+"---------"+gm.getTotal());
         return gm;
     }
 
