@@ -112,4 +112,14 @@ public class CourseController {
         }
         return listmap;
     }
+    @RequestMapping("/delcourse")
+    @ResponseBody
+    public String dorpCourse(String id){
+        try{
+            courseService.dropCourse(Integer.parseInt(id));
+            return "1";
+        }catch (Exception e){
+            return "0";
+        }
+    }
 }

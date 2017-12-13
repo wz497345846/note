@@ -1,6 +1,7 @@
 package com.test.service.impl;
 
 import com.test.dao.CourseMapper;
+import com.test.dao.CourseplanMapper;
 import com.test.pojo.Course;
 import com.test.pojo.CourseExample;
 import com.test.service.CourseService;
@@ -16,10 +17,25 @@ import java.util.Map;
 public class CourseServiceImpl implements CourseService {
     @Autowired
     CourseMapper cm;
+    @Autowired
+    CourseplanMapper csm;
+
+    /**
+     * 添加课程
+     * @param course
+     * @return
+     */
     public int addCourse(Course course) {
         return cm.insertSelective(course);
     }
 
+    /**
+     * 查找课程
+     * @param course
+     * @param offset
+     * @param row
+     * @return
+     */
     public Map<String,Object> findCourse(Course course, int offset, int row) {
         Map<String,Object> map=new HashMap<String,Object>();
         RowBounds rowBounds=new RowBounds(offset,row);
@@ -29,6 +45,17 @@ public class CourseServiceImpl implements CourseService {
         map.put("rows",cm.selectByExampleWithRowbounds(example,rowBounds));
 
         return map;
+    }
+
+    /**
+     * 删除课程
+     * @param id
+     * @return
+     */
+    public void dropCourse(int id){
+
+        cm.deleteByPrimaryKey(id);
+        csm.deleteByPrimaryKey(id);
     }
 
 }
