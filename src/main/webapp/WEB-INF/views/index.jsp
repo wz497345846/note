@@ -21,7 +21,6 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/course.js"></script>
     <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-    <%--<script type="text/javascript" src="js/member-query.js"></script>--%>
 </head>
 <body>
 <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
@@ -62,11 +61,10 @@
     <div data-options="region:'center'<%--,title:'center title'--%>" style="background:#eee;">
         <div id="one">
             <ul class="child_menu">
-                <li><a href="#" value="member-query">会员查询</a></li>
-                <li><a href="#">会员选课信息</a></li>
-                <li><a href="#">会员卡查询</a></li>
-                <li><a href="#">批量操作</a></li>
-                <li><a href="#">消息提醒</a></li>
+                <li><a href="#" value="member-query">会员信息</a></li>
+                <li><a href="#" value="vip-course-search">会员选课信息</a></li>
+                <li><a href="#" value="vip-query">会员卡信息</a></li>
+                <li><a href="#" value="create-vip">办理会员</a></li>
             </ul>
         </div>
         <div id="two">
