@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.test.dao.MemberCourseMapper" >
-  <resultMap id="BaseResultMap" type="com.test.pojo.MemberCourse" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.MemberCourseKey" >
+    <id column="memberid" property="memberid" jdbcType="INTEGER" />
     <id column="courseid" property="courseid" jdbcType="INTEGER" />
-    <result column="memberid" property="memberid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    courseid, memberid
+    memberid, courseid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.MemberCourseExample" >
     select
@@ -81,15 +81,10 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from member_course
-    where courseid = #{courseid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="com.test.pojo.MemberCourseKey" >
     delete from member_course
-    where courseid = #{courseid,jdbcType=INTEGER}
+    where memberid = #{memberid,jdbcType=INTEGER}
+      and courseid = #{courseid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.test.pojo.MemberCourseExample" >
     delete from member_course
@@ -97,37 +92,37 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.test.pojo.MemberCourse" >
-    insert into member_course (courseid, memberid)
-    values (#{courseid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.test.pojo.MemberCourseKey" >
+    insert into member_course (memberid, courseid)
+    values (#{memberid,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.MemberCourse" >
+  <insert id="insertSelective" parameterType="com.test.pojo.MemberCourseKey" >
     insert into member_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="courseid != null" >
-        courseid,
-      </if>
       <if test="memberid != null" >
         memberid,
       </if>
+      <if test="courseid != null" >
+        courseid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="courseid != null" >
-        #{courseid,jdbcType=INTEGER},
-      </if>
       <if test="memberid != null" >
         #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByExampleSelective" parameterType="map" >
     update member_course
     <set >
-      <if test="record.courseid != null" >
-        courseid = #{record.courseid,jdbcType=INTEGER},
-      </if>
       <if test="record.memberid != null" >
         memberid = #{record.memberid,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseid != null" >
+        courseid = #{record.courseid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -136,25 +131,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update member_course
-    set courseid = #{record.courseid,jdbcType=INTEGER},
-      memberid = #{record.memberid,jdbcType=INTEGER}
+    set memberid = #{record.memberid,jdbcType=INTEGER},
+      courseid = #{record.courseid,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.MemberCourse" >
-    update member_course
-    <set >
-      <if test="memberid != null" >
-        memberid = #{memberid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where courseid = #{courseid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.MemberCourse" >
-    update member_course
-    set memberid = #{memberid,jdbcType=INTEGER}
-    where courseid = #{courseid,jdbcType=INTEGER}
   </update>
   <select resultMap="BaseResultMap" parameterType="com.test.pojo.MemberCourseExample" id="selectByExampleWithRowbounds" >
     select

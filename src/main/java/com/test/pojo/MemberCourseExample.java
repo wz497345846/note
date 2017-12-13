@@ -104,66 +104,6 @@ public class MemberCourseExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andCourseidIsNull() {
-            addCriterion("courseid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidIsNotNull() {
-            addCriterion("courseid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidEqualTo(Integer value) {
-            addCriterion("courseid =", value, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidNotEqualTo(Integer value) {
-            addCriterion("courseid <>", value, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidGreaterThan(Integer value) {
-            addCriterion("courseid >", value, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("courseid >=", value, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidLessThan(Integer value) {
-            addCriterion("courseid <", value, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidLessThanOrEqualTo(Integer value) {
-            addCriterion("courseid <=", value, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidIn(List<Integer> values) {
-            addCriterion("courseid in", values, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidNotIn(List<Integer> values) {
-            addCriterion("courseid not in", values, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidBetween(Integer value1, Integer value2) {
-            addCriterion("courseid between", value1, value2, "courseid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseidNotBetween(Integer value1, Integer value2) {
-            addCriterion("courseid not between", value1, value2, "courseid");
-            return (Criteria) this;
-        }
-
         public Criteria andMemberidIsNull() {
             addCriterion("memberid is null");
             return (Criteria) this;
@@ -221,6 +161,66 @@ public class MemberCourseExample {
 
         public Criteria andMemberidNotBetween(Integer value1, Integer value2) {
             addCriterion("memberid not between", value1, value2, "memberid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidIsNull() {
+            addCriterion("courseid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidIsNotNull() {
+            addCriterion("courseid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidEqualTo(Integer value) {
+            addCriterion("courseid =", value, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidNotEqualTo(Integer value) {
+            addCriterion("courseid <>", value, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidGreaterThan(Integer value) {
+            addCriterion("courseid >", value, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("courseid >=", value, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidLessThan(Integer value) {
+            addCriterion("courseid <", value, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidLessThanOrEqualTo(Integer value) {
+            addCriterion("courseid <=", value, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidIn(List<Integer> values) {
+            addCriterion("courseid in", values, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidNotIn(List<Integer> values) {
+            addCriterion("courseid not in", values, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidBetween(Integer value1, Integer value2) {
+            addCriterion("courseid between", value1, value2, "courseid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseidNotBetween(Integer value1, Integer value2) {
+            addCriterion("courseid not between", value1, value2, "courseid");
             return (Criteria) this;
         }
     }

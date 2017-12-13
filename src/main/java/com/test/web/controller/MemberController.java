@@ -62,7 +62,7 @@ public class MemberController {
      */
     @RequestMapping("updateMember")
     @ResponseBody
-    public Map updateMember(Membermanage membermanage,String id){
+    public Map updateMember(Membermanage membermanage, String id){
         membermanage.setMemberid(Integer.valueOf(id));
         boolean flag=memberServiceImpl.updateMember(membermanage);
         Map map=new HashMap();
