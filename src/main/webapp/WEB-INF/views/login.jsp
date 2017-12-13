@@ -27,7 +27,7 @@
             <div id="login">用户登录 / SIGN IN</div>
             <div id="data">
               <div class="input">
-                <i class="iconfont">&#xe601;</i><input id="phone" type="number" placeholder="请输入登录手机号">
+                <i class="iconfont">&#xe601;</i><input id="name" type="text" placeholder="请输入用户名">
               </div>
               <div class="input">
                 <i class="iconfont">&#xe6b2;</i><input id="pwd" type="password" placeholder="请输入登录密码">
@@ -42,7 +42,7 @@
               </div>
               <div id="info">
                 <i class="iconfont">&#xe502;</i>
-                <span id="message">请输入登录手机号</span>
+                <span id="message">请输入用户名</span>
               </div>
             </div>
           </div>

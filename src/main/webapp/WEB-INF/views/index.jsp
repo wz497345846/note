@@ -103,12 +103,12 @@
         </div>
         <div id="seven">
             <ul class="child_menu">
-                <li><a href="statistics?m=1">会员统计</a></li>
-                <li><a href="statistics?m=2">员工统计</a></li>
-                <li><a href="statistics?m=3">课程统计</a></li>
-                <li><a href="statistics?m=4">会员卡统计</a></li>
-                <li><a href="statistics?m=5">收支统计</a></li>
-                <li><a href="statistics?m=6">营业报表</a></li>
+                <li><a href="#" value="statistics?m=1">会员统计</a></li>
+                <li><a href="#" value="statistics?m=2">员工统计</a></li>
+                <li><a href="#" value="statistics?m=3">课程统计</a></li>
+                <li><a href="#" value="statistics?m=4">会员卡统计</a></li>
+                <li><a href="#" value="statistics?m=5">收支统计</a></li>
+                <li><a href="#" value="statistics?m=6">营业报表</a></li>
             </ul>
         </div>
         <div id="eight">
