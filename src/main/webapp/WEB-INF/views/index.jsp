@@ -20,7 +20,7 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/course.js"></script>
-    <%--<script type="text/javascript" src="js/member-query.js"></script>--%>
+    <script type="text/javascript" src="js/member-query.js"></script>
 </head>
 <body>
 <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
@@ -131,9 +131,9 @@
             <%--<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">--%>
                 <%--tab2--%>
             <%--</div>--%>
-            <%--<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">--%>
-                <%--tab3--%>
-            <%--</div>--%>
+            <%--<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">
+                首页
+            </div>--%>
         </div>
 
     </div>
