@@ -7,6 +7,7 @@ import com.test.service.impl.MemberTypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 
@@ -15,16 +16,20 @@ public class CreateVipController {
     @Autowired
     private MemberServiceImpl memberServiceImpl;
 
-   @RequestMapping("createVip")
+    @Autowired
+    private MemberTypeServiceImpl memberTypeServiceImpl;
+
+   @RequestMapping("/createVip")
+   @ResponseBody
    public Map createVip(Membermanage membermanage, MemberType memberType){
-       List<MemberType> list=new MemberTypeServiceImpl().getAllVipTypesService();
+       List<MemberType> list=memberTypeServiceImpl.getAllVipTypesService();
        for (MemberType m :list) {
            if (memberType.getMembertypeId()==m.getMembertypeId()){
                Date today=new Date();
                membermanage.setStarttime(today);
                Calendar calendar = new GregorianCalendar();
                calendar.setTime(today);
-               calendar.add(calendar.MONTH,memberType.getMonthTime());
+               calendar.add(calendar.MONTH,m.getMonthTime());
                membermanage.setEndtime(calendar.getTime());
            }
        }

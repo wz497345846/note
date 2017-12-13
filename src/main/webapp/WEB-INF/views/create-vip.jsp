@@ -29,8 +29,8 @@
         <th field="membersex" width="80" align="right">性别</th>
         <th field="memberbirth" width="60" formatter="DateTimeFormatter" name="memberbirth">生日</th>
         <th field="memberremark" width="60" align="center">会员类型</th>
-        <th field="starttime" width="60" align="center">办理会员时间</th>
-        <th field="endtime" width="150" align="center">到期时间</th>
+        <th field="starttime" width="150" align="center" formatter="DateTimeFormatter">办理会员时间</th>
+        <th field="endtime" width="150" align="center" formatter="DateTimeFormatter">到期时间</th>
     </tr>
     </thead>
 </table>
@@ -106,14 +106,13 @@
         if (row){
             $('#dlg').dialog('open').dialog('setTitle','修改用户');
             $('#fm').form('load',row);
-            url = '/createVip';
         }
     }
 
 
     function saveUser(){
         $('#fm').form('submit',{
-            url: url,
+            url: "/createVip",
             onSubmit: function(){
                 return $(this).form('validate');
             },
@@ -133,6 +132,9 @@
     }
 
     function DateTimeFormatter(value) {
+        if (value==null){
+            return;
+        }
         var date = new Date(value);
         var year = date.getFullYear().toString();
         var month = (date.getMonth() + 1);
@@ -160,10 +162,11 @@
 
     $.fn.datebox.defaults.parser = function(s){
         var t = Date.parse(s);
+
         if (!isNaN(t)){
             return new Date(t);
         } else {
-            return new Date();
+            return;
         }
     }
 </script>

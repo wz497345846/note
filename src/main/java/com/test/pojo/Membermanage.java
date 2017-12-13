@@ -112,4 +112,21 @@ public class Membermanage {
     public void setMemberdesc(String memberdesc) {
         this.memberdesc = memberdesc;
     }
+
+    @Override
+    public String toString() {
+        return "Membermanage{" +
+                "memberid=" + memberid +
+                ", membername='" + membername + '\'' +
+                ", starttime=" + starttime +
+                ", memberphone='" + memberphone + '\'' +
+                ", membersex='" + membersex + '\'' +
+                ", endtime=" + endtime +
+                ", memberbirth=" + memberbirth +
+                ", referee='" + referee + '\'' +
+                ", empid=" + empid +
+                ", memberremark='" + memberremark + '\'' +
+                ", memberdesc='" + memberdesc + '\'' +
+                '}';
+    }
 }
