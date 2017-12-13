@@ -182,7 +182,126 @@ function showcourseonload() {
     });
 
 }
+//假数据
+function sta02() {
+    $(function () {
+        // Radialize the colors
+        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+            return {
+                radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        });
+        // 构建图表
+        $('#container02').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '三建客员工占比'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        },
+                        connectorColor: 'silver'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '员工占比',
+                data: [
+                    ['前台',   6],
+                    ['教练',   14],
+                    {
+                        name: '老板',
+                        y: 4,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['店长',    3],
+                    ['销售经理',     4],
+                    ['销售',   12],
+                    ['会籍经理',   3]
+                ]
+            }]
+        });
+    });
 
+}
+
+//假数据
+function sta01() {
+    $(function () {
+        $('#container01').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+            title: {
+                text: '会员卡<br>占比',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 50
+            },
+            tooltip: {
+                headerFormat: '{series.name}<br>',
+                pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: 'bold',
+                            color: 'white',
+                            textShadow: '0px 1px 2px black'
+                        }
+                    },
+                    startAngle: -90,
+                    endAngle: 90,
+                    center: ['50%', '75%']
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '会员卡占比',
+                innerSize: '50%',
+                data: [
+                    ['半年卡',   45.0],
+                    ['年卡',       26.8],
+                    ['月卡', 12.8],
+                    ['季卡',    8.5],
+                    {
+                        name: '其他',
+                        y: 0.7,
+                        dataLabels: {
+                            // 数据比较少，没有空间显示数据标签，所以将其关闭
+                            enabled: false
+                        }
+                    }
+                ]
+            }]
+        });
+    });
+}
 
 //假数据
 function sta1() {
