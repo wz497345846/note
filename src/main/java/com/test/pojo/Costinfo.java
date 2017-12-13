@@ -40,14 +40,4 @@ public class Costinfo {
     public void setCostplandesc(String costplandesc) {
         this.costplandesc = costplandesc;
     }
-
-    @Override
-    public String toString() {
-        return "Costinfo{" +
-                "costinfoid=" + costinfoid +
-                ", billid=" + billid +
-                ", costiteam=" + costiteam +
-                ", costplandesc='" + costplandesc + '\'' +
-                '}';
-    }
 }
