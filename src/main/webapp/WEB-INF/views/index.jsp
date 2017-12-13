@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/course.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
     <%--<script type="text/javascript" src="js/member-query.js"></script>--%>
 </head>
 <body>

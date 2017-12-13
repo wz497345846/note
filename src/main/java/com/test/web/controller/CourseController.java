@@ -31,6 +31,15 @@ public class CourseController {
         return sb;
     }
 
+    @RequestMapping("/statistics")
+    public String statistics(String m){
+        System.out.println(m);
+        switch(m){
+            case "3":return "sta";
+        }
+        return "index";
+    }
+
     /**
      * 修改课程
      * @param course
