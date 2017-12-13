@@ -7,7 +7,10 @@
 a{
     text-decoration: none;
 }
-a:hover{
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}
+a:visited{
     text-decoration: none;
 }
 ul{
