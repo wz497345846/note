@@ -131,6 +131,9 @@
 </div>
 
 <script>
+    $().ready(function () {
+        alert(1);
+    });
     var url;
 
     function doSearch() {
