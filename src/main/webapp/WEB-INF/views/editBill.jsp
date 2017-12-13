@@ -53,7 +53,7 @@
     }];
 </script>
 
-<table id="tta" class="easyui-datagrid" data-options="pageSize:10,toolbar:tool,pagination:true,url:'bill/findAllBill',singleSelect:false">
+<table id="tta" class="easyui-datagrid" data-options="rownumbers:true,pageSize:10,toolbar:tool,pagination:true,url:'bill/findAllBill',singleSelect:false">
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
