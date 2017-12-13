@@ -50,6 +50,7 @@
 					<li data-options="attributes:{value:'showcourse'}">查看课程</li>
 					<li data-options="attributes:{value:'findBill'}">查看订单</li>
 					<li data-options="attributes:{value:'editBill'}">编辑订单</li>
+					<li data-options="attributes:{value:'member-query'}">查看会员</li>
 				</ul>
 			</li>
     	</ul>

@@ -42,7 +42,7 @@
               </div>
               <div id="info">
                 <i class="iconfont">&#xe502;</i>
-                <span id="message">请输入用户名</span>
+                <span id="message"></span>
               </div>
             </div>
           </div>

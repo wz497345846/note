@@ -21,8 +21,9 @@ public class MemberTypeController {
      */
     @RequestMapping("/getMemberTypes")
     @ResponseBody
-    public List<MemberType> getMemberTypes(String membertype_name,String month_time){
-        List<MemberType> list=memberTypeServiceImpl.getMemberTypes(membertype_name,month_time);
+    public List<MemberType> getMemberTypes(MemberType memberType, String page, String rows){
+        List<MemberType> list=memberTypeServiceImpl.getMemberTypes(memberType,page,rows);
+        System.out.println(list);
         return list;
     }
 

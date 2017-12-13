@@ -1,6 +1,7 @@
 $(document).ready(function(){
    $("button").click(function(){
-       if($("#name").val().length == 0 || $("#phone").val() == ""){
+       if($("#name").val().length == 0 || $("#name").val() == ""){
+           $("#message").html("请输入用户名");
            $("#info").css("display" , "block");
        }/*else if($("#name").val().length != 11){
            $("#message").html("手机号码格式错误");
@@ -13,16 +14,26 @@ $(document).ready(function(){
            var name = $("#name").val();
            var pwd = $("#pwd").val();
            $.ajax({
-               url : "/selectEmployee",
+               url : "/employeeLogin",
                method : "post",
                data : {
                    empname:name,
-                   empstate:$("#empstate").combobox('getValue'),
-                   roleid:$("#roleid").combobox('getValue'),
-                   pageNumber : page_Number,
-                   pageSize : page_Size
+                   emppwd:pwd,
+               },
+               dataType:"json",
+               success:function (data) {
+                   if(data == ""){
+                       $("#message").html("用户名或密码错误");
+                       $("#info").css("display" , "block");
+                   }else{
+                       window.location.href="index";
+                   }
+               },
+               error:function () {
+                   $("#message").html("服务器正忙");
+                   $("#info").css("display" , "block");
                }
-           })
+           });
        }
    });
 });

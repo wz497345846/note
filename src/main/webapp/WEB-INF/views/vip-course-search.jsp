@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: peng
   Date: 17-12-13
-  Time: 下午2:57
+  Time: 下午4:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>会员卡查询</title>
+    <title>会员课程查询</title>
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
@@ -17,68 +17,58 @@
 </head>
 <body>
 <table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
-       url="/getMemberTypes" toolbar="#tb"
-       title="会员卡信息" iconCls="icon-save"
+       url="/getUserCourse" toolbar="#tb"
+       title="会员选课信息" iconCls="icon-save"
        buttons="#dlg-buttons"
        rownumbers="true" pagination="true">
     <thead>
     <tr>
-        <th field="membertypeId" width="80">#</th>
-        <th field="membertypeName" width="80">会员卡类型</th>
-        <th field="membertypeCost" width="80" align="right">会员卡价格</th>
-        <th field="monthTime" width="80" align="right">会员时长（月）</th>
+        <th field="courseid" width="80">#</th>
+        <th field="coursename" width="80">课程名</th>
+        <th field="coursetype" width="80" align="right">课程类型</th>
+        <th field="empid" width="80" align="right">教练</th>
+        <th field="currentnum" width="80" align="right">课程时费</th>
+        <th field="coursecount" width="80" align="right">最多人数</th>
+        <th field="curriculumstart" width="80" align="right">开始时间</th>
+        <th field="curriculumend" width="80" align="right">结束时间</th>
     </tr>
     </thead>
 </table>
 
 <div id="tb" style="padding:3px">
     <div>
-        <span>会员卡类型:</span>
-        <input id="membertypeName" style="line-height:26px;border:1px solid #ccc">
-        <span>会员时长（月）:</span>
-        <input id="monthTime" style="line-height:26px;border:1px solid #ccc">
+        <span>会员编号:</span>
+        <input id="memberid" style="line-height:26px;border:1px solid #ccc">
         <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
     </div>
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建会员卡</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑会员卡</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除会员卡</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建选课</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除选课</a>
     </div>
 </div>
 
 
 <div id="dlg" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
      closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">用户信息：</div>
+    <div class="ftitle">添加课程：</div>
     <form id="fm" method="post">
         <table>
             <tr>
                 <td>
-                    <label>会员卡类型:</label>
+                    <label>会员编号:</label>
                 </td>
                 <td>
-                    <input name="membertypeName"  class="easyui-validatebox" required="true">
+                    <input name="memberid"  class="easyui-validatebox" required="true">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label>会员卡价格:</label>
+                    <label>课程编号:</label>
                 </td>
                 <td>
-                    <input name="membertypeCost"  class="easyui-validatebox" required="true">
+                    <input name="courseid"  class="easyui-validatebox" required="true">
                 </td>
             </tr>
-
-
-            <tr>
-                <td>
-                    <label>会员时长（月）:</label>
-                </td>
-                <td>
-                    <input name="monthTime" class="easyui-validatebox" required="true">
-                </td>
-            </tr>
-
         </table>
     </form>
 </div>
@@ -88,32 +78,24 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
 </div>
 
+
 <script>
 
     var url;
 
     function doSearch() {
         $('#tt').datagrid('load', {
-            membertypeName: $('#membertypeName').val(),
-            monthTime: $('#monthTime').val()
+            memberid: $('#memberid').val(),
         });
     }
 
     function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建会员卡信息');
+        $('#dlg').dialog('open').dialog('setTitle','新建选课信息');
         $('#fm').form('clear');
-        url = '/createMemberType';
+        url = '/createUserCourse';
     }
 
 
-    function editUser() {
-        var row = $('#tt').datagrid('getSelected');
-        if (row){
-            $('#dlg').dialog('open').dialog('setTitle','修改会员卡信息');
-            $('#fm').form('load',row);
-            url = '/updateMemberType?id='+row.membertypeId;
-        }
-    }
 
     function saveUser(){
         $('#fm').form('submit',{
@@ -139,9 +121,9 @@
     function destroyUser(){
         var row = $('#tt').datagrid('getSelected');
         if (row){
-            $.messager.confirm('Confirm','你确定删除这个会员卡类型?',function(r){
+            $.messager.confirm('Confirm','你确定删除这个选课信息?',function(r){
                 if (r){
-                    $.post('/delMemberType',{id:row.membertypeId},function(result){
+                    $.post('/delMemberType',{memberid:row.memberid},function(result){
                         if (result.success){
                             $('#tt').datagrid('reload');	// reload the user data
                         } else {
