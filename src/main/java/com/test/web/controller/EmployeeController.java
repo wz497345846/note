@@ -31,6 +31,7 @@ public class EmployeeController {
      */
     @RequestMapping("createE")
     public String createEmployee(Employee employee, MultipartFile avatar, HttpServletRequest request) throws IOException {
+
         String str="error";
         String filename=avatar.getOriginalFilename();
         //修改文件名
