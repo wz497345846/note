@@ -55,7 +55,7 @@ public class BillController {
     /**
      * 编辑账单
      */
-    @RequestMapping("/editbf")
+    @RequestMapping("/updateBill")
     @ResponseBody
     public Map<String, Integer> updateBill(Bill bill){
         Map<String, Integer> map = new HashMap<String, Integer>();
@@ -73,9 +73,9 @@ public class BillController {
     /**
      * 删除账单
      */
-    @RequestMapping("/delBill")
+    @RequestMapping("/dropBill")
     @ResponseBody
-    public Map<String, Integer> delBill(Integer billid){
+    public Map<String, Integer> dropBill(Integer billid){
         Map<String, Integer> map = new HashMap<String, Integer>();
         try{
             this.billService.dropBillById(billid);

@@ -201,6 +201,27 @@ $(document).ready(function () {
         $("#seven").css("display","none");
         $("#eight").css("display","none");
     });
+
+    $("#one").find("li:eq(0)").children("a").click(function () {
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
+
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
     
 });/*.ready(function () {
     $(".allMenus").find("a").click(function () {
