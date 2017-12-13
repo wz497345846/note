@@ -12,7 +12,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -31,43 +33,51 @@ public class EmployeeController {
      */
     @RequestMapping("createE")
     public String createEmployee(Employee employee, MultipartFile avatar, HttpServletRequest request) throws IOException {
-
-        String str="error";
         String filename=avatar.getOriginalFilename();
         //修改文件名
         String newFileName= employee.getEmpname()+UUID.randomUUID().toString()+filename.substring(filename.lastIndexOf("."));
         employee.setEmpavatar(newFileName);
         boolean flag=employeeServiceImpl.addEmployee(employee);
+        Map map=new HashMap();
         if (flag){
             ServletContext sc=request.getSession().getServletContext();
             //根据servletcontext获取上下文绝对路径
             String realPath=sc.getRealPath("/WEB-INF/Upload/");
             avatar.transferTo(new File(realPath+newFileName));
-            str="stuff-query";
         }
-        return str;
+        return "index";
     }
 
     /**
      * 删除员工信息
      */
     @RequestMapping("deleteE")
-    public String deleteEmployee(Employee employee){
-        String str="error";
-        boolean flag=employeeServiceImpl.dropEmployee(employee);
+    @ResponseBody
+    public Map deleteEmployee(Employee employee){
+        boolean flag=employeeServiceImpl.deleteE(employee);
+        Map map=new HashMap();
         if (flag){
-            str="index";
+            map.put("success",true);
+        }else {
+            map.put("msg","服务器繁忙");
         }
-        return str;
+        return map;
     }
 
     /**
      * 修改员工信息
      */
-    @RequestMapping("changeEmployee")
-    public String changeEmployeebp(Employee employee){
-        boolean flag=employeeServiceImpl.updateEmployee(employee);
-        return null;
+    @RequestMapping("/changeEmployee")
+    @ResponseBody
+    public Map changeEmployeebp(Employee employee){
+        boolean flag=employeeServiceImpl.changeEmployee(employee);
+        Map map=new HashMap();
+        if (flag){
+            map.put("success",true);
+        }else {
+            map.put("msg","服务器繁忙");
+        }
+        return map;
     }
 
 
@@ -89,5 +99,16 @@ public class EmployeeController {
     public List<Employee> employeeLogin(Employee employee){
         List<Employee> list = employeeServiceImpl.employeeLogin(employee);
         return list;
+    }
+
+
+    /**
+     *  查询所有员工信息
+     */
+
+    @RequestMapping("/getallEmployee")
+    @ResponseBody
+    public List<Employee> getallEmployee(){
+        return employeeServiceImpl.getAllEmployee();
     }
 }

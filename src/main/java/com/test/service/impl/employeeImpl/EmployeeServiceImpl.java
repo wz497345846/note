@@ -92,4 +92,39 @@ public class EmployeeServiceImpl implements EmployeeService {
         return emp;
     }
 
+    /**
+     * 员工信息查询
+     */
+    @Override
+    public List<Employee> getAllEmployee() {
+        EmployeeExample employeeExample=new EmployeeExample();
+        EmployeeExample.Criteria criteria=employeeExample.createCriteria();
+        criteria.getAllCriteria();
+        return employeeMapper.selectByExample(employeeExample);
+    }
+
+    /**
+     * 删除员工信息
+     */
+    @Override
+    public boolean deleteE(Employee employee) {
+        int x=employeeMapper.deleteByPrimaryKey(employee.getEmpid());
+        if (x>0){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *  修改员工信息
+     */
+    @Override
+    public boolean changeEmployee(Employee employee) {
+        int x=employeeMapper.updateByPrimaryKeySelective(employee);
+        if (x > 0) {
+            return true;
+        }
+        return false;
+    }
+
 }

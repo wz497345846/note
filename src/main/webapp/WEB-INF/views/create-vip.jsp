@@ -16,10 +16,10 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 </head>
 <body>
-<table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
-       url="/getMembers" toolbar="#tb"
+<table id="tt7" class="easyui-datagrid" style="width:100%;height:100%"
+       url="/getMembers" toolbar="#tb7"
        title="办理会员" iconCls="icon-save"
-       buttons="#dlg-buttons"
+       buttons="#dlg-buttons7"
        rownumbers="true" pagination="true">
     <thead>
     <tr>
@@ -35,24 +35,24 @@
     </thead>
 </table>
 
-<div id="tb" style="padding:3px">
+<div id="tb7" style="padding:3px">
     <div>
         <span>姓名:</span>
-        <input id="membername" style="line-height:26px;border:1px solid #ccc">
+        <input id="membername7" style="line-height:26px;border:1px solid #ccc">
         <span>手机号:</span>
-        <input id="memberphone" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+        <input id="memberphone7" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch7()">Search</a>
     </div>
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="createVip()">办理会员</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="createVip7()">办理会员</a>
     </div>
 </div>
 
 
-<div id="dlg" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
+<div id="dlg7" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons7">
     <div class="ftitle">办理会员信息：</div>
-    <form id="fm" method="post">
+    <form id="fm7" method="post">
         <table>
             <tr>
                 <td>
@@ -86,35 +86,34 @@
     </form>
 </div>
 
-<div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">保存</a>
+<div id="dlg-buttons7">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser7()">保存</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
 </div>
 <script>
 
-    var url;
 
-    function doSearch() {
-        $('#tt').datagrid('load', {
-            membername: $('#membername').val(),
-            memberphone: $('#memberphone').val()
+    function doSearch7() {
+        $('#tt7').datagrid('load', {
+            membername: $('#membername7').val(),
+            memberphone: $('#memberphone7').val()
         });
     }
 
-    function createVip(){
-        var row = $('#tt').datagrid('getSelected');
+    function createVip7(){
+        var row = $('#tt7').datagrid('getSelected');
         if (row){
-            $('#dlg').dialog('open').dialog('setTitle','修改用户');
-            $('#fm').form('load',row);
+            $('#dlg7').dialog('open').dialog('setTitle','修改用户');
+            $('#fm7').form('load',row);
         }
     }
 
 
-    function saveUser(){
-        $('#fm').form('submit',{
+    function saveUser7(){
+        $('#fm7').form('submit',{
             url: "/createVip",
             onSubmit: function(){
-                return $(this).form('validate');
+                return $('#fm7').form('validate');
             },
             success: function(result){
                 var result = eval('('+result+')');
@@ -124,8 +123,8 @@
                         msg: result.errorMsg
                     });
                 } else {
-                    $('#dlg').dialog('close');		// close the dialog
-                    $('#tt').datagrid('reload');	// reload the user data
+                    $('#dlg7').dialog('close');		// close the dialog
+                    $('#tt7').datagrid('reload');	// reload the user data
                 }
             }
         });

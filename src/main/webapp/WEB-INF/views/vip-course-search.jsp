@@ -16,10 +16,10 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 </head>
 <body>
-<table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
-       url="/getUserCourse" toolbar="#tb"
+<table id="tt2" class="easyui-datagrid" style="width:100%;height:100%"
+       url="/getUserCourse" toolbar="#tb2"
        title="会员选课信息" iconCls="icon-save"
-       buttons="#dlg-buttons"
+       buttons="#dlg-buttons2"
        rownumbers="true" pagination="true">
     <thead>
     <tr>
@@ -35,23 +35,23 @@
     </thead>
 </table>
 
-<div id="tb" style="padding:3px">
+<div id="tb2" style="padding:3px">
     <div>
         <span>会员编号:</span>
-        <input id="memberid" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+        <input id="memberid2" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch2()">Search</a>
     </div>
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建选课</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除选课</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser2()">新建选课</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser2()">删除选课</a>
     </div>
 </div>
 
 
-<div id="dlg" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
+<div id="dlg2" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons2">
     <div class="ftitle">添加课程：</div>
-    <form id="fm" method="post">
+    <form id="fm2" method="post">
         <table>
             <tr>
                 <td>
@@ -73,35 +73,35 @@
     </form>
 </div>
 
-<div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">保存</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+<div id="dlg-buttons2">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser2()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg2').dialog('close')">取消</a>
 </div>
 
 
 <script>
 
-    var url;
+    var url2;
 
-    function doSearch() {
-        $('#tt').datagrid('load', {
-            memberid: $('#memberid').val(),
+    function doSearch2() {
+        $('#tt2').datagrid('load', {
+            memberid: $('#memberid2').val(),
         });
     }
 
-    function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建选课信息');
-        $('#fm').form('clear');
-        url = '/createUserCourse';
+    function newUser2(){
+        $('#dlg2').dialog('open').dialog('setTitle','新建选课信息');
+        $('#fm2').form('clear');
+        url2 = '/createUserCourse';
     }
 
 
 
-    function saveUser(){
-        $('#fm').form('submit',{
-            url: url,
+    function saveUser2(){
+        $('#fm2').form('submit',{
+            url: url2,
             onSubmit: function(){
-                return $(this).form('validate');
+                return $('#fm2').form('validate');
             },
             success: function(result){
                 var result = eval('('+result+')');
@@ -111,21 +111,21 @@
                         msg: result.errorMsg
                     });
                 } else {
-                    $('#dlg').dialog('close');		// close the dialog
-                    $('#tt').datagrid('reload');	// reload the user data
+                    $('#dlg2').dialog('close');		// close the dialog
+                    $('#tt2').datagrid('reload');	// reload the user data
                 }
             }
         });
     }
 
-    function destroyUser(){
-        var row = $('#tt').datagrid('getSelected');
+    function destroyUser2(){
+        var row = $('#tt2').datagrid('getSelected');
         if (row){
             $.messager.confirm('Confirm','你确定删除这个选课信息?',function(r){
                 if (r){
-                    $.post('/delMemberType',{memberid:$("#memberid").val(),courseid:row.courseid},function(result){
+                    $.post('/delUserCourse',{memberid:$("#memberid2").val(),courseid:row.courseid},function(result){
                         if (result.success){
-                            $('#tt').datagrid('reload');	// reload the user data
+                            $('#tt2').datagrid('reload');	// reload the user data
                         } else {
                             $.messager.show({	// show error message
                                 title: 'Error',

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>会员卡查询</title>
+    <title>会员类型查询</title>
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
@@ -16,10 +16,10 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 </head>
 <body>
-<table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
-       url="/getMemberTypes" toolbar="#tb"
+<table id="tta" class="easyui-datagrid" style="width:100%;height:100%"
+       url="/getMemberTypes" toolbar="#tba"
        title="会员卡信息" iconCls="icon-save"
-       buttons="#dlg-buttons"
+       buttons="#dlg-buttonsa"
        rownumbers="true" pagination="true">
     <thead>
     <tr>
@@ -31,26 +31,26 @@
     </thead>
 </table>
 
-<div id="tb" style="padding:3px">
+<div id="tba" style="padding:3px">
     <div>
         <span>会员卡类型:</span>
-        <input id="membertypeName" style="line-height:26px;border:1px solid #ccc">
+        <input id="membertypeNamea" style="line-height:26px;border:1px solid #ccc">
         <span>会员时长（月）:</span>
-        <input id="monthTime" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+        <input id="monthTimea" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearcha()">Search</a>
     </div>
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建会员卡</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑会员卡</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除会员卡</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUsera()">新建会员卡</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUsera()">编辑会员卡</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUsera()">删除会员卡</a>
     </div>
 </div>
 
 
-<div id="dlg" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
+<div id="dlga" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttonsa">
     <div class="ftitle">用户信息：</div>
-    <form id="fm" method="post">
+    <form id="fma" method="post">
         <table>
             <tr>
                 <td>
@@ -83,41 +83,41 @@
     </form>
 </div>
 
-<div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">保存</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+<div id="dlg-buttonsa">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUsera()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlga').dialog('close')">取消</a>
 </div>
 
 <script>
 
-    var url;
+    var urla;
 
-    function doSearch() {
-        $('#tt').datagrid('load', {
-            membertypeName: $('#membertypeName').val(),
-            monthTime: $('#monthTime').val()
+    function doSearcha() {
+        $('#tta').datagrid('load', {
+            membertypeName: $('#membertypeNamea').val(),
+            monthTime: $('#monthTimea').val()
         });
     }
 
-    function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建会员卡信息');
-        $('#fm').form('clear');
-        url = '/createMemberType';
+    function newUsera(){
+        $('#dlga').dialog('open').dialog('setTitle','新建会员卡信息');
+        $('#fma').form('clear');
+        urla = '/createMemberType';
     }
 
 
-    function editUser() {
-        var row = $('#tt').datagrid('getSelected');
+    function editUsera() {
+        var row = $('#tta').datagrid('getSelected');
         if (row){
-            $('#dlg').dialog('open').dialog('setTitle','修改会员卡信息');
-            $('#fm').form('load',row);
-            url = '/updateMemberType?id='+row.membertypeId;
+            $('#dlga').dialog('open').dialog('setTitle','修改会员卡信息');
+            $('#fma').form('load',row);
+            urla = '/updateMemberType?id='+row.membertypeId;
         }
     }
 
-    function saveUser(){
-        $('#fm').form('submit',{
-            url: url,
+    function saveUsera(){
+        $('#fma').form('submit',{
+            url: urla,
             onSubmit: function(){
                 return $(this).form('validate');
             },
@@ -129,21 +129,21 @@
                         msg: result.errorMsg
                     });
                 } else {
-                    $('#dlg').dialog('close');		// close the dialog
-                    $('#tt').datagrid('reload');	// reload the user data
+                    $('#dlga').dialog('close');		// close the dialog
+                    $('#tta').datagrid('reload');	// reload the user data
                 }
             }
         });
     }
 
-    function destroyUser(){
-        var row = $('#tt').datagrid('getSelected');
+    function destroyUsera(){
+        var row = $('#tta').datagrid('getSelected');
         if (row){
             $.messager.confirm('Confirm','你确定删除这个会员卡类型?',function(r){
                 if (r){
                     $.post('/delMemberType',{id:row.membertypeId},function(result){
                         if (result.success){
-                            $('#tt').datagrid('reload');	// reload the user data
+                            $('#tta').datagrid('reload');	// reload the user data
                         } else {
                             $.messager.show({	// show error message
                                 title: 'Error',

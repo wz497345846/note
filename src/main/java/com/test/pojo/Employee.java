@@ -100,4 +100,20 @@ public class Employee {
     public void setEmpstate(Integer empstate) {
         this.empstate = empstate;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empid=" + empid +
+                ", empavatar='" + empavatar + '\'' +
+                ", empname='" + empname + '\'' +
+                ", emppwd='" + emppwd + '\'' +
+                ", empsex='" + empsex + '\'' +
+                ", empphone='" + empphone + '\'' +
+                ", empsalary=" + empsalary +
+                ", roleid=" + roleid +
+                ", empdesc='" + empdesc + '\'' +
+                ", empstate=" + empstate +
+                '}';
+    }
 }

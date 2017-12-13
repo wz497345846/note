@@ -28,9 +28,10 @@ public class MemberController {
     /**
      * 新建会员
      */
-    @RequestMapping("createMember")
+    @RequestMapping("/createMember")
     @ResponseBody
     public Map createMember(Membermanage membermanage){
+        System.out.println(membermanage);
         boolean flag=memberServiceImpl.addMember(membermanage);
         Map map=new HashMap();
         if (flag){
@@ -44,7 +45,7 @@ public class MemberController {
     /**
      * 删除会员
      */
-    @RequestMapping("delMember")
+    @RequestMapping("/delMember")
     @ResponseBody
     public Map delMember(String id){
         boolean flag=memberServiceImpl.delMember(id);
@@ -60,9 +61,10 @@ public class MemberController {
     /**
      * 编辑会员
      */
-    @RequestMapping("updateMember")
+    @RequestMapping("/updateMember")
     @ResponseBody
     public Map updateMember(Membermanage membermanage, String id){
+        System.out.println(membermanage);
         membermanage.setMemberid(Integer.valueOf(id));
         boolean flag=memberServiceImpl.updateMember(membermanage);
         Map map=new HashMap();

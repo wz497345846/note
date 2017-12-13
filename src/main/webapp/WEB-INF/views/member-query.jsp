@@ -6,19 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>会员查询</title>
-    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-</head>
-<body>
 
-<table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
-       url="/getMembers" toolbar="#tb"
+
+<table id="ttb" class="easyui-datagrid" style="width:100%;height:100%"
+       url="/getMembers" toolbar="#tbb"
        title="会员信息" iconCls="icon-save"
        buttons="#dlg-buttons"
        rownumbers="true" pagination="true">
@@ -28,7 +19,7 @@
         <th field="membername" width="80">姓名</th>
         <th field="memberphone" width="80" align="right">手机号</th>
         <th field="membersex" width="80" align="right">性别</th>
-        <th field="memberbirth" width="60" formatter="DateTimeFormatter" name="memberbirth">生日</th>
+        <th field="memberbirth" width="120" formatter="DateTimeFormatter" name="memberbirth">生日</th>
         <th field="referee" width="60" align="center">推荐人</th>
         <th field="memberremark" width="60" align="center">会员标记</th>
         <th field="memberdesc" width="150" align="center">备注</th>
@@ -36,33 +27,33 @@
     </thead>
 </table>
 
-<div id="tb" style="padding:3px">
-        <div>
-            <span>姓名:</span>
-            <input id="membername" style="line-height:26px;border:1px solid #ccc">
-            <span>手机号:</span>
-            <input id="memberphone" style="line-height:26px;border:1px solid #ccc">
-            <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
-        </div>
+<div id="tbb" style="padding:3px">
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建用户</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑用户</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
+        <span>姓名:</span>
+        <input id="membernameb" style="line-height:26px;border:1px solid #ccc">
+        <span>手机号:</span>
+        <input id="memberphoneb" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearchb()">Search</a>
+    </div>
+    <div>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUserb()">新建用户</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUserb()">编辑用户</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUserb()">删除用户</a>
     </div>
 </div>
 
 
-<div id="dlg" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
+<div id="dlgb" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttonsb">
     <div class="ftitle">用户信息：</div>
-    <form id="fm" method="post">
+    <form id="fmm" method="post">
         <table>
             <tr>
                 <td>
                     <label>姓名:</label>
                 </td>
                 <td>
-                    <input name="membername"  class="easyui-validatebox" required="true">
+                    <input name="membername" class="easyui-validatebox" required="true">
                 </td>
             </tr>
             <tr>
@@ -88,7 +79,7 @@
 
                 </td>
                 <td>
-                    <input type="text" class="easyui-datebox" formatter="DateTimeFormatter"  name="memberbirth">
+                    <input type="text" class="easyui-datebox" formatter="DateTimeFormatter" name="memberbirth">
 
                 </td>
             </tr>
@@ -108,7 +99,6 @@
                 </td>
                 <td>
                     <input name="memberdesc" class="easyui-validatebox">
-
                 </td>
             </tr>
 
@@ -116,80 +106,77 @@
     </form>
 </div>
 
-<div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">保存</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+<div id="dlg-buttonsb">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUserb()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlgb').dialog('close')">取消</a>
 </div>
 <script>
+    var urlb;
 
-    var url;
-
-    function doSearch() {
-        $('#tt').datagrid('load', {
-            membername: $('#membername').val(),
-            memberphone: $('#memberphone').val()
+    function doSearchb() {
+        $('#ttb').datagrid('load', {
+            membername: $('#membernameb').val(),
+            memberphone: $('#memberphoneb').val()
         });
     }
 
-    function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建用户');
-        $('#fm').form('clear');
-        url = '/createMember';
+    function newUserb() {
+        $('#dlgb').dialog('open').dialog('setTitle', '新建用户');
+        $('#fmm').form('clear');
+        urlb = '/createMember';
     }
 
 
-    function editUser() {
-        var row = $('#tt').datagrid('getSelected');
-        if (row){
-            $('#dlg').dialog('open').dialog('setTitle','修改用户');
-            $('#fm').form('load',row);
-            url = '/updateMember?id='+row.memberid;
+    function editUserb() {
+
+        var row = $('#ttb').datagrid('getSelected');
+        if (row) {
+            $('#dlgb').dialog('open').dialog('setTitle', '修改用户');
+            $('#fmm').form('load', row);
+            urlb = '/updateMember';
         }
     }
 
-    function saveUser(){
-        $('#fm').form('submit',{
-            url: url,
-            onSubmit: function(){
-                return $(this).form('validate');
+    function saveUserb() {
+        $('#fmm').form('submit', {
+            url: urlb,
+            onSubmit: function () {
+                return $('#fmm').form('validate');
             },
-            success: function(result){
-                var result = eval('('+result+')');
-                if (result.errorMsg){
+            success: function (result) {
+                var result = eval('(' + result + ')');
+                if (result.errorMsg) {
                     $.messager.show({
                         title: 'Error',
                         msg: result.errorMsg
                     });
                 } else {
-                    $('#dlg').dialog('close');		// close the dialog
-                    $('#tt').datagrid('reload');	// reload the user data
+                    $('#dlgb').dialog('close');		// close the dialog
+                    $('#ttb').datagrid('reload');	// reload the user data
                 }
             }
         });
     }
 
-    function destroyUser(){
-        var row = $('#tt').datagrid('getSelected');
-        if (row){
-            $.messager.confirm('Confirm','你确定删除这个会员?',function(r){
-                if (r){
-                    $.post('/delMember',{id:row.memberid},function(result){
-                        if (result.success){
-                            $('#tt').datagrid('reload');	// reload the user data
+    function destroyUserb() {
+        var row = $('#ttb').datagrid('getSelected');
+        if (row) {
+            $.messager.confirm('Confirm', '你确定删除这个会员?', function (r) {
+                if (r) {
+                    $.post('/delMember', {id: row.memberid}, function (result) {
+                        if (result.success) {
+                            $('#ttb').datagrid('reload');	// reload the user data
                         } else {
                             $.messager.show({	// show error message
                                 title: 'Error',
                                 msg: result.errorMsg
                             });
                         }
-                    },'json');
+                    }, 'json');
                 }
             });
         }
     }
-
-
-
 
     function DateTimeFormatter(value) {
         var date = new Date(value);
@@ -217,14 +204,12 @@
         return year + "/" + month + "/" + day;
     }
 
-    $.fn.datebox.defaults.parser = function(s){
+    $.fn.datebox.defaults.parser = function (s) {
         var t = Date.parse(s);
-        if (!isNaN(t)){
+        if (!isNaN(t)) {
             return new Date(t);
         } else {
             return new Date();
         }
     }
 </script>
-</body>
-</html>

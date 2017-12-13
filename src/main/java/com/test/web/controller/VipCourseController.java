@@ -30,6 +30,7 @@ public class VipCourseController {
     @RequestMapping("createUserCourse")
     @ResponseBody
     public Map createUserCourse(Course course, Membermanage membermanage){
+
         boolean flag=vipCourseServiceImpl.addUserCourse(course,membermanage);
         Map map=new HashMap();
         if (flag){
@@ -46,6 +47,7 @@ public class VipCourseController {
     @RequestMapping("delUserCourse")
     @ResponseBody
     public Map delUserCourse(Course course,Membermanage membermanage){
+
         boolean flag=vipCourseServiceImpl.delUserCourse(course,membermanage);
         Map map=new HashMap();
         if (flag){
