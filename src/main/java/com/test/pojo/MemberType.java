@@ -1,8 +1,6 @@
 package com.test.pojo;
 
-import java.io.Serializable;
-
-public class MemberType implements Serializable{
+public class MemberType {
     private Integer membertypeId;
 
     private String membertypeName;
@@ -42,6 +40,4 @@ public class MemberType implements Serializable{
     public void setMonthTime(Integer monthTime) {
         this.monthTime = monthTime;
     }
-
-
 }

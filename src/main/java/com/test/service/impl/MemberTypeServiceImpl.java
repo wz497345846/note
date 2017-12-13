@@ -14,20 +14,7 @@ public class MemberTypeServiceImpl implements MemberTypeService {
     @Autowired
     private MemberTypeMapper memberTypeMapper;
 
-    /**
-     *  根据条件获取相关会员卡类型信息
-     */
-    public List<MemberType> getMemberTypes(String membertype_name, String month_time) {
-        MemberTypeExample memberTypeExample=new MemberTypeExample();
-        MemberTypeExample.Criteria criteria=memberTypeExample.createCriteria();
-        if (membertype_name!=null&&membertype_name.length()>0){
-            criteria.andMembertypeNameLike(membertype_name);
-        }
-        if (month_time!=null&&month_time.length()>0){
-            criteria.andMonthTimeEqualTo(Integer.parseInt(month_time));
-        }
-        return memberTypeMapper.selectByExample(memberTypeExample);
-    }
+
 
     /**
      *  新建会员卡信息
@@ -60,5 +47,21 @@ public class MemberTypeServiceImpl implements MemberTypeService {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     *  根据条件获取相关会员卡类型信息
+     */
+    public List<MemberType> getMemberTypes(MemberType memberType, String page, String rows) {
+        MemberTypeExample memberTypeExample=new MemberTypeExample();
+        MemberTypeExample.Criteria criteria=memberTypeExample.createCriteria();
+        if (memberType.getMembertypeName()!=null&&memberType.getMembertypeName().length()>0){
+            criteria.andMembertypeNameLike(memberType.getMembertypeName());
+        }
+        if (memberType.getMonthTime()!=null&&memberType.getMonthTime()>0){
+            criteria.andMonthTimeEqualTo(memberType.getMonthTime());
+        }
+        return memberTypeMapper.selectByExample(memberTypeExample);
     }
 }

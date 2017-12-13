@@ -1,7 +1,7 @@
 package com.test.dao;
 
-import com.test.pojo.MemberCourse;
 import com.test.pojo.MemberCourseExample;
+import com.test.pojo.MemberCourseKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
@@ -9,23 +9,17 @@ import org.apache.ibatis.session.RowBounds;
 public interface MemberCourseMapper {
     int deleteByExample(MemberCourseExample example);
 
-    int deleteByPrimaryKey(Integer courseid);
+    int deleteByPrimaryKey(MemberCourseKey key);
 
-    int insert(MemberCourse record);
+    int insert(MemberCourseKey record);
 
-    int insertSelective(MemberCourse record);
+    int insertSelective(MemberCourseKey record);
 
-    List<MemberCourse> selectByExampleWithRowbounds(MemberCourseExample example, RowBounds rowBounds);
+    List<MemberCourseKey> selectByExampleWithRowbounds(MemberCourseExample example, RowBounds rowBounds);
 
-    List<MemberCourse> selectByExample(MemberCourseExample example);
+    List<MemberCourseKey> selectByExample(MemberCourseExample example);
 
-    MemberCourse selectByPrimaryKey(Integer courseid);
+    int updateByExampleSelective(@Param("record") MemberCourseKey record, @Param("example") MemberCourseExample example);
 
-    int updateByExampleSelective(@Param("record") MemberCourse record, @Param("example") MemberCourseExample example);
-
-    int updateByExample(@Param("record") MemberCourse record, @Param("example") MemberCourseExample example);
-
-    int updateByPrimaryKeySelective(MemberCourse record);
-
-    int updateByPrimaryKey(MemberCourse record);
+    int updateByExample(@Param("record") MemberCourseKey record, @Param("example") MemberCourseExample example);
 }
