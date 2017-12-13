@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%--<html>
 <head>
     <title>Title</title>
 </head>
@@ -16,7 +16,8 @@
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
-<body>
+<body>--%>
+
     <table id="coursegrid" class="easyui-datagrid">
         <thead>
         <tr>
@@ -47,7 +48,14 @@
     <div id="add">
         Window Content
     </div>
-</body>
+
+<script>
+    $(function () {
+        showcourseonload();
+    });
+
+</script>
+<%--</body>
 <script>
     $('#coursegrid').datagrid({
         title:'健生房课程',
@@ -146,4 +154,4 @@
     });
 
 </script>
-</html>
+</html>--%>
