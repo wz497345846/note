@@ -35,9 +35,13 @@ public class CourseController {
     public String statistics(String m){
         System.out.println(m);
         switch(m){
+
+            case "1":return "sta1";
+            case "2":return "sta02";
             case "3":return "sta";
+
         }
-        return "index";
+        return " ";
     }
 
     /**
