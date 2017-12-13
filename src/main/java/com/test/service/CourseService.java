@@ -13,4 +13,5 @@ public interface CourseService {
      */
     int addCourse(Course course);
     Map<String,Object> findCourse(Course course, int offset, int row);
+    void dropCourse(int id);
 }

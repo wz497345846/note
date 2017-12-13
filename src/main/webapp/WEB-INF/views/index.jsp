@@ -19,6 +19,7 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/course.js"></script>
 </head>
 <body>
 <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
@@ -85,16 +86,12 @@
             <ul class="child_menu">
                 <li><a href="#" value="stuff-query">员工查询</a></li>
                 <li><a href="#" value="stuff-create">新建员工</a></li>
-                <li><a href="#">角色与权限</a></li>
-                <li><a href="#">工资设置</a></li>
             </ul>
         </div>
         <div id="five">
             <ul class="child_menu">
-                <li><a href="#">商品售卖</a></li>
-                <li><a href="#">商品库存</a></li>
-                <li><a href="#">账单</a></li>
-                <li><a href="#">资费项</a></li>
+                <li><a href="#" value="findBill">查看账单</a></li>
+                <li><a href="#" value="editBill">编辑账单</a></li>
             </ul>
         </div>
         <div id="six">

@@ -81,11 +81,15 @@ $(document).ready(function () {
     });*/
 }).ready(function () {
     $("#three").find("li:eq(0)").children("a").click(function () {
-        $("#tabs").tabs('add',{
-            title:$(this).text(),
-            closable:true,
-            href:$(this).attr("value")
-        });
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
 
         $("#one").css("display","none");
         $("#two").css("display","none");
@@ -97,11 +101,15 @@ $(document).ready(function () {
         $("#eight").css("display","none");
     });
     $("#three").find("li:eq(1)").children("a").click(function () {
-        $("#tabs").tabs('add',{
-            title:$(this).text(),
-            closable:true,
-            href:$(this).attr("value")
-        });
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
 
         $("#one").css("display","none");
         $("#two").css("display","none");
@@ -114,11 +122,15 @@ $(document).ready(function () {
     });
 
     $("#four").find("li:eq(0)").children("a").click(function () {
-        $("#tabs").tabs('add',{
-            title:$(this).text(),
-            closable:true,
-            href:$(this).attr("value")
-        });
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
 
         $("#one").css("display","none");
         $("#two").css("display","none");
@@ -130,12 +142,56 @@ $(document).ready(function () {
         $("#eight").css("display","none");
     });
     $("#four").find("li:eq(1)").children("a").click(function () {
-        $("#tabs").tabs('add',{
-            title:$(this).text(),
-            closable:true,
-            href:$(this).attr("value")
-        });
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
 
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
+
+    $("#five").find("li:eq(0)").children("a").click(function () {
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
+
+        $("#one").css("display","none");
+        $("#two").css("display","none");
+        $("#three").css("display","none");
+        $("#four").css("display","none");
+        $("#five").css("display","none");
+        $("#six").css("display","none");
+        $("#seven").css("display","none");
+        $("#eight").css("display","none");
+    });
+    $("#five").find("li:eq(1)").children("a").click(function () {
+        if($("#tabs").tabs("exists",$(this).text())){
+            $("#tabs").tabs("select",$(this).text());
+        }else{
+            $("#tabs").tabs('add',{
+                title:$(this).text(),
+                closable:true,
+                href:$(this).attr("value")
+            });
+        }
         $("#one").css("display","none");
         $("#two").css("display","none");
         $("#three").css("display","none");

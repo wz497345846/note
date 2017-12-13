@@ -12,7 +12,6 @@
 
     var contentPage = {
         submitForm:function(){
-
             if(!$('#myForm').form('validate')){
                 $.messager.alert('提示','信息不完整');
                 return ;
@@ -20,9 +19,8 @@
                 $.post("bill/addBill",$("#myForm").serialize(),function(data){
                     if(data.state == 200){
                         $.messager.alert('提示','添加成功');
-                        $("#myForm").form("reset");
-                        $("#d").window("close");
-                        $("#ta").datagrid("reload");
+                        $("#add").window("close");
+                        $("#tta").datagrid("reload");
                     }else{
                         $.messager.alert('提示','添加失败');
                     }
@@ -37,8 +35,9 @@
     };
 
 </script>
+
 <form id="myForm">
-    <table align="center" width="60%" >
+    <table  width="60%" align="center" cellpadding="5">
         <tr >
             <td>账单ID</td>
             <td>
@@ -59,26 +58,25 @@
     </tr>
         <tr>
             <td>支付类型</td>
-            <td style="width: 141px">
-                <select class="easyui-combobox" name="paytype">
-                    <option value="0">现金</option>
-                    <option value="1">支付宝</option>
-                    <option value="2">微信</option>
-                    <option value="3">刷卡</option>
+            <td>
+                <select class="easyui-combobox" name="paytype" style="width: 141px">
+                    <option value="现金">现金</option>
+                    <option value="支付宝">支付宝</option>
+                    <option value="微信">微信</option>
+                    <option value="刷卡">刷卡</option>
             </select>
             </td>
         </tr>
         <tr>
             <td>备注</td>
             <td>
-                <input class="easyui-textbox"  name="cost" data-options="multiline:true" style="height:60px">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" >
-                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="contentPage.submitForm()" data-options="iconCls:'icon-add'">提交</a>
-                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="contentPage.clearForm()">重置</a>
+                <input class="easyui-textbox"  name="billdesc" data-options="multiline:true" style="height:60px">
             </td>
         </tr>
     </table>
 </form>
+        <div style="text-align:center;padding:5px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="contentPage.submitForm()" data-options="iconCls:'icon-add'">添加</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="contentPage.clearForm()" data-options="iconCls:'icon-undo'">重置</a>
+        </div>

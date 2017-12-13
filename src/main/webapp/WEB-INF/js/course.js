@@ -1,62 +1,40 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gabriel
-  Date: 2017-12-12
-  Time: 10:12
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<html>
-<head>
-    <title>Title</title>
-</head>
-<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
-<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
-<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
-<body>--%>
 
-    <table id="coursegrid" class="easyui-datagrid">
-        <thead>
-        <tr>
-            <th data-options="filed:'ck',checkbox:true"></th>
-            <th data-options="field:'courseid',width:100">课程ID</th>
-            <th data-options="field:'empid',width:100">教练编号</th>
-            <th data-options="field:'coursename',width:100,align:'right'">课程名</th>
-            <th data-options="field:'coursetype',width:100">课程类型</th>
-            <th data-options="field:'coursefee',width:100">费用（元）</th>
-            <th data-options="field:'currentnum',width:100">当前人数</th>
-            <th data-options="field:'curriculumstart',width:100,sortable:true" >开课时间</th>
-            <th data-options="field:'curriculumend',width:100">课程结束时间</th>
-            <th data-options="field:'coursedesc',width:100">简介</th>
-        </tr>
-        </thead>
-     <%--   <tbody>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>10</td>
-        </tr>
-        </tbody>--%>
-    </table>
-
-    <div id="modify">
-        Window Content
-    </div>
-    <div id="add">
-        Window Content
-    </div>
-
-<script>
-    $(function () {
-        showcourseonload();
+function add() {
+    var course=$("#course").serialize();
+    $.ajax({
+        type:"post",
+        url:"/addc",
+        data:$("#course").serialize(),
+        dataType:"text",
+        success:function (data) {
+            if(data=='1'){
+                $('#courseid2').val($('#courseid1').val());
+                $.ajax({
+                    type:"post",
+                    url:"/addcourseplan",
+                    data:$("#courseplan").serialize(),
+                    dateType:"text",
+                    success:function (data) {
+                        if(data=='1'){
+                            alert("添加成功");
+                            $("#course")[0].reset();
+                            $("#courseplan")[0].reset();
+                        }else{
+                            alert("添加失败")
+                        }
+                    }
+                })
+            }else{
+                alert("添加失败");
+            }
+        }
     });
 
-</script>
-<%--</body>
-<script>
+}
+
+
+function showcourseonload() {
+//shoucourse.jsp
     $('#coursegrid').datagrid({
         title:'健生房课程',
         iconCls:'icon-edit',//图标
@@ -138,7 +116,7 @@
             }
         }],
     });
-    //设置分页控件
+//设置分页控件
     var p = $('#coursegrid').datagrid('getPager');
     $(p).pagination({
         pageSize: 10,//每页显示的记录条数，默认为10
@@ -153,5 +131,4 @@
         }
     });
 
-</script>
-</html>--%>
+}
