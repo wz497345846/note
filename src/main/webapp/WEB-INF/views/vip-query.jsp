@@ -1,54 +1,48 @@
 <%--
   Created by IntelliJ IDEA.
   User: peng
-  Date: 17-12-12
-  Time: 下午10:11
+  Date: 17-12-13
+  Time: 下午2:57
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>会员查询</title>
+    <title>会员卡查询</title>
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-
 </head>
 <body>
-
 <table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
-       url="/getMembers" toolbar="#tb"
-       title="会员信息" iconCls="icon-save"
+       url="/getMemberTypes" toolbar="#tb"
+       title="会员卡信息" iconCls="icon-save"
        buttons="#dlg-buttons"
        rownumbers="true" pagination="true">
     <thead>
     <tr>
-        <th field="memberid" width="80">#</th>
-        <th field="membername" width="80">姓名</th>
-        <th field="memberphone" width="80" align="right">手机号</th>
-        <th field="membersex" width="80" align="right">性别</th>
-        <th field="memberbirth" width="60" formatter="DateTimeFormatter" name="memberbirth">生日</th>
-        <th field="referee" width="60" align="center">推荐人</th>
-        <th field="memberremark" width="60" align="center">会员标记</th>
-        <th field="memberdesc" width="150" align="center">备注</th>
+        <th field="membertype_id" width="80">#</th>
+        <th field="membertype_name" width="80">会员卡类型</th>
+        <th field="membertype_cost" width="80" align="right">会员卡价格</th>
+        <th field="month_time" width="80" align="right">会员时长（月）</th>
     </tr>
     </thead>
 </table>
 
 <div id="tb" style="padding:3px">
-        <div>
-            <span>姓名:</span>
-            <input id="membername" style="line-height:26px;border:1px solid #ccc">
-            <span>手机号:</span>
-            <input id="memberphone" style="line-height:26px;border:1px solid #ccc">
-            <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
-        </div>
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建用户</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑用户</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
+        <span>会员卡类型:</span>
+        <input id="membertype_name" style="line-height:26px;border:1px solid #ccc">
+        <span>会员时长（月）:</span>
+        <input id="month_time" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+    </div>
+    <div>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建会员卡</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑会员卡</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除会员卡</a>
     </div>
 </div>
 
@@ -60,65 +54,28 @@
         <table>
             <tr>
                 <td>
-                    <label>姓名:</label>
+                    <label>会员卡类型:</label>
                 </td>
                 <td>
-                    <input name="membername"  class="easyui-validatebox" required="true">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>手机号:</label>
-                </td>
-                <td>
-                    <input name="memberphone" class="easyui-validatebox" required="true">
+                    <input name="membertype_name"  class="easyui-validatebox" required="true">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label>性别:</label>
+                    <label>会员卡价格:</label>
                 </td>
                 <td>
-                    男：<input name="membersex" value="男" type="radio">
-                    女：<input name="membersex" value="女" type="radio">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>生日:</label>
-
-                </td>
-                <td>
-                    <input type="text" class="easyui-datebox" formatter="DateTimeFormatter"  name="memberbirth">
-
+                    <input name="membertype_cost" class="easyui-validatebox" required="true">
                 </td>
             </tr>
 
-            <tr>
-                <td>
-                    <label>推荐人:</label>
-                </td>
-                <td>
-                    <input name="referee" class="easyui-validatebox">
-                </td>
-            </tr>
 
             <tr>
                 <td>
-                    <label>会员标注:</label>
+                    <label>会员时长（月）:</label>
                 </td>
                 <td>
-                    <input name="memberremark" class="easyui-validatebox">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>备注:</label>
-
-                </td>
-                <td>
-                    <input name="memberdesc" class="easyui-validatebox">
-
+                    <input name="month_time" class="easyui-validatebox" required="true">
                 </td>
             </tr>
 
@@ -130,30 +87,31 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">保存</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
 </div>
+
 <script>
 
     var url;
 
     function doSearch() {
         $('#tt').datagrid('load', {
-            membername: $('#membername').val(),
-            memberphone: $('#memberphone').val()
+            membertype_name: $('#membertype_name').val(),
+            month_time: $('#month_time').val()
         });
     }
 
     function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建用户');
+        $('#dlg').dialog('open').dialog('setTitle','新建会员卡信息');
         $('#fm').form('clear');
-        url = '/createMember';
+        url = '/createMemberType';
     }
 
 
     function editUser() {
         var row = $('#tt').datagrid('getSelected');
         if (row){
-            $('#dlg').dialog('open').dialog('setTitle','修改用户');
+            $('#dlg').dialog('open').dialog('setTitle','修改会员卡信息');
             $('#fm').form('load',row);
-            url = '/updateMember?id='+row.memberid;
+            url = '/updateMemberType?id='+row.membertype_id;
         }
     }
 
@@ -183,7 +141,7 @@
         if (row){
             $.messager.confirm('Confirm','你确定删除这个会员?',function(r){
                 if (r){
-                    $.post('/delMember',{id:row.memberid},function(result){
+                    $.post('/delMemberType',{id:row.membertype_id},function(result){
                         if (result.success){
                             $('#tt').datagrid('reload');	// reload the user data
                         } else {
@@ -224,7 +182,7 @@
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-        return year + "/" + month + "/" + day;
+        return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
     }
 
     $.fn.datebox.defaults.parser = function(s){
