@@ -14,4 +14,6 @@ public interface EmployeeService {
     List<Employee> selectAllCoach();
 
     List<Employee> selectEmployee(Employee employee, String pageNumber, String pageSize);
+
+    List<Employee> employeeLogin(Employee employee);
 }

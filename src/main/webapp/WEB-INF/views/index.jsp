@@ -62,7 +62,7 @@
         <div id="one">
             <ul class="child_menu">
                 <li><a href="#" value="member-query">会员查询</a></li>
-                <li><a href="#">新建会员</a></li>
+                <li><a href="#">会员选课信息</a></li>
                 <li><a href="#">会员卡查询</a></li>
                 <li><a href="#">批量操作</a></li>
                 <li><a href="#">消息提醒</a></li>
