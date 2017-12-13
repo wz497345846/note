@@ -75,6 +75,6 @@
     </table>
 </form>
 <div style="text-align:center;padding:5px">
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="subform()" data-options="iconCls:'icon-add'">提交</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" data-options="iconCls:'icon-undo'">重置</a>
-    </div>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="subform()" data-options="iconCls:'icon-save'">保存</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" data-options="iconCls:'icon-cancel'">取消</a>
+</div>

@@ -62,4 +62,16 @@ public class Bill {
     public void setBilldesc(String billdesc) {
         this.billdesc = billdesc;
     }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "billid=" + billid +
+                ", empid=" + empid +
+                ", cost=" + cost +
+                ", paytype='" + paytype + '\'' +
+                ", createtime=" + createtime +
+                ", billdesc='" + billdesc + '\'' +
+                '}';
+    }
 }
