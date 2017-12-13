@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+
 </head>
 <body>
 
@@ -129,11 +130,8 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">保存</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">取消</a>
 </div>
-
 <script>
-    $().ready(function () {
-        alert(1);
-    });
+
     var url;
 
     function doSearch() {
