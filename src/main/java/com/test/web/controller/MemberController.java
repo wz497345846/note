@@ -1,8 +1,6 @@
 package com.test.web.controller;
 
 import com.test.pojo.Membermanage;
-import com.test.pojo.MembermanageExample;
-import com.test.service.MemberService;
 import com.test.service.impl.MemberServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +21,7 @@ public class MemberController {
      */
     @RequestMapping("getMembers")
     @ResponseBody
-    public List<Membermanage> getMembers(Membermanage membermanage,String page,String rows){
+    public List<Membermanage> getMembers(Membermanage membermanage, String page, String rows){
         return memberServiceImpl.selectMembers(membermanage,page,rows);
     }
 
@@ -65,7 +63,6 @@ public class MemberController {
     @RequestMapping("updateMember")
     @ResponseBody
     public Map updateMember(Membermanage membermanage,String id){
-        System.out.println(id);
         membermanage.setMemberid(Integer.valueOf(id));
         boolean flag=memberServiceImpl.updateMember(membermanage);
         Map map=new HashMap();

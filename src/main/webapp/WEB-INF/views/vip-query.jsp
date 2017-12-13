@@ -54,65 +54,28 @@
         <table>
             <tr>
                 <td>
-                    <label>姓名:</label>
+                    <label>会员卡类型:</label>
                 </td>
                 <td>
-                    <input name="membername"  class="easyui-validatebox" required="true">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>手机号:</label>
-                </td>
-                <td>
-                    <input name="memberphone" class="easyui-validatebox" required="true">
+                    <input name="membertype_name"  class="easyui-validatebox" required="true">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label>性别:</label>
+                    <label>会员卡价格:</label>
                 </td>
                 <td>
-                    男：<input name="membersex" value="男" type="radio">
-                    女：<input name="membersex" value="女" type="radio">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>生日:</label>
-
-                </td>
-                <td>
-                    <input type="text" class="easyui-datebox" formatter="DateTimeFormatter"  name="memberbirth">
-
+                    <input name="membertype_cost" class="easyui-validatebox" required="true">
                 </td>
             </tr>
 
-            <tr>
-                <td>
-                    <label>推荐人:</label>
-                </td>
-                <td>
-                    <input name="referee" class="easyui-validatebox">
-                </td>
-            </tr>
 
             <tr>
                 <td>
-                    <label>会员标注:</label>
+                    <label>会员时长（月）:</label>
                 </td>
                 <td>
-                    <input name="memberremark" class="easyui-validatebox">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>备注:</label>
-
-                </td>
-                <td>
-                    <input name="memberdesc" class="easyui-validatebox">
-
+                    <input name="month_time" class="easyui-validatebox" required="true">
                 </td>
             </tr>
 
@@ -126,31 +89,29 @@
 </div>
 
 <script>
-    $().ready(function () {
-        alert(1);
-    });
+
     var url;
 
     function doSearch() {
         $('#tt').datagrid('load', {
-            membername: $('#membername').val(),
-            memberphone: $('#memberphone').val()
+            membertype_name: $('#membertype_name').val(),
+            month_time: $('#month_time').val()
         });
     }
 
     function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建用户');
+        $('#dlg').dialog('open').dialog('setTitle','新建会员卡信息');
         $('#fm').form('clear');
-        url = '/createMember';
+        url = '/createMemberType';
     }
 
 
     function editUser() {
         var row = $('#tt').datagrid('getSelected');
         if (row){
-            $('#dlg').dialog('open').dialog('setTitle','修改用户');
+            $('#dlg').dialog('open').dialog('setTitle','修改会员卡信息');
             $('#fm').form('load',row);
-            url = '/updateMember?id='+row.memberid;
+            url = '/updateMemberType?id='+row.membertype_id;
         }
     }
 
@@ -180,7 +141,7 @@
         if (row){
             $.messager.confirm('Confirm','你确定删除这个会员?',function(r){
                 if (r){
-                    $.post('/delMember',{id:row.memberid},function(result){
+                    $.post('/delMemberType',{id:row.membertype_id},function(result){
                         if (result.success){
                             $('#tt').datagrid('reload');	// reload the user data
                         } else {

@@ -3,7 +3,6 @@ package com.test.service;
 import com.test.pojo.Course;
 import com.test.pojo.Courseplan;
 
-import java.util.List;
 import java.util.Map;
 
 public interface CourseService {

@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.test.dao.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.test.pojo.Employee">
-    <id column="empid" jdbcType="INTEGER" property="empid" />
-    <result column="empavatar" jdbcType="VARCHAR" property="empavatar" />
-    <result column="empname" jdbcType="VARCHAR" property="empname" />
-    <result column="emppwd" jdbcType="VARCHAR" property="emppwd" />
-    <result column="empsex" jdbcType="CHAR" property="empsex" />
-    <result column="empphone" jdbcType="VARCHAR" property="empphone" />
-    <result column="empsalary" jdbcType="DOUBLE" property="empsalary" />
-    <result column="roleid" jdbcType="INTEGER" property="roleid" />
-    <result column="empdesc" jdbcType="VARCHAR" property="empdesc" />
-    <result column="empstate" jdbcType="INTEGER" property="empstate" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.test.pojo.Employee" >
+    <id column="empid" property="empid" jdbcType="INTEGER" />
+    <result column="empavatar" property="empavatar" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="emppwd" property="emppwd" jdbcType="VARCHAR" />
+    <result column="empsex" property="empsex" jdbcType="CHAR" />
+    <result column="empphone" property="empphone" jdbcType="VARCHAR" />
+    <result column="empsalary" property="empsalary" jdbcType="DOUBLE" />
+    <result column="roleid" property="roleid" jdbcType="INTEGER" />
+    <result column="empdesc" property="empdesc" jdbcType="VARCHAR" />
+    <result column="empstate" property="empstate" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -42,25 +42,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -71,42 +71,42 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     empid, empavatar, empname, emppwd, empsex, empphone, empsalary, roleid, empdesc, 
     empstate
   </sql>
-  <select id="selectByExample" parameterType="com.test.pojo.EmployeeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.EmployeeExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from employee
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from employee
     where empid = #{empid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from employee
     where empid = #{empid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.test.pojo.EmployeeExample">
+  <delete id="deleteByExample" parameterType="com.test.pojo.EmployeeExample" >
     delete from employee
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.test.pojo.Employee">
+  <insert id="insert" parameterType="com.test.pojo.Employee" >
     insert into employee (empid, empavatar, empname, 
       emppwd, empsex, empphone, 
       empsalary, roleid, empdesc, 
@@ -116,112 +116,112 @@
       #{empsalary,jdbcType=DOUBLE}, #{roleid,jdbcType=INTEGER}, #{empdesc,jdbcType=VARCHAR}, 
       #{empstate,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Employee">
+  <insert id="insertSelective" parameterType="com.test.pojo.Employee" >
     insert into employee
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="empid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
         empid,
       </if>
-      <if test="empavatar != null">
+      <if test="empavatar != null" >
         empavatar,
       </if>
-      <if test="empname != null">
+      <if test="empname != null" >
         empname,
       </if>
-      <if test="emppwd != null">
+      <if test="emppwd != null" >
         emppwd,
       </if>
-      <if test="empsex != null">
+      <if test="empsex != null" >
         empsex,
       </if>
-      <if test="empphone != null">
+      <if test="empphone != null" >
         empphone,
       </if>
-      <if test="empsalary != null">
+      <if test="empsalary != null" >
         empsalary,
       </if>
-      <if test="roleid != null">
+      <if test="roleid != null" >
         roleid,
       </if>
-      <if test="empdesc != null">
+      <if test="empdesc != null" >
         empdesc,
       </if>
-      <if test="empstate != null">
+      <if test="empstate != null" >
         empstate,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="empid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
         #{empid,jdbcType=INTEGER},
       </if>
-      <if test="empavatar != null">
+      <if test="empavatar != null" >
         #{empavatar,jdbcType=VARCHAR},
       </if>
-      <if test="empname != null">
+      <if test="empname != null" >
         #{empname,jdbcType=VARCHAR},
       </if>
-      <if test="emppwd != null">
+      <if test="emppwd != null" >
         #{emppwd,jdbcType=VARCHAR},
       </if>
-      <if test="empsex != null">
+      <if test="empsex != null" >
         #{empsex,jdbcType=CHAR},
       </if>
-      <if test="empphone != null">
+      <if test="empphone != null" >
         #{empphone,jdbcType=VARCHAR},
       </if>
-      <if test="empsalary != null">
+      <if test="empsalary != null" >
         #{empsalary,jdbcType=DOUBLE},
       </if>
-      <if test="roleid != null">
+      <if test="roleid != null" >
         #{roleid,jdbcType=INTEGER},
       </if>
-      <if test="empdesc != null">
+      <if test="empdesc != null" >
         #{empdesc,jdbcType=VARCHAR},
       </if>
-      <if test="empstate != null">
+      <if test="empstate != null" >
         #{empstate,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update employee
-    <set>
-      <if test="record.empid != null">
+    <set >
+      <if test="record.empid != null" >
         empid = #{record.empid,jdbcType=INTEGER},
       </if>
-      <if test="record.empavatar != null">
+      <if test="record.empavatar != null" >
         empavatar = #{record.empavatar,jdbcType=VARCHAR},
       </if>
-      <if test="record.empname != null">
+      <if test="record.empname != null" >
         empname = #{record.empname,jdbcType=VARCHAR},
       </if>
-      <if test="record.emppwd != null">
+      <if test="record.emppwd != null" >
         emppwd = #{record.emppwd,jdbcType=VARCHAR},
       </if>
-      <if test="record.empsex != null">
+      <if test="record.empsex != null" >
         empsex = #{record.empsex,jdbcType=CHAR},
       </if>
-      <if test="record.empphone != null">
+      <if test="record.empphone != null" >
         empphone = #{record.empphone,jdbcType=VARCHAR},
       </if>
-      <if test="record.empsalary != null">
+      <if test="record.empsalary != null" >
         empsalary = #{record.empsalary,jdbcType=DOUBLE},
       </if>
-      <if test="record.roleid != null">
+      <if test="record.roleid != null" >
         roleid = #{record.roleid,jdbcType=INTEGER},
       </if>
-      <if test="record.empdesc != null">
+      <if test="record.empdesc != null" >
         empdesc = #{record.empdesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.empstate != null">
+      <if test="record.empstate != null" >
         empstate = #{record.empstate,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update employee
     set empid = #{record.empid,jdbcType=INTEGER},
       empavatar = #{record.empavatar,jdbcType=VARCHAR},
@@ -233,44 +233,44 @@
       roleid = #{record.roleid,jdbcType=INTEGER},
       empdesc = #{record.empdesc,jdbcType=VARCHAR},
       empstate = #{record.empstate,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Employee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Employee" >
     update employee
-    <set>
-      <if test="empavatar != null">
+    <set >
+      <if test="empavatar != null" >
         empavatar = #{empavatar,jdbcType=VARCHAR},
       </if>
-      <if test="empname != null">
+      <if test="empname != null" >
         empname = #{empname,jdbcType=VARCHAR},
       </if>
-      <if test="emppwd != null">
+      <if test="emppwd != null" >
         emppwd = #{emppwd,jdbcType=VARCHAR},
       </if>
-      <if test="empsex != null">
+      <if test="empsex != null" >
         empsex = #{empsex,jdbcType=CHAR},
       </if>
-      <if test="empphone != null">
+      <if test="empphone != null" >
         empphone = #{empphone,jdbcType=VARCHAR},
       </if>
-      <if test="empsalary != null">
+      <if test="empsalary != null" >
         empsalary = #{empsalary,jdbcType=DOUBLE},
       </if>
-      <if test="roleid != null">
+      <if test="roleid != null" >
         roleid = #{roleid,jdbcType=INTEGER},
       </if>
-      <if test="empdesc != null">
+      <if test="empdesc != null" >
         empdesc = #{empdesc,jdbcType=VARCHAR},
       </if>
-      <if test="empstate != null">
+      <if test="empstate != null" >
         empstate = #{empstate,jdbcType=INTEGER},
       </if>
     </set>
     where empid = #{empid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Employee">
+  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Employee" >
     update employee
     set empavatar = #{empavatar,jdbcType=VARCHAR},
       empname = #{empname,jdbcType=VARCHAR},
@@ -283,315 +283,18 @@
       empstate = #{empstate,jdbcType=INTEGER}
     where empid = #{empid,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.test.pojo.EmployeeExample" resultMap="BaseResultMap">
+  <select resultMap="BaseResultMap" parameterType="com.test.pojo.EmployeeExample" id="selectByExampleWithRowbounds" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from employee
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <resultMap id="BaseResultMap" type="com.test.pojo.Employee">
-    <id column="empid" jdbcType="INTEGER" property="empid" />
-    <result column="empavatar" jdbcType="VARCHAR" property="empavatar" />
-    <result column="empname" jdbcType="VARCHAR" property="empname" />
-    <result column="emppwd" jdbcType="VARCHAR" property="emppwd" />
-    <result column="empsex" jdbcType="CHAR" property="empsex" />
-    <result column="empphone" jdbcType="VARCHAR" property="empphone" />
-    <result column="empsalary" jdbcType="DOUBLE" property="empsalary" />
-    <result column="roleid" jdbcType="INTEGER" property="roleid" />
-    <result column="empdesc" jdbcType="VARCHAR" property="empdesc" />
-    <result column="empstate" jdbcType="INTEGER" property="empstate" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    empid, empavatar, empname, emppwd, empsex, empphone, empsalary, roleid, empdesc, 
-    empstate
-  </sql>
-  <select id="selectByExample" parameterType="com.test.pojo.EmployeeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from employee
-    where empid = #{empid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from employee
-    where empid = #{empid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.test.pojo.EmployeeExample">
-    delete from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.test.pojo.Employee">
-    insert into employee (empid, empavatar, empname, 
-      emppwd, empsex, empphone, 
-      empsalary, roleid, empdesc, 
-      empstate)
-    values (#{empid,jdbcType=INTEGER}, #{empavatar,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
-      #{emppwd,jdbcType=VARCHAR}, #{empsex,jdbcType=CHAR}, #{empphone,jdbcType=VARCHAR}, 
-      #{empsalary,jdbcType=DOUBLE}, #{roleid,jdbcType=INTEGER}, #{empdesc,jdbcType=VARCHAR}, 
-      #{empstate,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.test.pojo.Employee">
-    insert into employee
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="empid != null">
-        empid,
-      </if>
-      <if test="empavatar != null">
-        empavatar,
-      </if>
-      <if test="empname != null">
-        empname,
-      </if>
-      <if test="emppwd != null">
-        emppwd,
-      </if>
-      <if test="empsex != null">
-        empsex,
-      </if>
-      <if test="empphone != null">
-        empphone,
-      </if>
-      <if test="empsalary != null">
-        empsalary,
-      </if>
-      <if test="roleid != null">
-        roleid,
-      </if>
-      <if test="empdesc != null">
-        empdesc,
-      </if>
-      <if test="empstate != null">
-        empstate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="empid != null">
-        #{empid,jdbcType=INTEGER},
-      </if>
-      <if test="empavatar != null">
-        #{empavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="empname != null">
-        #{empname,jdbcType=VARCHAR},
-      </if>
-      <if test="emppwd != null">
-        #{emppwd,jdbcType=VARCHAR},
-      </if>
-      <if test="empsex != null">
-        #{empsex,jdbcType=CHAR},
-      </if>
-      <if test="empphone != null">
-        #{empphone,jdbcType=VARCHAR},
-      </if>
-      <if test="empsalary != null">
-        #{empsalary,jdbcType=DOUBLE},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=INTEGER},
-      </if>
-      <if test="empdesc != null">
-        #{empdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="empstate != null">
-        #{empstate,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByExampleSelective" parameterType="map">
-    update employee
-    <set>
-      <if test="record.empid != null">
-        empid = #{record.empid,jdbcType=INTEGER},
-      </if>
-      <if test="record.empavatar != null">
-        empavatar = #{record.empavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="record.empname != null">
-        empname = #{record.empname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.emppwd != null">
-        emppwd = #{record.emppwd,jdbcType=VARCHAR},
-      </if>
-      <if test="record.empsex != null">
-        empsex = #{record.empsex,jdbcType=CHAR},
-      </if>
-      <if test="record.empphone != null">
-        empphone = #{record.empphone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.empsalary != null">
-        empsalary = #{record.empsalary,jdbcType=DOUBLE},
-      </if>
-      <if test="record.roleid != null">
-        roleid = #{record.roleid,jdbcType=INTEGER},
-      </if>
-      <if test="record.empdesc != null">
-        empdesc = #{record.empdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="record.empstate != null">
-        empstate = #{record.empstate,jdbcType=INTEGER},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update employee
-    set empid = #{record.empid,jdbcType=INTEGER},
-      empavatar = #{record.empavatar,jdbcType=VARCHAR},
-      empname = #{record.empname,jdbcType=VARCHAR},
-      emppwd = #{record.emppwd,jdbcType=VARCHAR},
-      empsex = #{record.empsex,jdbcType=CHAR},
-      empphone = #{record.empphone,jdbcType=VARCHAR},
-      empsalary = #{record.empsalary,jdbcType=DOUBLE},
-      roleid = #{record.roleid,jdbcType=INTEGER},
-      empdesc = #{record.empdesc,jdbcType=VARCHAR},
-      empstate = #{record.empstate,jdbcType=INTEGER}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.test.pojo.Employee">
-    update employee
-    <set>
-      <if test="empavatar != null">
-        empavatar = #{empavatar,jdbcType=VARCHAR},
-      </if>
-      <if test="empname != null">
-        empname = #{empname,jdbcType=VARCHAR},
-      </if>
-      <if test="emppwd != null">
-        emppwd = #{emppwd,jdbcType=VARCHAR},
-      </if>
-      <if test="empsex != null">
-        empsex = #{empsex,jdbcType=CHAR},
-      </if>
-      <if test="empphone != null">
-        empphone = #{empphone,jdbcType=VARCHAR},
-      </if>
-      <if test="empsalary != null">
-        empsalary = #{empsalary,jdbcType=DOUBLE},
-      </if>
-      <if test="roleid != null">
-        roleid = #{roleid,jdbcType=INTEGER},
-      </if>
-      <if test="empdesc != null">
-        empdesc = #{empdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="empstate != null">
-        empstate = #{empstate,jdbcType=INTEGER},
-      </if>
-    </set>
-    where empid = #{empid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.test.pojo.Employee">
-    update employee
-    set empavatar = #{empavatar,jdbcType=VARCHAR},
-      empname = #{empname,jdbcType=VARCHAR},
-      emppwd = #{emppwd,jdbcType=VARCHAR},
-      empsex = #{empsex,jdbcType=CHAR},
-      empphone = #{empphone,jdbcType=VARCHAR},
-      empsalary = #{empsalary,jdbcType=DOUBLE},
-      roleid = #{roleid,jdbcType=INTEGER},
-      empdesc = #{empdesc,jdbcType=VARCHAR},
-      empstate = #{empstate,jdbcType=INTEGER}
-    where empid = #{empid,jdbcType=INTEGER}
-  </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.test.pojo.EmployeeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
