@@ -28,7 +28,7 @@
     <%--<div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>--%>
     <%--<div data-options="region:'east',title:'East',split:true" style="width:100px;"></div>--%>
     <div id="menus" data-options="region:'west'<%--,title:'West'--%>" style="width:186px;background-color: rgb(51,51,51);overflow: hidden">
-        <div id="store"><i class="iconfont">&#xe635;</i> 阿赛服饰店</div>
+        <div id="store"><i class="iconfont">&#xe635;</i> 三键客后台管理系统</div>
         <div id="logo">
             <img src="img/head.jpeg" alt="">
         </div>
@@ -103,12 +103,12 @@
         </div>
         <div id="seven">
             <ul class="child_menu">
-                <li><a href="#">会员统计</a></li>
-                <li><a href="#">员工统计</a></li>
-                <li><a href="#">课程统计</a></li>
-                <li><a href="#">会员卡统计</a></li>
-                <li><a href="#">收支统计</a></li>
-                <li><a href="#">营业报表</a></li>
+                <li><a href="statistics?m=1">会员统计</a></li>
+                <li><a href="statistics?m=2">员工统计</a></li>
+                <li><a href="statistics?m=3">课程统计</a></li>
+                <li><a href="statistics?m=4">会员卡统计</a></li>
+                <li><a href="statistics?m=5">收支统计</a></li>
+                <li><a href="statistics?m=6">营业报表</a></li>
             </ul>
         </div>
         <div id="eight">
@@ -131,9 +131,9 @@
             <%--<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">--%>
                 <%--tab2--%>
             <%--</div>--%>
-            <%--<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">--%>
-                <%--tab3--%>
-            <%--</div>--%>
+            <%--<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">
+                首页
+            </div>--%>
         </div>
 
     </div>
