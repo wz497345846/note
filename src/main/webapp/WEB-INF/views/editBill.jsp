@@ -18,8 +18,8 @@
         text:"编辑",
         iconCls:"icon-edit",
         handler:function(){
-            var obj  = $("#ta").datagrid("getSelections");
-            if(obj == null || obj.length != 1){
+            var obj1=$("#tta").datagrid("getSelections");
+            if(obj1 == null || obj1.length != 1){
                 $.messager.alert('提示','选择数据不合法');
             }else{
                 $("#edit").window({
@@ -30,21 +30,19 @@
                     href:"editBillInfo"
                 });
             }
-
-
         }
     },{
         text:"删除",
         iconCls:"icon-remove",
         handler:function(){
-            var obj  = $("#ta").datagrid("getSelections");
+            var obj  = $("#tta").datagrid("getSelections");
             if(obj == null || obj.length != 1){
                 $.messager.alert('提示','选择数据不合法');
             }else{
-                $.post("bill/delBill",{"billid":obj[0].billid},function(data){
+                $.post("bill/dropBill",{"billid":obj[0].billid},function(data){
                     if(data.state == 200){
                         $.messager.alert('提示','删除成功');
-                        $("#ta").datagrid("reload");
+                        $("#tta").datagrid("reload");
                     }else{
                         $.messager.alert('提示','删除失败');
                     }
@@ -55,7 +53,7 @@
     }];
 </script>
 
-<table id="ta" class="easyui-datagrid" data-options="pageSize:30,toolbar:tool,pagination:true,url:'bill/findAllBill'">
+<table id="tta" class="easyui-datagrid" data-options="pageSize:10,toolbar:tool,pagination:true,url:'bill/findAllBill',singleSelect:false">
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>

@@ -53,7 +53,6 @@
 </div>
 <div data-options="region:'center',title:'操作区'">
     <div id="tab" class="easyui-tabs">
-        <div title="首页" style="padding:20px;">
 
         </div>
     </div>
