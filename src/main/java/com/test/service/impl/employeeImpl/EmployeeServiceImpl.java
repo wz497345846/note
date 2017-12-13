@@ -70,6 +70,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (!(employee.getEmpname()==null||employee.getEmpname().equals(""))){
             criteria.andEmpnameEqualTo(employee.getEmpname());
         }
+        if (!(employee.getEmppwd() == null || employee.getEmppwd().equals(""))){
+            criteria.andEmpavatarEqualTo(employee.getEmppwd());
+        }
         if (employee.getEmpstate()!=null&&employee.getEmpstate()!=0){
             criteria.andEmpstateEqualTo(new Integer(employee.getEmpstate()));
         }

@@ -147,7 +147,6 @@
         url = '/createMember';
     }
 
-
     function editUser() {
         var row = $('#tt').datagrid('getSelected');
         if (row){
@@ -198,9 +197,6 @@
         }
     }
 
-
-
-
     function DateTimeFormatter(value) {
         var date = new Date(value);
         var year = date.getFullYear().toString();
@@ -224,6 +220,7 @@
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
+        alert(year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds);
         return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
     }
 
