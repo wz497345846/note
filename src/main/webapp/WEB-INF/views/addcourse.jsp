@@ -49,10 +49,15 @@
           <td><input name="coursefee" class="easyui-textbox" data-options="min:0,max:9999,required:true"></td>
       </tr>
       <tr>
+          <td><span class="reds">*</span>当前人数：</td>
+          <td>
+              <input type="text" name="currentnum"  /> </td>
+      </tr>
+      <tr>
           <td><span class="reds">*</span>课程最大人数：</td>
           <td>
               <input class="easyui-textbox" name="coursecount" data-options="min:0,max:200,required:true"/>
-              <input type="hidden" name="currentnum" value="0" /> </td>
+           </td>
       </tr>
       <tr>
           <td><span class="reds">*</span>课程开始时间：</td>
@@ -131,7 +136,7 @@
 
 <tr>
     <td></td>
-    <td><button onclick="add()">添加</button></td>
+    <td><button onclick="add()" class="btn btn-primary">添加</button></td>
 </tr>
 </table>
 </form>

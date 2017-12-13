@@ -17,11 +17,11 @@
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
 <body>--%>
-
+<div style="height: 800px">
     <table id="coursegrid" class="easyui-datagrid">
         <thead>
         <tr>
-            <th data-options="filed:'ck',checkbox:true"></th>
+
             <th data-options="field:'courseid',width:100">课程ID</th>
             <th data-options="field:'empid',width:100">教练编号</th>
             <th data-options="field:'coursename',width:100,align:'right'">课程名</th>
@@ -41,14 +41,244 @@
         </tr>
         </tbody>--%>
     </table>
-
+</div>
+<div style="display: none">
     <div id="modify">
-        Window Content
-    </div>
-    <div id="add">
-        Window Content
-    </div>
+        <form id="modifycourse" onsubmit="return false;">
+            <table>
+                <tr>
+                    <td><span class="reds">*</span>课程编号：</td>
+                    <td><input type="text" name="courseid" data-options="required:true" id="modifycourseid1"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程名：</td>
+                    <td><input type="text" name="coursename" data-options="required:true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="reds"></span>课程类型：</td>
+                    <td><input class="easyui-combobox" name="coursetype" data-options="valueField:'id',textField:'text',url:'/ctype',required:true"/></td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>教练：</td>
+                    <td><input  class="easyui-combobox" name="empid"
+                                data-options="valueField:'id',textField:'text',url:'/courseemp',required:true" />   </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程费用:</td>
+                    <td><input name="coursefee" class="easyui-textbox" data-options="min:0,max:9999,required:true"></td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>当前人数：</td>
+                    <td>
+                        <input type="text" name="currentnum"  /> </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程最大人数：</td>
+                    <td>
+                        <input class="easyui-textbox" name="coursecount" data-options="min:0,max:200,required:true"/>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程开始时间：</td>
+                    <td><input type="text" name="curriculumstart" class="easyui-datebox" required="required"/> </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程结束时间：</td>
+                    <td><input type="text" name="curriculumend" class="easyui-datebox" required="required"/> </td>
+                </tr>
+                <tr>
+                    <td>课程简介：</td>
+                    <td>   <textarea name="coursedesc" cols="30" rows="4">
 
+                </textarea>  </td>
+                </tr>
+            </table>
+        </form>
+        <hr/>
+        <form id="modifycourseplan" onsubmit="return false;">
+            <table>
+                <tr>
+                    <td> <span class="label label-success">星期一</span>&nbsp;&nbsp;</td>
+
+                    <td>
+                        <input id="modifycourseid2" type="hidden" name="courseid" />
+                        上课：<input id="mon" type=text name="mons"  class="easyui-timespinner"  style="width:80px;"  data-options="showSeconds:false" />
+                        下课：<input type=text name="mone" class="easyui-timespinner"  style="width:80px;"  data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期二</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input name="tues"  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input name="tued" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期三</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input name="weds" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input name="wede" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期四</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input name="thurs" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input name="thure" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期五</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input name="fris" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input name="frie" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期六</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input name="sats" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input name="sate" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期日</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input name="suns" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input name="sune" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><button class="btn btn-primary" id="modifybut" onclick="modify()">修改</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="showc">
+        <form id="showcourse" onsubmit="return false;">
+            <table>
+                <tr>
+                    <td><span class="reds">*</span>课程编号：</td>
+                    <td><input type="text" name="courseid" data-options="required:true" id="" readonly="true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程名：</td>
+                    <td><input type="text" name="coursename" data-options="required:true" readonly="true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="reds"></span>课程类型：</td>
+                    <td><input class="easyui-combobox" name="coursetype" readonly="true" data-options="valueField:'id',textField:'text',url:'/ctype',required:true"/></td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>教练：</td>
+                    <td><input  class="easyui-combobox" name="empid" readonly="true"
+                                data-options="valueField:'id',textField:'text',url:'/courseemp',required:true" />   </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程费用:</td>
+                    <td><input readonly="true" name="coursefee" class="easyui-textbox" data-options="min:0,max:9999,required:true"></td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>当前人数：</td>
+                    <td>
+                        <input readonly="true" type="text" name="currentnum"  /> </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程最大人数：</td>
+                    <td>
+                        <input readonly="true" class="easyui-textbox" name="coursecount" data-options="min:0,max:200,required:true"/>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程开始时间：</td>
+                    <td><input readonly="true" type="text" name="curriculumstart" class="easyui-datebox" required="required"/> </td>
+                </tr>
+                <tr>
+                    <td><span class="reds">*</span>课程结束时间：</td>
+                    <td><input readonly="true" type="text" name="curriculumend" class="easyui-datebox" required="required"/> </td>
+                </tr>
+                <tr>
+                    <td>课程简介：</td>
+                    <td>   <textarea readonly="true" name="coursedesc" cols="30" rows="4">
+
+                </textarea>  </td>
+                </tr>
+            </table>
+        </form>
+        <hr/>
+        <form id="showcourseplan" onsubmit="return false;">
+            <table>
+                <tr>
+                    <td> <span class="label label-success">星期一</span>&nbsp;&nbsp;</td>
+
+                    <td>
+                        <input id="" type="hidden" name="courseid" />
+                        上课：<input readonly="true" id="" type=text name="mons"  class="easyui-timespinner"  style="width:80px;"  data-options="showSeconds:false" />
+                        下课：<input readonly="true" type=text name="mone" class="easyui-timespinner"  style="width:80px;"  data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期二</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input readonly="true" name="tues"  class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input readonly="true" name="tued" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期三</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input readonly="true" name="weds" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input readonly="true" name="wede" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期四</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input readonly="true" name="thurs" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input readonly="true" name="thure" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期五</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input readonly="true" name="fris" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input readonly="true" name="frie" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期六</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input readonly="true" name="sats" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input readonly="true" name="sate" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="label label-success">星期日</span>&nbsp;&nbsp;</td>
+                    <td>
+                        上课：<input readonly="true" name="suns" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                        下课：<input readonly="true" name="sune" class="easyui-timespinner"  style="width:80px;" required="required" data-options="showSeconds:false" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
 <script>
     $(function () {
         showcourseonload();

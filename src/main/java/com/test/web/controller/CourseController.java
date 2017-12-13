@@ -35,6 +35,53 @@ public class CourseController {
         return sb;
     }
 
+    /**
+     * 修改课程
+     * @param course
+     * @return
+     */
+    @RequestMapping("/modcourse")
+    @ResponseBody
+    public String modCourse(Course course){
+        try{
+           return courseService.modifyCourse(course)+"";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "0";
+        }
+    }
+
+    /**
+     * 修改课程计划
+     * @param courseplan
+     * @return
+     */
+    @RequestMapping("/modcourseplan")
+    @ResponseBody
+    public String modCourseplan(Courseplan courseplan){
+        try{
+            return courseService.modifyCourseplan(courseplan)+"";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "0";
+        }
+    }
+
+    @RequestMapping("/findcourseandplan")
+    @ResponseBody
+    public Map<String,Object> getCourseAndPlan(String id){
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("course",courseService.findCourseById(Integer.parseInt(id)));
+        map.put("plan",coursePlanService.findCourseplan(Integer.parseInt(id)));
+        return map;
+    }
+
+    /**
+     * 查找课程
+     * @param page
+     * @param rows
+     * @return
+     */
     @RequestMapping("/allcourse")
     @ResponseBody
     public Map<String,Object> allcourse(@RequestParam(defaultValue = "1") String page,@RequestParam(defaultValue = "10") String rows){
@@ -55,6 +102,7 @@ public class CourseController {
            courseService.addCourse(course);
            return "1";
        }catch (Exception e){
+           e.printStackTrace();
            return "0";
        }
 
@@ -73,6 +121,7 @@ public class CourseController {
             coursePlanService.addCourseplan(coursePlan);
             return "1";
         }catch (Exception e){
+            e.printStackTrace();
             return "0";
         }
     }
@@ -119,6 +168,7 @@ public class CourseController {
             courseService.dropCourse(Integer.parseInt(id));
             return "1";
         }catch (Exception e){
+            e.printStackTrace();
             return "0";
         }
     }

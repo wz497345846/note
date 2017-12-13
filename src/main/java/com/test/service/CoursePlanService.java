@@ -7,4 +7,5 @@ public interface CoursePlanService {
  * 添加课程计划
  */
     int addCourseplan(Courseplan courseplan);
+    Courseplan findCourseplan(int id);
 }

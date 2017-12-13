@@ -16,11 +16,11 @@ function add() {
                     dateType:"text",
                     success:function (data) {
                         if(data=='1'){
-                            alert("添加成功");
+                            $.messager.alert('提示','添加成功');
                             $("#course")[0].reset();
                             $("#courseplan")[0].reset();
                         }else{
-                            alert("添加失败")
+                            $.messager.alert('提示','添加失败');
                         }
                     }
                 })
@@ -32,8 +32,42 @@ function add() {
 
 }
 
+/**
+ * 修改
+ */
+function modify() {
+    var course=$("#modifycourse").serialize();
+    $.ajax({
+        type:"post",
+        url:"/modcourse",
+        data:$("#modifycourse").serialize(),
+        dataType:"text",
+        success:function (data) {
+            if(data=='1'){
+                $('#modifycourseid2').val($('#modifycourseid1').val());
+                $.ajax({
+                    type:"post",
+                    url:"/modcourseplan",
+                    data:$("#modifycourseplan").serialize(),
+                    dateType:"text",
+                    success:function (data) {
+                        if(data=='1'){
+                            $.messager.alert('提示','修改成功');
+                            $("#coursegrid").datagrid("reload");
+                        }else{
+                            $.messager.alert('提示','修改失败');
+                        }
+                    }
+                })
+            }else{
+                $.messager.alert('提示','修改失败');
+            }
+        }
+    });
+}
 
 function showcourseonload() {
+
 //shoucourse.jsp
     $('#coursegrid').datagrid({
         title:'健生房课程',
@@ -57,15 +91,30 @@ function showcourseonload() {
             {field:'ck',checkbox:true}
         ]],
         toolbar: [{
-            text: '添加',
+            text: '详情',
             iconCls: 'icon-add',
             handler: function(id) {
-                $('#modify').window({
-                    width:600,
-                    height:400,
-                    modal:true,
-                    href:"/addcourse"
-                });
+
+                var obj=$("#coursegrid").datagrid("getSelections");
+                if(obj!=null&&obj.length!=1){
+                    $.messager.alert('提示','请选择一条');
+                }else{
+                    $('#showc').window({
+                        width:500,
+                        height:600,
+                        modal:true
+                    });
+
+                    $.ajax({
+                        type:'post',
+                        data:{"id":obj[0].courseid},
+                        url:'/findcourseandplan',
+                        success:function (data) {
+                            $('#showcourse').form('load',data.course);
+                            $('#showcourseplan').form('load',data.plan);
+                        }
+                    })
+                }
             }
         }, '-', {
             text: '修改',
@@ -76,21 +125,20 @@ function showcourseonload() {
                     $.messager.alert('提示','请选择一条');
                 }else{
                     $('#modify').window({
-                        width:600,
-                        height:400,
+                        width:500,
+                        height:600,
                         modal:true
                     });
 
-//                    $.ajax({
-//                        type:'post',
-//                        data:{"id":obj[0].courseid},
-//                        url:'',
-//                        success:function (data) {
-//                            if(data=="1"){
-//
-//                            }
-//                        }
-//                    })
+                   $.ajax({
+                       type:'post',
+                       data:{"id":obj[0].courseid},
+                       url:'/findcourseandplan',
+                       success:function (data) {
+                           $('#modifycourse').form('load',data.course);
+                           $('#modifycourseplan').form('load',data.plan);
+                       }
+                   })
                 }
             }
         }, '-',{
@@ -98,20 +146,22 @@ function showcourseonload() {
             iconCls: 'icon-remove',
             handler: function(){
                 var obj=$("#coursegrid").datagrid("getSelections");
-                if(obj!=null&&obj.length!=1){
-                    $.messager.alert('提示','请选择一条');
-                }else{
+                if(obj!=null){
+                    for(var i=0;i<obj.length;i++){
                     $.ajax({
                         type:'post',
-                        data:{"id":obj[0].courseid},
+                        data:{"id":obj[i].courseid},
                         url:'/delcourse',
                         success:function (data) {
                             if(data=="1"){
-                                $.messager.alert("提示","删除成功")
-                                $("#coursegrid").datagrid("reload");
+
                             }
                         }
                     })
+                }
+                $.messager.alert("提示","删除成功")
+                $("#coursegrid").datagrid("reload");
+
                 }
             }
         }],

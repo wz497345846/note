@@ -4,6 +4,7 @@ import com.test.dao.CourseMapper;
 import com.test.dao.CourseplanMapper;
 import com.test.pojo.Course;
 import com.test.pojo.CourseExample;
+import com.test.pojo.Courseplan;
 import com.test.service.CourseService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +58,25 @@ public class CourseServiceImpl implements CourseService {
         cm.deleteByPrimaryKey(id);
         csm.deleteByPrimaryKey(id);
     }
+    /**
+     * 查找课程
+     */
+    public Course findCourseById(int id){
+        return cm.selectByPrimaryKey(id);
+    }
 
+    /**
+     * 修改课程
+     * @param course
+     * @return
+     */
+    public int modifyCourse(Course course){
+       return cm.updateByPrimaryKeySelective(course);
+    }
+    /**
+     * 修改课程计划
+     */
+    public int modifyCourseplan(Courseplan courseplan){
+        return csm.updateByPrimaryKeySelective(courseplan);
+    }
 }

@@ -13,4 +13,7 @@ public class CoursePlanServiceImpl implements CoursePlanService {
     public int addCourseplan(Courseplan courseplan) {
         return courseplanMapper.insertSelective(courseplan);
     }
+    public Courseplan findCourseplan(int id){
+        return  courseplanMapper.selectByPrimaryKey(id);
+    }
 }
