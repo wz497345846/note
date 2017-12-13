@@ -182,7 +182,7 @@
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-        return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
+        return year + "/" + month + "/" + day;
     }
 
     $.fn.datebox.defaults.parser = function(s){

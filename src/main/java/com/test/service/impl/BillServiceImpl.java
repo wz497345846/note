@@ -3,7 +3,7 @@
 */
 package com.test.service.impl;
 
-import com.com.test.commons.DataGridModel;
+import com.test.commons.DataGridModel;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.test.dao.BillMapper;

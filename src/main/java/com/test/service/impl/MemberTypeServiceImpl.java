@@ -64,4 +64,14 @@ public class MemberTypeServiceImpl implements MemberTypeService {
         }
         return memberTypeMapper.selectByExample(memberTypeExample);
     }
+
+    /**
+     *  获取所有会员信息
+     */
+    public List<MemberType> getAllVipTypesService() {
+        MemberTypeExample memberTypeExample=new MemberTypeExample();
+        MemberTypeExample.Criteria criteria=memberTypeExample.createCriteria();
+        criteria.getAllCriteria();
+        return memberTypeMapper.selectByExample(memberTypeExample);
+    }
 }

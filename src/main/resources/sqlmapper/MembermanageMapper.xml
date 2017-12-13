@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.test.pojo.Membermanage" >
     <id column="memberid" property="memberid" jdbcType="INTEGER" />
     <result column="membername" property="membername" jdbcType="VARCHAR" />
-    <result column="memberpwd" property="memberpwd" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
     <result column="memberphone" property="memberphone" jdbcType="VARCHAR" />
     <result column="membersex" property="membersex" jdbcType="CHAR" />
-    <result column="memberavatar" property="memberavatar" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
     <result column="memberbirth" property="memberbirth" jdbcType="DATE" />
     <result column="referee" property="referee" jdbcType="VARCHAR" />
     <result column="empid" property="empid" jdbcType="INTEGER" />
@@ -73,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    memberid, membername, memberpwd, memberphone, membersex, memberavatar, memberbirth, 
-    referee, empid, memberremark, memberdesc
+    memberid, membername, starttime, memberphone, membersex, endtime, memberbirth, referee, 
+    empid, memberremark, memberdesc
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.test.pojo.MembermanageExample" >
     select
@@ -108,12 +108,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.test.pojo.Membermanage" >
-    insert into MemberManage (memberid, membername, memberpwd, 
-      memberphone, membersex, memberavatar, 
+    insert into MemberManage (memberid, membername, starttime, 
+      memberphone, membersex, endtime, 
       memberbirth, referee, empid, 
       memberremark, memberdesc)
-    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{memberpwd,jdbcType=VARCHAR}, 
-      #{memberphone,jdbcType=VARCHAR}, #{membersex,jdbcType=CHAR}, #{memberavatar,jdbcType=VARCHAR}, 
+    values (#{memberid,jdbcType=INTEGER}, #{membername,jdbcType=VARCHAR}, #{starttime,jdbcType=DATE}, 
+      #{memberphone,jdbcType=VARCHAR}, #{membersex,jdbcType=CHAR}, #{endtime,jdbcType=DATE}, 
       #{memberbirth,jdbcType=DATE}, #{referee,jdbcType=VARCHAR}, #{empid,jdbcType=INTEGER}, 
       #{memberremark,jdbcType=CHAR}, #{memberdesc,jdbcType=VARCHAR})
   </insert>
@@ -126,8 +126,8 @@
       <if test="membername != null" >
         membername,
       </if>
-      <if test="memberpwd != null" >
-        memberpwd,
+      <if test="starttime != null" >
+        starttime,
       </if>
       <if test="memberphone != null" >
         memberphone,
@@ -135,8 +135,8 @@
       <if test="membersex != null" >
         membersex,
       </if>
-      <if test="memberavatar != null" >
-        memberavatar,
+      <if test="endtime != null" >
+        endtime,
       </if>
       <if test="memberbirth != null" >
         memberbirth,
@@ -161,8 +161,8 @@
       <if test="membername != null" >
         #{membername,jdbcType=VARCHAR},
       </if>
-      <if test="memberpwd != null" >
-        #{memberpwd,jdbcType=VARCHAR},
+      <if test="starttime != null" >
+        #{starttime,jdbcType=DATE},
       </if>
       <if test="memberphone != null" >
         #{memberphone,jdbcType=VARCHAR},
@@ -170,8 +170,8 @@
       <if test="membersex != null" >
         #{membersex,jdbcType=CHAR},
       </if>
-      <if test="memberavatar != null" >
-        #{memberavatar,jdbcType=VARCHAR},
+      <if test="endtime != null" >
+        #{endtime,jdbcType=DATE},
       </if>
       <if test="memberbirth != null" >
         #{memberbirth,jdbcType=DATE},
@@ -199,8 +199,8 @@
       <if test="record.membername != null" >
         membername = #{record.membername,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberpwd != null" >
-        memberpwd = #{record.memberpwd,jdbcType=VARCHAR},
+      <if test="record.starttime != null" >
+        starttime = #{record.starttime,jdbcType=DATE},
       </if>
       <if test="record.memberphone != null" >
         memberphone = #{record.memberphone,jdbcType=VARCHAR},
@@ -208,8 +208,8 @@
       <if test="record.membersex != null" >
         membersex = #{record.membersex,jdbcType=CHAR},
       </if>
-      <if test="record.memberavatar != null" >
-        memberavatar = #{record.memberavatar,jdbcType=VARCHAR},
+      <if test="record.endtime != null" >
+        endtime = #{record.endtime,jdbcType=DATE},
       </if>
       <if test="record.memberbirth != null" >
         memberbirth = #{record.memberbirth,jdbcType=DATE},
@@ -235,10 +235,10 @@
     update MemberManage
     set memberid = #{record.memberid,jdbcType=INTEGER},
       membername = #{record.membername,jdbcType=VARCHAR},
-      memberpwd = #{record.memberpwd,jdbcType=VARCHAR},
+      starttime = #{record.starttime,jdbcType=DATE},
       memberphone = #{record.memberphone,jdbcType=VARCHAR},
       membersex = #{record.membersex,jdbcType=CHAR},
-      memberavatar = #{record.memberavatar,jdbcType=VARCHAR},
+      endtime = #{record.endtime,jdbcType=DATE},
       memberbirth = #{record.memberbirth,jdbcType=DATE},
       referee = #{record.referee,jdbcType=VARCHAR},
       empid = #{record.empid,jdbcType=INTEGER},
@@ -254,8 +254,8 @@
       <if test="membername != null" >
         membername = #{membername,jdbcType=VARCHAR},
       </if>
-      <if test="memberpwd != null" >
-        memberpwd = #{memberpwd,jdbcType=VARCHAR},
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=DATE},
       </if>
       <if test="memberphone != null" >
         memberphone = #{memberphone,jdbcType=VARCHAR},
@@ -263,8 +263,8 @@
       <if test="membersex != null" >
         membersex = #{membersex,jdbcType=CHAR},
       </if>
-      <if test="memberavatar != null" >
-        memberavatar = #{memberavatar,jdbcType=VARCHAR},
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=DATE},
       </if>
       <if test="memberbirth != null" >
         memberbirth = #{memberbirth,jdbcType=DATE},
@@ -287,10 +287,10 @@
   <update id="updateByPrimaryKey" parameterType="com.test.pojo.Membermanage" >
     update MemberManage
     set membername = #{membername,jdbcType=VARCHAR},
-      memberpwd = #{memberpwd,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=DATE},
       memberphone = #{memberphone,jdbcType=VARCHAR},
       membersex = #{membersex,jdbcType=CHAR},
-      memberavatar = #{memberavatar,jdbcType=VARCHAR},
+      endtime = #{endtime,jdbcType=DATE},
       memberbirth = #{memberbirth,jdbcType=DATE},
       referee = #{referee,jdbcType=VARCHAR},
       empid = #{empid,jdbcType=INTEGER},

@@ -7,13 +7,13 @@ public class Membermanage {
 
     private String membername;
 
-    private String memberpwd;
+    private Date starttime;
 
     private String memberphone;
 
     private String membersex;
 
-    private String memberavatar;
+    private Date endtime;
 
     private Date memberbirth;
 
@@ -41,12 +41,12 @@ public class Membermanage {
         this.membername = membername;
     }
 
-    public String getMemberpwd() {
-        return memberpwd;
+    public Date getStarttime() {
+        return starttime;
     }
 
-    public void setMemberpwd(String memberpwd) {
-        this.memberpwd = memberpwd;
+    public void setStarttime(Date starttime) {
+        this.starttime = starttime;
     }
 
     public String getMemberphone() {
@@ -65,12 +65,12 @@ public class Membermanage {
         this.membersex = membersex;
     }
 
-    public String getMemberavatar() {
-        return memberavatar;
+    public Date getEndtime() {
+        return endtime;
     }
 
-    public void setMemberavatar(String memberavatar) {
-        this.memberavatar = memberavatar;
+    public void setEndtime(Date endtime) {
+        this.endtime = endtime;
     }
 
     public Date getMemberbirth() {

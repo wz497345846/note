@@ -75,4 +75,15 @@ public class MemberTypeController {
         }
         return map;
     }
+
+    /**
+     * 获取会员卡信息
+     */
+
+    @RequestMapping("/getAllVipTypes")
+    @ResponseBody
+    public List<MemberType> getAllVipTypes(){
+        return memberTypeServiceImpl.getAllVipTypesService();
+    }
+
 }

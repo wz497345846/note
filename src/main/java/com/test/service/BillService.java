@@ -3,7 +3,7 @@
 */
 package com.test.service;
 
-import com.com.test.commons.DataGridModel;
+import com.test.commons.DataGridModel;
 import com.test.pojo.Bill;
 
 /**

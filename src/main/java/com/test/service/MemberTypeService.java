@@ -13,4 +13,6 @@ public interface MemberTypeService {
     boolean delMemberTypeService(String id);
 
     List<MemberType> getMemberTypes(MemberType memberType, String page, String rows);
+
+    List<MemberType> getAllVipTypesService();
 }

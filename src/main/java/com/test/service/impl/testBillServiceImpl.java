@@ -7,7 +7,7 @@ package com.test.service.impl;
  * @author: JonyChen  Date: 2017/12/11
  */
 
-import com.com.test.commons.DataGridModel;
+import com.test.commons.DataGridModel;
 import com.test.service.BillService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

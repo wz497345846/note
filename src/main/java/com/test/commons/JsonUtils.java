@@ -1,7 +1,7 @@
 /*
 * Copyright (c) 2017 Javachenk.com. All Rights Reserved.
 */
-package com.com.test.commons;
+package com.test.commons;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;

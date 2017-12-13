@@ -7,6 +7,7 @@ import com.test.service.VipCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,12 +22,17 @@ public class VipCourseServiceImpl implements VipCourseService {
      *  获取会员选课信息
      */
     public List<Course> selectUserCourse(Membermanage membermanage, String page, String rows) {
-        CourseExample courseExample=new CourseExample();
-        CourseExample.Criteria criteria=courseExample.createCriteria();
+        MemberCourseExample example=new MemberCourseExample();
+        MemberCourseExample.Criteria criteria=example.createCriteria();
         if (membermanage.getMemberid()!=null&&membermanage.getMemberid()>0){
             criteria.andCourseidEqualTo(membermanage.getMemberid());
         }
-        return courseMapper.selectByExample(courseExample);
+        List<MemberCourseKey> memberCourseKeys=memberCourseMapper.selectByExample(example);
+        List<Course> courses=new ArrayList<Course>();
+        for (int i = 0; i <memberCourseKeys.size(); i++) {
+            courses.add(courseMapper.selectByPrimaryKey(memberCourseKeys.get(i).getCourseid()));
+        }
+        return courses;
     }
 
     /**

@@ -123,7 +123,7 @@
         if (row){
             $.messager.confirm('Confirm','你确定删除这个选课信息?',function(r){
                 if (r){
-                    $.post('/delMemberType',{memberid:row.memberid},function(result){
+                    $.post('/delMemberType',{memberid:$("#memberid").val(),courseid:row.courseid},function(result){
                         if (result.success){
                             $('#tt').datagrid('reload');	// reload the user data
                         } else {
@@ -164,7 +164,7 @@
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-        return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
+        return year + "/" + month + "/" + day;
     }
 
     $.fn.datebox.defaults.parser = function(s){

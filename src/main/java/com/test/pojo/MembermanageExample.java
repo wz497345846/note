@@ -262,73 +262,63 @@ public class MembermanageExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdIsNull() {
-            addCriterion("memberpwd is null");
+        public Criteria andStarttimeIsNull() {
+            addCriterion("starttime is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdIsNotNull() {
-            addCriterion("memberpwd is not null");
+        public Criteria andStarttimeIsNotNull() {
+            addCriterion("starttime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdEqualTo(String value) {
-            addCriterion("memberpwd =", value, "memberpwd");
+        public Criteria andStarttimeEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime =", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdNotEqualTo(String value) {
-            addCriterion("memberpwd <>", value, "memberpwd");
+        public Criteria andStarttimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime <>", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdGreaterThan(String value) {
-            addCriterion("memberpwd >", value, "memberpwd");
+        public Criteria andStarttimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("starttime >", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdGreaterThanOrEqualTo(String value) {
-            addCriterion("memberpwd >=", value, "memberpwd");
+        public Criteria andStarttimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime >=", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdLessThan(String value) {
-            addCriterion("memberpwd <", value, "memberpwd");
+        public Criteria andStarttimeLessThan(Date value) {
+            addCriterionForJDBCDate("starttime <", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdLessThanOrEqualTo(String value) {
-            addCriterion("memberpwd <=", value, "memberpwd");
+        public Criteria andStarttimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime <=", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdLike(String value) {
-            addCriterion("memberpwd like", value, "memberpwd");
+        public Criteria andStarttimeIn(List<Date> values) {
+            addCriterionForJDBCDate("starttime in", values, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdNotLike(String value) {
-            addCriterion("memberpwd not like", value, "memberpwd");
+        public Criteria andStarttimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("starttime not in", values, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdIn(List<String> values) {
-            addCriterion("memberpwd in", values, "memberpwd");
+        public Criteria andStarttimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("starttime between", value1, value2, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberpwdNotIn(List<String> values) {
-            addCriterion("memberpwd not in", values, "memberpwd");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberpwdBetween(String value1, String value2) {
-            addCriterion("memberpwd between", value1, value2, "memberpwd");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberpwdNotBetween(String value1, String value2) {
-            addCriterion("memberpwd not between", value1, value2, "memberpwd");
+        public Criteria andStarttimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("starttime not between", value1, value2, "starttime");
             return (Criteria) this;
         }
 
@@ -472,73 +462,63 @@ public class MembermanageExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarIsNull() {
-            addCriterion("memberavatar is null");
+        public Criteria andEndtimeIsNull() {
+            addCriterion("endtime is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarIsNotNull() {
-            addCriterion("memberavatar is not null");
+        public Criteria andEndtimeIsNotNull() {
+            addCriterion("endtime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarEqualTo(String value) {
-            addCriterion("memberavatar =", value, "memberavatar");
+        public Criteria andEndtimeEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime =", value, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarNotEqualTo(String value) {
-            addCriterion("memberavatar <>", value, "memberavatar");
+        public Criteria andEndtimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime <>", value, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarGreaterThan(String value) {
-            addCriterion("memberavatar >", value, "memberavatar");
+        public Criteria andEndtimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("endtime >", value, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarGreaterThanOrEqualTo(String value) {
-            addCriterion("memberavatar >=", value, "memberavatar");
+        public Criteria andEndtimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime >=", value, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarLessThan(String value) {
-            addCriterion("memberavatar <", value, "memberavatar");
+        public Criteria andEndtimeLessThan(Date value) {
+            addCriterionForJDBCDate("endtime <", value, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarLessThanOrEqualTo(String value) {
-            addCriterion("memberavatar <=", value, "memberavatar");
+        public Criteria andEndtimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime <=", value, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarLike(String value) {
-            addCriterion("memberavatar like", value, "memberavatar");
+        public Criteria andEndtimeIn(List<Date> values) {
+            addCriterionForJDBCDate("endtime in", values, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarNotLike(String value) {
-            addCriterion("memberavatar not like", value, "memberavatar");
+        public Criteria andEndtimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("endtime not in", values, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarIn(List<String> values) {
-            addCriterion("memberavatar in", values, "memberavatar");
+        public Criteria andEndtimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("endtime between", value1, value2, "endtime");
             return (Criteria) this;
         }
 
-        public Criteria andMemberavatarNotIn(List<String> values) {
-            addCriterion("memberavatar not in", values, "memberavatar");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberavatarBetween(String value1, String value2) {
-            addCriterion("memberavatar between", value1, value2, "memberavatar");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemberavatarNotBetween(String value1, String value2) {
-            addCriterion("memberavatar not between", value1, value2, "memberavatar");
+        public Criteria andEndtimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("endtime not between", value1, value2, "endtime");
             return (Criteria) this;
         }
 

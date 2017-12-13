@@ -7,7 +7,7 @@ package com.test.web.controller;
  * @author: JonyChen  Date: 2017/12/11
  */
 
-import com.com.test.commons.DataGridModel;
+import com.test.commons.DataGridModel;
 import com.test.pojo.Bill;
 import com.test.service.BillService;
 import org.slf4j.Logger;

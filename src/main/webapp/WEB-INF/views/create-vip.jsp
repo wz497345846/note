@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: peng
-  Date: 17-12-12
-  Time: 下午10:11
+  Date: 17-12-13
+  Time: 下午6:55
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>会员查询</title>
+    <title>办理会员</title>
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
@@ -16,10 +16,9 @@
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 </head>
 <body>
-
 <table id="tt" class="easyui-datagrid" style="width:100%;height:100%"
        url="/getMembers" toolbar="#tb"
-       title="会员信息" iconCls="icon-save"
+       title="办理会员" iconCls="icon-save"
        buttons="#dlg-buttons"
        rownumbers="true" pagination="true">
     <thead>
@@ -29,86 +28,57 @@
         <th field="memberphone" width="80" align="right">手机号</th>
         <th field="membersex" width="80" align="right">性别</th>
         <th field="memberbirth" width="60" formatter="DateTimeFormatter" name="memberbirth">生日</th>
-        <th field="referee" width="60" align="center">推荐人</th>
-        <th field="memberremark" width="60" align="center">会员标记</th>
-        <th field="memberdesc" width="150" align="center">备注</th>
+        <th field="memberremark" width="60" align="center">会员类型</th>
+        <th field="starttime" width="60" align="center">办理会员时间</th>
+        <th field="endtime" width="150" align="center">到期时间</th>
     </tr>
     </thead>
 </table>
 
 <div id="tb" style="padding:3px">
-        <div>
-            <span>姓名:</span>
-            <input id="membername" style="line-height:26px;border:1px solid #ccc">
-            <span>手机号:</span>
-            <input id="memberphone" style="line-height:26px;border:1px solid #ccc">
-            <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
-        </div>
     <div>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建用户</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑用户</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
+        <span>姓名:</span>
+        <input id="membername" style="line-height:26px;border:1px solid #ccc">
+        <span>手机号:</span>
+        <input id="memberphone" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+    </div>
+    <div>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="createVip()">办理会员</a>
     </div>
 </div>
 
 
 <div id="dlg" class="easyui-dialog" style="width:400px;height:500px;padding:10px 20px"
      closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">用户信息：</div>
+    <div class="ftitle">办理会员信息：</div>
     <form id="fm" method="post">
         <table>
             <tr>
                 <td>
-                    <label>姓名:</label>
+                    <label>会员id:</label>
                 </td>
                 <td>
-                    <input name="membername"  class="easyui-validatebox" required="true">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>手机号:</label>
-                </td>
-                <td>
-                    <input name="memberphone" class="easyui-validatebox" required="true">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>性别:</label>
-                </td>
-                <td>
-                    男：<input name="membersex" value="男" type="radio">
-                    女：<input name="membersex" value="女" type="radio">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>生日:</label>
-
-                </td>
-                <td>
-                    <input type="text" class="easyui-datebox" formatter="DateTimeFormatter"  name="memberbirth">
-
+                    <input name="memberid"  class="easyui-validatebox" readonly required="true">
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <label>推荐人:</label>
+                    <label>会员姓名:</label>
                 </td>
                 <td>
-                    <input name="referee" class="easyui-validatebox">
+                    <input name="membername"  class="easyui-validatebox" readonly required="true">
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <label>备注:</label>
-
+                    <label>会员类型:</label>
                 </td>
                 <td>
-                    <input name="memberdesc" class="easyui-validatebox">
-
+                    <select class="easyui-combobox" id="membertypeId" name="membertypeId" style="width:200px;" panelHeight="auto" editable="false" url="/getAllVipTypes" valueField="membertypeId" textField="membertypeName"  >
+                    </select>
                 </td>
             </tr>
 
@@ -131,21 +101,15 @@
         });
     }
 
-    function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','新建用户');
-        $('#fm').form('clear');
-        url = '/createMember';
-    }
-
-
-    function editUser() {
+    function createVip(){
         var row = $('#tt').datagrid('getSelected');
         if (row){
             $('#dlg').dialog('open').dialog('setTitle','修改用户');
             $('#fm').form('load',row);
-            url = '/updateMember?id='+row.memberid;
+            url = '/createVip';
         }
     }
+
 
     function saveUser(){
         $('#fm').form('submit',{
@@ -167,29 +131,6 @@
             }
         });
     }
-
-    function destroyUser(){
-        var row = $('#tt').datagrid('getSelected');
-        if (row){
-            $.messager.confirm('Confirm','你确定删除这个会员?',function(r){
-                if (r){
-                    $.post('/delMember',{id:row.memberid},function(result){
-                        if (result.success){
-                            $('#tt').datagrid('reload');	// reload the user data
-                        } else {
-                            $.messager.show({	// show error message
-                                title: 'Error',
-                                msg: result.errorMsg
-                            });
-                        }
-                    },'json');
-                }
-            });
-        }
-    }
-
-
-
 
     function DateTimeFormatter(value) {
         var date = new Date(value);
