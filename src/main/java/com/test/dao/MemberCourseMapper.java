@@ -2,9 +2,12 @@ package com.test.dao;
 
 import com.test.pojo.MemberCourseExample;
 import com.test.pojo.MemberCourseKey;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
+
+import java.util.List;
+
+//import com.test.pojo.MemberCourseKey;
 
 public interface MemberCourseMapper {
     int deleteByExample(MemberCourseExample example);
