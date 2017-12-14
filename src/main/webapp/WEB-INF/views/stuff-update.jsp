@@ -7,15 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>员工编辑</title>
-    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/demo/demo.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-</head>
-<body>
+
 <table id="tt3" class="easyui-datagrid" style="width:100%;height:100%"
        url="/getallEmployee" toolbar="#tb3"
        title="员工信息编辑" iconCls="icon-save"
@@ -179,5 +171,3 @@
 
 
 </script>
-</body>
-</html>
