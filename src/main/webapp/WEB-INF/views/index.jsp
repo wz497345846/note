@@ -90,6 +90,7 @@
             <ul class="child_menu">
                 <li><a href="#" value="stuff-query">员工查询</a></li>
                 <li><a href="#" value="stuff-create">新建员工</a></li>
+                <li><a href="#" value="stuff-update">编辑员工</a></li>
             </ul>
         </div>
         <div id="five">
