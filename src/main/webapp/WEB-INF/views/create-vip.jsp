@@ -156,7 +156,7 @@
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-        return year + "/" + month + "/" + day;
+        return year + "-" + month + "-" + day;
     }
 
     $.fn.datebox.defaults.parser = function(s){
