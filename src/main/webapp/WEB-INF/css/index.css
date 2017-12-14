@@ -157,7 +157,7 @@ ul{
     height: 74px;
     display: none;
     position: fixed;
-    top: 445px;
+    top: 383px;
     left:186px;
     z-index: 100;
 }
@@ -168,7 +168,7 @@ ul{
     height: 225px;
     display: none;
     position: fixed;
-    top: 480px;
+    top: 407px;
     left:186px;
     z-index: 100;
 }
@@ -179,7 +179,7 @@ ul{
     height: 150px;
     display: none;
     position: fixed;
-    top: 518px;
+    top: 456px;
     left:186px;
     z-index: 100;
 }
@@ -198,10 +198,10 @@ ul{
     /*margin: 362px 0;*/
     /*padding: 0;*/
     width: 132px;
-    height: 224px;
+    height: 112px;
     display: none;
     position: fixed;
-    top: 567px;
+    top: 501px;
     left:186px;
     z-index: 100;
 }

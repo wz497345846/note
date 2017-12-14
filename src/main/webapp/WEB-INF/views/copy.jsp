@@ -46,9 +46,9 @@
 </div>
 
 <ul class="infolist">
-    <li><span>您可以快速进行文章发布管理操作</span></li>
-    <li><span>您可以快速发布产品</span></li>
-    <li><span>您可以进行密码修改、账户设置等操作</span></li>
+    <li><span>您可以进行查看会员</span></li>
+    <li><span>您可以进行课程的安排</span></li>
+    <li><span>您可以进行查看财务的统计状况</span></li>
 </ul>
 
 </body>

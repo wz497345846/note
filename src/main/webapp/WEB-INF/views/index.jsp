@@ -40,13 +40,13 @@
             <ul class="allMenus">
                 <li><a href="#" value="copy"><i class="iconfont">&#xe67b;</i><span>首页</span></a></li>
                 <li><a href="#"><i class="iconfont">&#xe7c1;</i><span>会员</span><i class="iconfont">&#xe50f;</i></a></li>
-                <li><a href="#"><i class="iconfont">&#xe660;</i><span>客户</span><i class="iconfont">&#xe50f;</i></a></li>
+                <%--<li><a href="#"><i class="iconfont">&#xe660;</i><span>客户</span><i class="iconfont">&#xe50f;</i></a></li>--%>
                 <li><a href="#"><i class="iconfont">&#xe73f;</i><span>课程</span><i class="iconfont">&#xe50f;</i></a></li>
                 <li><a href="#"><i class="iconfont">&#xe68e;</i><span>员工</span><i class="iconfont">&#xe50f;</i></a></li>
                 <li><a href="#"><i class="iconfont">&#xe607;</i><span>财务</span><i class="iconfont">&#xe50f;</i></a></li>
-                <li><a href="#"><i class="iconfont">&#xe677;</i><span>营销</span><i class="iconfont">&#xe50f;</i></a></li>
+                <%--<li><a href="#"><i class="iconfont">&#xe677;</i><span>营销</span><i class="iconfont">&#xe50f;</i></a></li>--%>
                 <li><a href="#"><i class="iconfont">&#xe62e;</i><span>统计</span><i class="iconfont">&#xe50f;</i></a></li>
-                <li><a href="#"><i class="iconfont">&#xe638;</i><span>设置</span><i class="iconfont">&#xe50f;</i></a></li>
+                <%--<li><a href="#"><i class="iconfont">&#xe638;</i><span>设置</span><i class="iconfont">&#xe50f;</i></a></li>--%>
             </ul>
         </div>
         <div class="about-us">由 <a id="sb" href="#">三键客 ™</a> 提供技术支持</div>
@@ -71,7 +71,7 @@
                 <li><a href="#" value="create-vip">办理会员</a></li>
             </ul>
         </div>
-        <div id="two">
+        <%--<div id="two">
             <ul class="child_menu">
                 <li><a href="#">客户查询</a></li>
                 <li><a href="#">新建客户</a></li>
@@ -79,7 +79,7 @@
                 <li><a href="#">跟进统计</a></li>
                 <li><a href="#">批量操作</a></li>
             </ul>
-        </div>
+        </div>--%>
         <div id="three">
             <ul class="child_menu">
                 <li><a href="#" value="addcourse">添加课程</a></li>
@@ -99,12 +99,12 @@
                 <li><a href="#" value="editBill">编辑账单</a></li>
             </ul>
         </div>
-        <div id="six">
+        <%--<div id="six">
             <ul class="child_menu">
                 <li><a href="#">微官网</a></li>
                 <li><a href="#">营销工具</a></li>
             </ul>
-        </div>
+        </div>--%>
         <div id="seven">
             <ul class="child_menu">
                 <li><a href="#" value="statistics?m=1">会员统计</a></li>
@@ -115,7 +115,7 @@
                 <li><a href="#" value="statistics?m=6">营业报表</a></li>
             </ul>
         </div>
-        <div id="eight">
+        <%--<div id="eight">
             <ul class="child_menu">
                 <li><a href="#">门店信息</a></li>
                 <li><a href="#">门店场地</a></li>
@@ -127,7 +127,7 @@
                 <li><a href="#">手机版</a></li>
                 <li><a href="#">收费详细</a></li>
             </ul>
-        </div>
+        </div>--%>
         <div id="tabs" class="easyui-tabs">
             <%--<div title="Tab1" style="padding:20px;display:none;">--%>
                 <%--tab1--%>

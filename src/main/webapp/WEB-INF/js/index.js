@@ -19,41 +19,41 @@ $(document).ready(function () {
     });
 
     $(".allMenus").find("li:eq(2)").hover(function () {
-        $("#two").css("display","block");
-    });
-    $(".allMenus").find("li:eq(2)").siblings().hover(function () {
-        $("#two").css("display","none");
-    });
-
-    $(".allMenus").find("li:eq(3)").hover(function () {
         $("#three").css("display","block");
     });
-    $(".allMenus").find("li:eq(3)").siblings().hover(function () {
+    $(".allMenus").find("li:eq(2)").siblings().hover(function () {
         $("#three").css("display","none");
     });
 
-    $(".allMenus").find("li:eq(4)").hover(function () {
+    $(".allMenus").find("li:eq(3)").hover(function () {
         $("#four").css("display","block");
     });
-    $(".allMenus").find("li:eq(4)").siblings().hover(function () {
+    $(".allMenus").find("li:eq(3)").siblings().hover(function () {
         $("#four").css("display","none");
     });
 
-    $(".allMenus").find("li:eq(5)").hover(function () {
+    $(".allMenus").find("li:eq(4)").hover(function () {
         $("#five").css("display","block");
     });
-    $(".allMenus").find("li:eq(5)").siblings().hover(function () {
+    $(".allMenus").find("li:eq(4)").siblings().hover(function () {
         $("#five").css("display","none");
     });
 
-    $(".allMenus").find("li:eq(6)").hover(function () {
-        $("#six").css("display","block");
+    $(".allMenus").find("li:eq(5)").hover(function () {
+        $("#seven").css("display","block");
     });
-    $(".allMenus").find("li:eq(6)").siblings().hover(function () {
-        $("#six").css("display","none");
+    $(".allMenus").find("li:eq(5)").siblings().hover(function () {
+        $("#seven").css("display","none");
     });
 
-    $(".allMenus").find("li:eq(7)").hover(function () {
+    /*$(".allMenus").find("li:eq(6)").hover(function () {
+        $("#seven").css("display","block");
+    });
+    $(".allMenus").find("li:eq(6)").siblings().hover(function () {
+        $("#seven").css("display","none");
+    });*/
+
+    /*$(".allMenus").find("li:eq(7)").hover(function () {
         $("#seven").css("display","block");
     });
     $(".allMenus").find("li:eq(7)").siblings().hover(function () {
@@ -65,7 +65,7 @@ $(document).ready(function () {
     });
     $(".allMenus").find("li:eq(8)").siblings().hover(function () {
         $("#eight").css("display","none");
-    });
+    });*/
 
 
 }).ready(function () {
