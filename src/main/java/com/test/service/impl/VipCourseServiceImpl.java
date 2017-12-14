@@ -25,7 +25,7 @@ public class VipCourseServiceImpl implements VipCourseService {
         MemberCourseExample example=new MemberCourseExample();
         MemberCourseExample.Criteria criteria=example.createCriteria();
         if (membermanage.getMemberid()!=null&&membermanage.getMemberid()>0){
-            criteria.andCourseidEqualTo(membermanage.getMemberid());
+            criteria.andMemberidEqualTo(membermanage.getMemberid());
         }
         List<MemberCourseKey> memberCourseKeys=memberCourseMapper.selectByExample(example);
         List<Course> courses=new ArrayList<Course>();

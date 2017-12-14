@@ -33,7 +33,6 @@ public class CourseController {
 
     @RequestMapping("/statistics")
     public String statistics(String m){
-        System.out.println(m);
         switch(m){
 
             case "1":return "sta1";

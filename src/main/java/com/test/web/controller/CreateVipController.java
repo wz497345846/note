@@ -31,6 +31,7 @@ public class CreateVipController {
                calendar.setTime(today);
                calendar.add(calendar.MONTH,m.getMonthTime());
                membermanage.setEndtime(calendar.getTime());
+               membermanage.setMemberremark(m.getMembertypeName());
            }
        }
        boolean flag=memberServiceImpl.updateMember(membermanage);
