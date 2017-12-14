@@ -13,9 +13,7 @@
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
     <link rel="stylesheet" href="css/font_icon/iconfont.css">
-
     <link rel="stylesheet" href="css/index.css">
-    <%--<link href="css/style.css" rel="stylesheet" type="text/css" />--%>
 
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
