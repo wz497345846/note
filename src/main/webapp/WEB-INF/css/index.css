@@ -3,6 +3,7 @@
     padding: 0;
     font-family: Microsoft Microsoft Yahei, Arial;
     font-size: 12px;
+    overflow-x: hidden; overflow-y: hidden;
 }
 a{
     text-decoration: none;
@@ -24,7 +25,7 @@ ul{
     font-weight: bold;
     text-align: center;
     color: #aaa;
-    background: #444;
+    background-color: rgb(5,109,175);
     margin-bottom: 25px;
     cursor: default;
 }
@@ -111,7 +112,7 @@ ul{
     height: 187px;
     display: none;
     position: fixed;
-    top: 148px;
+    top: 315px;
     left:186px;
     z-index: 100;
 }
@@ -145,7 +146,7 @@ ul{
     height: 187px;
     display: none;
     position: fixed;
-    top: 188px;
+    top: 357px;
     left: 186px;
     z-index: 100;
 }
@@ -156,7 +157,7 @@ ul{
     height: 74px;
     display: none;
     position: fixed;
-    top: 355px;
+    top: 445px;
     left:186px;
     z-index: 100;
 }
@@ -167,7 +168,7 @@ ul{
     height: 150px;
     display: none;
     position: fixed;
-    top: 380px;
+    top: 480px;
     left:186px;
     z-index: 100;
 }
@@ -178,7 +179,7 @@ ul{
     height: 150px;
     display: none;
     position: fixed;
-    top: 400px;
+    top: 518px;
     left:186px;
     z-index: 100;
 }
@@ -189,7 +190,7 @@ ul{
     height: 75px;
     display: none;
     position: fixed;
-    top: 467px;
+    top: 550px;
     left:186px;
     z-index: 100;
 }
@@ -200,7 +201,7 @@ ul{
     height: 224px;
     display: none;
     position: fixed;
-    top: 362px;
+    top: 567px;
     left:186px;
     z-index: 100;
 }
@@ -211,11 +212,23 @@ ul{
     height: 334px;
     display: none;
     position: fixed;
-    top: 312px;
+    top: 560px;
     left:186px;
     z-index: 100;
 }
-
+#guide{
+    float: right;
+    margin-right: 5%;
+    margin-top: 3%;
+    overflow: hidden;
+}
+#guide a{
+    color: white;
+}
+#guide span{
+    margin: 0 5px;
+    font-weight: bold;
+}
 .reds{
     color: red;
 }

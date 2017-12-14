@@ -13,7 +13,9 @@
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
     <link rel="stylesheet" href="css/font_icon/iconfont.css">
+
     <link rel="stylesheet" href="css/index.css">
+    <%--<link href="css/style.css" rel="stylesheet" type="text/css" />--%>
 
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
@@ -24,17 +26,19 @@
 </head>
 <body>
 <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
-    <%--<div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>--%>
+    <div data-options="region:'north'<%--,title:'North Title'--%>,split:true" style="height:100px;background: url(../img/1.bmp) center 0 no-repeat scroll transparent;background-size:100% 100%;">
+        <div id="guide">欢迎<span></span><a href="login">退出登录</a></div>
+    </div>
     <%--<div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>--%>
     <%--<div data-options="region:'east',title:'East',split:true" style="width:100px;"></div>--%>
-    <div id="menus" data-options="region:'west'<%--,title:'West'--%>" style="width:186px;background-color: rgb(51,51,51);overflow: hidden">
-        <div id="store"><i class="iconfont">&#xe635;</i> 三键客后台管理系统</div>
+    <div id="menus" data-options="region:'west'<%--,title:'West'--%>" style="width:186px;background-color: rgb(5,109,175);overflow: hidden">
+        <div id="store"><%--<i class="iconfont">&#xe635;</i> 三键客后台管理系统--%></div>
         <div id="logo">
             <img src="img/head.jpeg" alt="">
         </div>
         <div id="menu">
             <ul class="allMenus">
-                <li><a href="#"><i class="iconfont">&#xe67b;</i><span>首页</span></a></li>
+                <li><a href="#" value="copy"><i class="iconfont">&#xe67b;</i><span>首页</span></a></li>
                 <li><a href="#"><i class="iconfont">&#xe7c1;</i><span>会员</span><i class="iconfont">&#xe50f;</i></a></li>
                 <li><a href="#"><i class="iconfont">&#xe660;</i><span>客户</span><i class="iconfont">&#xe50f;</i></a></li>
                 <li><a href="#"><i class="iconfont">&#xe73f;</i><span>课程</span><i class="iconfont">&#xe50f;</i></a></li>

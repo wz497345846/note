@@ -26,7 +26,7 @@ $(document).ready(function(){
                        $("#message").html("用户名或密码错误");
                        $("#info").css("display" , "block");
                    }else{
-                       window.location.href="index";
+                       window.location.href="index?name="+name;
                    }
                },
                error:function () {
