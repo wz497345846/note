@@ -31,7 +31,6 @@ public class MemberController {
     @RequestMapping("/createMember")
     @ResponseBody
     public Map createMember(Membermanage membermanage){
-        System.out.println(membermanage);
         boolean flag=memberServiceImpl.addMember(membermanage);
         Map map=new HashMap();
         if (flag){
@@ -64,7 +63,6 @@ public class MemberController {
     @RequestMapping("/updateMember")
     @ResponseBody
     public Map updateMember(Membermanage membermanage, String id){
-        System.out.println(membermanage);
         membermanage.setMemberid(Integer.valueOf(id));
         boolean flag=memberServiceImpl.updateMember(membermanage);
         Map map=new HashMap();

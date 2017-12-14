@@ -19,7 +19,9 @@
         <th field="membername" width="80">姓名</th>
         <th field="memberphone" width="80" align="right">手机号</th>
         <th field="membersex" width="80" align="right">性别</th>
-        <th field="memberbirth" width="120" formatter="DateTimeFormatter" name="memberbirth">生日</th>
+<%--
+        <th field="memberbirth" width="120" formatter="DateTimeFormatter1" name="memberbirth">生日</th>
+--%>
         <th field="referee" width="60" align="center">推荐人</th>
         <th field="memberremark" width="60" align="center">会员标记</th>
         <th field="memberdesc" width="150" align="center">备注</th>
@@ -73,16 +75,6 @@
                     女：<input name="membersex" value="女" type="radio">
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <label>生日:</label>
-
-                </td>
-                <td>
-                    <input type="text" class="easyui-datebox" formatter="DateTimeFormatter" name="memberbirth">
-
-                </td>
-            </tr>
 
             <tr>
                 <td>
@@ -133,7 +125,7 @@
         if (row) {
             $('#dlgb').dialog('open').dialog('setTitle', '修改用户');
             $('#fmm').form('load', row);
-            urlb = '/updateMember';
+            urlb = '/updateMember?id='+row.memberid;
         }
     }
 
@@ -178,7 +170,7 @@
         }
     }
 
-    function DateTimeFormatter(value) {
+    function DateTimeFormatter1(value) {
         var date = new Date(value);
         var year = date.getFullYear().toString();
         var month = (date.getMonth() + 1);
